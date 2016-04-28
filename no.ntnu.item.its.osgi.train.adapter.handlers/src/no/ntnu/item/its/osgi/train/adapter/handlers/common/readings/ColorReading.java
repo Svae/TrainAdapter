@@ -1,6 +1,6 @@
 package no.ntnu.item.its.osgi.train.adapter.handlers.common.readings;
 
-import no.ntnu.item.its.osgi.sensors.common.enums.EColor;
+import no.ntnu.item.its.osgi.common.enums.EColor;
 
 public class ColorReading {
 

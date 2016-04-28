@@ -16,7 +16,6 @@ public abstract class LegoTrain implements TrainState{
 	
 	@Override
 	public void sensorUpdate(ServiceEvent event) {
-		train
 	}
 	
 }

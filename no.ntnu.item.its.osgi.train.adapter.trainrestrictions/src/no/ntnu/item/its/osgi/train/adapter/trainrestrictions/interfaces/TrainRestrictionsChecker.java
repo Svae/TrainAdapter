@@ -1,6 +1,6 @@
 package no.ntnu.item.its.osgi.train.adapter.trainrestrictions.interfaces;
 
-import no.ntnu.item.its.osgi.sensors.common.enums.PublisherType;
+import no.ntnu.item.its.osgi.common.enums.PublisherType;
 import no.ntnu.item.its.osgi.train.adapter.trainrestrictions.common.SensorPriorityLevel;
 import no.ntnu.item.its.osgi.train.adapter.trainrestrictions.common.SpeedRestrictionLevel;
 import no.ntnu.item.its.osgi.train.adapter.trainrestrictions.common.TrainTemperatureLevel;

@@ -1,6 +1,6 @@
 package no.ntnu.item.ites.osgi.train.adapter.handlers.common.interfaces;
 
-import no.ntnu.item.its.osgi.sensors.common.enums.PublisherType;
+import no.ntnu.item.its.osgi.common.enums.PublisherType;
 import no.ntnu.item.its.osgi.train.adapter.handlers.common.readings.AccelerometerReading;
 import no.ntnu.item.its.osgi.train.adapter.handlers.common.readings.ColorReading;
 import no.ntnu.item.its.osgi.train.adapter.handlers.common.readings.MagnetometerReading;

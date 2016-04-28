@@ -1,0 +1,9 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: no.ntnu.item.its.osgi.train.simulation
+Bundle-SymbolicName: no.ntnu.item.its.osgi.train.simulation
+Bundle-Version: 1.0.0
+Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+Import-Package: no.ntnu.item.arctis.runtime,
+ org.osgi.framework,
+ org.slf4j

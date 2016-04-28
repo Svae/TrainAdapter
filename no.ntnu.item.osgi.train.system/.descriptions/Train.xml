@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<block
+    name="Train" 
+    uuid="_gVoBQA1rEea364fhqzOEpg" 
+    status="under construction" 
+    type="block" 
+    >
+    <required>
+        <block name="b0" uuid="_CEVmUw1mEea364fhqzOEpg"/>
+        <block name="b1" uuid="_F49KD-uREeWrQIhWnzYPtA"/>
+    </required>
+</block>

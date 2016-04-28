@@ -1,8 +1,19 @@
 package no.ntnu.item.its.osgi.train.adapter.trainrestrictions.legotrain;
 
-import static no.ntnu.item.its.osgi.train.adapter.trainrestrictions.legotrain.LegoTrainRestrictionProperties.*;
+import static no.ntnu.item.its.osgi.train.adapter.trainrestrictions.legotrain.LegoTrainRestrictionProperties.SENSORACCELEROMETER;
+import static no.ntnu.item.its.osgi.train.adapter.trainrestrictions.legotrain.LegoTrainRestrictionProperties.SENSORBEACON;
+import static no.ntnu.item.its.osgi.train.adapter.trainrestrictions.legotrain.LegoTrainRestrictionProperties.SENSORCOLOR;
+import static no.ntnu.item.its.osgi.train.adapter.trainrestrictions.legotrain.LegoTrainRestrictionProperties.SENSORMAGNETOMETER;
+import static no.ntnu.item.its.osgi.train.adapter.trainrestrictions.legotrain.LegoTrainRestrictionProperties.SPEEDCITY;
+import static no.ntnu.item.its.osgi.train.adapter.trainrestrictions.legotrain.LegoTrainRestrictionProperties.SPEEDINNERCITY;
+import static no.ntnu.item.its.osgi.train.adapter.trainrestrictions.legotrain.LegoTrainRestrictionProperties.SPEEDLOW;
+import static no.ntnu.item.its.osgi.train.adapter.trainrestrictions.legotrain.LegoTrainRestrictionProperties.SPEEDNORMAL;
+import static no.ntnu.item.its.osgi.train.adapter.trainrestrictions.legotrain.LegoTrainRestrictionProperties.TEMPERATUREOKMAX;
+import static no.ntnu.item.its.osgi.train.adapter.trainrestrictions.legotrain.LegoTrainRestrictionProperties.TEMPERATUREOKMIN;
+import static no.ntnu.item.its.osgi.train.adapter.trainrestrictions.legotrain.LegoTrainRestrictionProperties.TEMPERATUREWARNINGMAX;
+import static no.ntnu.item.its.osgi.train.adapter.trainrestrictions.legotrain.LegoTrainRestrictionProperties.TEMPERATUREWARNINGMIN;
 
-import no.ntnu.item.its.osgi.sensors.common.enums.PublisherType;
+import no.ntnu.item.its.osgi.common.enums.PublisherType;
 import no.ntnu.item.its.osgi.train.adapter.trainrestrictions.common.SensorPriorityLevel;
 import no.ntnu.item.its.osgi.train.adapter.trainrestrictions.common.SpeedRestrictionLevel;
 import no.ntnu.item.its.osgi.train.adapter.trainrestrictions.common.TrainTemperatureLevel;

@@ -8,7 +8,6 @@ import no.ntnu.item.its.osgi.train.adapter.handlers.common.readings.Magnetometer
 import no.ntnu.item.its.osgi.train.adapter.handlers.common.readings.NFCReading;
 import no.ntnu.item.its.osgi.train.adapter.handlers.common.readings.TemperatureReading;
 import no.ntnu.item.its.osgi.train.adapter.trainstates.interfaces.TrainContext;
-import no.ntnu.item.its.train.adapter.enums.SpeedLevel;
 
 public class Stopped extends LegoTrain{
 
@@ -20,12 +19,10 @@ public class Stopped extends LegoTrain{
 	
 	@Override
 	public void colorUpdate(ColorReading color) {
-		train.setTrainState(new Running(train));
 	}
 
 	@Override
 	public void accelerationUpdate(AccelerometerReading acc) {
-		if(acc.getReading() > 0) train.setTrainState(new Running(train));
 		
 	}
 
