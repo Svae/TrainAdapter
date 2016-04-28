@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project
+    title="no.ntnu.trainsimulator"
+    uuid="_8I2yYN_eEeWP4IsqL8dOfg"
+    version="1.0.0"
+    >
+    <dependencies>
+        <dependency name="com.bitreactive.library.osgi" uuid="_mIv8UBIvEeKMseuZHQ_fDA" version="1.7.0" indirect="true"/>
+        <dependency name="no.ntnu.item.its.train.adapter" uuid="_187yMOuQEeWrQIhWnzYPtA" version="1.0.0"/>
+    </dependencies>
+</project>

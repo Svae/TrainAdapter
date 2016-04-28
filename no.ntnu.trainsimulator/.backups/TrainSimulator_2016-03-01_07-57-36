@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xmi:XMI xmi:version="20131001" xmlns:xmi="http://www.omg.org/spec/XMI/20131001" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:arctis="http:///schemas/arctis/_WFTqUHjGEdyxtoUMycQn9Q/10" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:graphics="http:///schemas/graphics/_gd9EwIuAEdytfOWtpACIqw/6" xmlns:uml="http://www.eclipse.org/uml2/5.0.0/UML" xsi:schemaLocation="http:///schemas/arctis/_WFTqUHjGEdyxtoUMycQn9Q/10 pathmap://ARCTIS_PROFILES/arctis.profile.uml#_WFTqUXjGEdyxtoUMycQn9Q http:///schemas/graphics/_gd9EwIuAEdytfOWtpACIqw/6 pathmap://RAMSES_GRAPHIC_PROFILES/no.ntnu.item.ramses.graphicprofile.uml#_geG1wIuAEdytfOWtpACIqw">
+  <uml:Package xmi:id="_ai_ZkN_fEeWP4IsqL8dOfg" name="no.ntnu.trainsimulator">
+    <packagedElement xmi:type="uml:Activity" xmi:id="_ajAAot_fEeWP4IsqL8dOfg" name="TrainSimulator" classifierBehavior="_alqTEN_fEeWP4IsqL8dOfg" node="_cM1sQN_fEeWP4IsqL8dOfg" group="_ajFgMN_fEeWP4IsqL8dOfg" partition="_ajFgMN_fEeWP4IsqL8dOfg">
+      <ownedBehavior xmi:type="uml:StateMachine" xmi:id="_alqTEN_fEeWP4IsqL8dOfg" name="TrainSimulator">
+        <region xmi:id="_alrhMN_fEeWP4IsqL8dOfg" name="&lt;region>">
+          <subvertex xmi:type="uml:Pseudostate" xmi:id="_alrhMd_fEeWP4IsqL8dOfg" name="&lt;initial>"/>
+        </region>
+      </ownedBehavior>
+      <ownedParameter xmi:id="_cNBScN_fEeWP4IsqL8dOfg" name="init"/>
+      <group xmi:type="uml:ActivityPartition" xmi:id="_ajFgMN_fEeWP4IsqL8dOfg" name="main" node="_cM1sQN_fEeWP4IsqL8dOfg"/>
+      <node xmi:type="uml:ActivityParameterNode" xmi:id="_cM1sQN_fEeWP4IsqL8dOfg" name="init" inPartition="_ajFgMN_fEeWP4IsqL8dOfg" parameter="_cNBScN_fEeWP4IsqL8dOfg"/>
+    </packagedElement>
+    <profileApplication xmi:id="_ajAAoN_fEeWP4IsqL8dOfg">
+      <eAnnotations xmi:id="_ajAAod_fEeWP4IsqL8dOfg" source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <references xmi:type="ecore:EPackage" href="pathmap://ARCTIS_PROFILES/arctis.profile.uml#_WFTqUXjGEdyxtoUMycQn9Q"/>
+      </eAnnotations>
+      <appliedProfile href="pathmap://ARCTIS_PROFILES/arctis.profile.uml#_rE77YK4iEduZSuTiwKs5Lw"/>
+    </profileApplication>
+    <profileApplication xmi:id="_ajFgMd_fEeWP4IsqL8dOfg">
+      <eAnnotations xmi:id="_ajGHQN_fEeWP4IsqL8dOfg" source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <references xmi:type="ecore:EPackage" href="pathmap://RAMSES_GRAPHIC_PROFILES/no.ntnu.item.ramses.graphicprofile.uml#_geG1wIuAEdytfOWtpACIqw"/>
+      </eAnnotations>
+      <appliedProfile href="pathmap://RAMSES_GRAPHIC_PROFILES/no.ntnu.item.ramses.graphicprofile.uml#_UEANMUVlEduH9aQE_pc66w"/>
+    </profileApplication>
+  </uml:Package>
+  <graphics:Shape xmi:id="_alhJIN_fEeWP4IsqL8dOfg" x="180" y="54" width="955" height="55" base_Element="_ajAAot_fEeWP4IsqL8dOfg"/>
+  <graphics:Shape xmi:id="_alhwMN_fEeWP4IsqL8dOfg" x="180" y="108" width="955" height="523" base_Element="_ajFgMN_fEeWP4IsqL8dOfg"/>
+  <arctis:esm xmi:id="_alq6IN_fEeWP4IsqL8dOfg" base_StateMachine="_alqTEN_fEeWP4IsqL8dOfg"/>
+  <graphics:Shape xmi:id="_cOiVYN_fEeWP4IsqL8dOfg" x="144" y="162" base_Element="_cM1sQN_fEeWP4IsqL8dOfg" orientation="west"/>
+</xmi:XMI>

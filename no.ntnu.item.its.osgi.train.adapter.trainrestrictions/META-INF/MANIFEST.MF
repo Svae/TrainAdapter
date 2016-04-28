@@ -1,0 +1,12 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Restrictions
+Bundle-SymbolicName: no.ntnu.item.its.osgi.train.adapter.trainrestrictions_
+Bundle-Version: 1.0.0
+Bundle-Activator: no.ntnu.item.its.osgi.train.adapter.trainrestrictions.RestrictionActivator
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Import-Package: no.ntnu.item.its.osgi.sensors.common.enums,
+ org.osgi.framework;version="1.3.0"
+Bundle-ActivationPolicy: lazy
+Export-Package: no.ntnu.item.its.osgi.train.adapter.trainrestrictions.common,
+ no.ntnu.item.its.osgi.train.adapter.trainrestrictions.interfaces;uses:="no.ntnu.item.its.osgi.sensors.common.enums,no.ntnu.item.its.osgi.train.adapter.trainrestrictions.common"

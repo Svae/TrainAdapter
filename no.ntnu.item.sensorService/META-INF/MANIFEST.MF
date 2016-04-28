@@ -1,0 +1,10 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: DummySensor
+Bundle-SymbolicName: no.ntnu.item.sensorService
+Bundle-Version: 1.0.0.qualifier
+Bundle-Activator: no.ntnu.dummySensorServiceImpl.Activator
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Import-Package: org.osgi.framework;version="1.3.0"
+Bundle-ActivationPolicy: lazy
+Export-Package: no.ntnu.sensorEnum

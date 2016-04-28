@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<block
+    name="TrainAdapter" 
+    uuid="_F49KD-uREeWrQIhWnzYPtA" 
+    status="under construction" 
+    type="block" 
+    >
+    <required>
+        <block name="b0" uuid="_seBPpv2KEeWc2Jz66D1IgQ"/>
+        <block name="b1" uuid="_y9CAoOuSEeWrQIhWnzYPtA"/>
+        <block name="b2" uuid="_mXF_UOxMEeWRPsrxj_5csA"/>
+        <block name="b3" uuid="_-1Bj4S-gEeSi4PD7l7flYw"/>
+    </required>
+</block>

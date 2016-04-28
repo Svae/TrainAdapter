@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<block
+    name="CustomeServiceListener" 
+    uuid="_seBPpv2KEeWc2Jz66D1IgQ" 
+    status="under construction" 
+    type="block" 
+    >
+    <required>
+        <block name="b0" uuid="_-1Bj4S-gEeSi4PD7l7flYw"/>
+    </required>
+</block>

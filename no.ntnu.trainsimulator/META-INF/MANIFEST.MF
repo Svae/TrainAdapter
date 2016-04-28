@@ -1,0 +1,15 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: TrainTest
+Bundle-SymbolicName: no.ntnu.trainsimulator
+Bundle-Version: 1.0.0
+Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+Bundle-Activator: no.ntnu.trainsimulator.train.Activator
+Import-Package: no.ntnu.item.arctis.runtime,
+ no.ntnu.item.its.osgi.sensors.common.interfaces,
+ no.ntnu.item.its.osgi.train.adapter.handlers.common.readings,
+ org.osgi.framework,
+ org.osgi.service.event;version="1.3.1",
+ org.slf4j
+Require-Bundle: com.bitreactive.library.osgi,
+ no.ntnu.item.its.train.adapter

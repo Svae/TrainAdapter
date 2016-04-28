@@ -1,0 +1,275 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xmi:XMI xmi:version="20131001" xmlns:xmi="http://www.omg.org/spec/XMI/20131001" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:arctis="http:///schemas/arctis/_WFTqUHjGEdyxtoUMycQn9Q/10" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:graphics="http:///schemas/graphics/_gd9EwIuAEdytfOWtpACIqw/6" xmlns:uml="http://www.eclipse.org/uml2/5.0.0/UML" xsi:schemaLocation="http:///schemas/arctis/_WFTqUHjGEdyxtoUMycQn9Q/10 pathmap://ARCTIS_PROFILES/arctis.profile.uml#_WFTqUXjGEdyxtoUMycQn9Q http:///schemas/graphics/_gd9EwIuAEdytfOWtpACIqw/6 pathmap://RAMSES_GRAPHIC_PROFILES/no.ntnu.item.ramses.graphicprofile.uml#_geG1wIuAEdytfOWtpACIqw">
+  <uml:Package xmi:id="_Ocm0QA1KEear_sCS1K1QJg" name="no.ntnu.item.its.train.adapter">
+    <packagedElement xmi:type="uml:Package" xmi:id="_Ocm0QQ1KEear_sCS1K1QJg" name="com.bitreactive.library.osgi">
+      <packagedElement xmi:type="uml:Activity" xmi:id="_-1Bj4S-gEeSi4PD7l7flYw" name="Get BundleContext" classifierBehavior="_Ocm0Qw1KEear_sCS1K1QJg" node="_Ocm0UQ1KEear_sCS1K1QJg _Ocm0Ug1KEear_sCS1K1QJg _Ocm0Uw1KEear_sCS1K1QJg" group="_Ocm0UA1KEear_sCS1K1QJg" partition="_Ocm0UA1KEear_sCS1K1QJg">
+        <ownedBehavior xmi:type="uml:StateMachine" xmi:id="_Ocm0Qw1KEear_sCS1K1QJg" name="Get BundleContext">
+          <region xmi:id="_Ocm0RA1KEear_sCS1K1QJg" name="&lt;region>">
+            <transition xmi:id="_Ocm0RQ1KEear_sCS1K1QJg" name="get / ok" source="_Ocm0Rw1KEear_sCS1K1QJg" target="_Ocm0SA1KEear_sCS1K1QJg"/>
+            <transition xmi:id="_Ocm0Rg1KEear_sCS1K1QJg" name="get / failed" source="_Ocm0Rw1KEear_sCS1K1QJg" target="_Ocm0SA1KEear_sCS1K1QJg"/>
+            <subvertex xmi:type="uml:Pseudostate" xmi:id="_Ocm0Rw1KEear_sCS1K1QJg" name="&lt;initial>"/>
+            <subvertex xmi:type="uml:FinalState" xmi:id="_Ocm0SA1KEear_sCS1K1QJg" name="&lt;final>"/>
+          </region>
+        </ownedBehavior>
+        <ownedParameter xmi:id="_Ode-AA1KEear_sCS1K1QJg" name="get"/>
+        <ownedParameter xmi:id="_OdflEA1KEear_sCS1K1QJg" name="ok" type="_Ocm03g1KEear_sCS1K1QJg" direction="out" parameterSet="_Ocm0Tg1KEear_sCS1K1QJg"/>
+        <ownedParameter xmi:id="_OdgMIA1KEear_sCS1K1QJg" name="failed" type="_Ocm03w1KEear_sCS1K1QJg" direction="out" parameterSet="_Ocm0Tw1KEear_sCS1K1QJg"/>
+        <ownedParameterSet xmi:id="_Ocm0Tg1KEear_sCS1K1QJg" name="ok" parameter="_OdflEA1KEear_sCS1K1QJg"/>
+        <ownedParameterSet xmi:id="_Ocm0Tw1KEear_sCS1K1QJg" name="failed" parameter="_OdgMIA1KEear_sCS1K1QJg"/>
+        <group xmi:type="uml:ActivityPartition" xmi:id="_Ocm0UA1KEear_sCS1K1QJg" name="main" node="_Ocm0UQ1KEear_sCS1K1QJg _Ocm0Ug1KEear_sCS1K1QJg _Ocm0Uw1KEear_sCS1K1QJg"/>
+        <node xmi:type="uml:ActivityParameterNode" xmi:id="_Ocm0UQ1KEear_sCS1K1QJg" name="get" inPartition="_Ocm0UA1KEear_sCS1K1QJg" parameter="_Ode-AA1KEear_sCS1K1QJg"/>
+        <node xmi:type="uml:ActivityParameterNode" xmi:id="_Ocm0Ug1KEear_sCS1K1QJg" name="ok" inPartition="_Ocm0UA1KEear_sCS1K1QJg" type="_Ocm03g1KEear_sCS1K1QJg" parameter="_OdflEA1KEear_sCS1K1QJg"/>
+        <node xmi:type="uml:ActivityParameterNode" xmi:id="_Ocm0Uw1KEear_sCS1K1QJg" name="failed" inPartition="_Ocm0UA1KEear_sCS1K1QJg" type="_Ocm03w1KEear_sCS1K1QJg" parameter="_OdgMIA1KEear_sCS1K1QJg"/>
+      </packagedElement>
+      <profileApplication xmi:id="_Ocm0VA1KEear_sCS1K1QJg">
+        <eAnnotations xmi:id="_Ocm0VQ1KEear_sCS1K1QJg" source="http://www.eclipse.org/uml2/2.0.0/UML">
+          <references xmi:type="ecore:EPackage" href="pathmap://ARCTIS_PROFILES/arctis.profile.uml#_WFTqUXjGEdyxtoUMycQn9Q"/>
+        </eAnnotations>
+        <appliedProfile href="pathmap://ARCTIS_PROFILES/arctis.profile.uml#_rE77YK4iEduZSuTiwKs5Lw"/>
+      </profileApplication>
+      <profileApplication xmi:id="_Ocm0Vg1KEear_sCS1K1QJg">
+        <eAnnotations xmi:id="_Ocm0Vw1KEear_sCS1K1QJg" source="http://www.eclipse.org/uml2/2.0.0/UML">
+          <references xmi:type="ecore:EPackage" href="pathmap://RAMSES_GRAPHIC_PROFILES/no.ntnu.item.ramses.graphicprofile.uml#_geG1wIuAEdytfOWtpACIqw"/>
+        </eAnnotations>
+        <appliedProfile href="pathmap://RAMSES_GRAPHIC_PROFILES/no.ntnu.item.ramses.graphicprofile.uml#_UEANMUVlEduH9aQE_pc66w"/>
+      </profileApplication>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Activity" xmi:id="_Ocm0WA1KEear_sCS1K1QJg" name="ContextChecker2" classifierBehavior="_Ocm0WQ1KEear_sCS1K1QJg" node="_Ocm0nA1KEear_sCS1K1QJg _Ocm0nQ1KEear_sCS1K1QJg _Ocm0ng1KEear_sCS1K1QJg _Ocm0nw1KEear_sCS1K1QJg _Ocm0oA1KEear_sCS1K1QJg _Ocm0pA1KEear_sCS1K1QJg _Ocm0pQ1KEear_sCS1K1QJg _Ocm0pg1KEear_sCS1K1QJg _Ocm0pw1KEear_sCS1K1QJg _Ocm0qA1KEear_sCS1K1QJg _Ocm0qg1KEear_sCS1K1QJg _Ocm0rA1KEear_sCS1K1QJg _Ocm0rg1KEear_sCS1K1QJg _Ocm0sQ1KEear_sCS1K1QJg _Ocm0sg1KEear_sCS1K1QJg _Ocm0sw1KEear_sCS1K1QJg _Ocm0tQ1KEear_sCS1K1QJg _Ocm0tw1KEear_sCS1K1QJg _Ocm0uA1KEear_sCS1K1QJg _Ocm0uQ1KEear_sCS1K1QJg _Ocm0ug1KEear_sCS1K1QJg _Ocm0uw1KEear_sCS1K1QJg _Ocm0vg1KEear_sCS1K1QJg _Ocm0wg1KEear_sCS1K1QJg _Ocm0ww1KEear_sCS1K1QJg" group="_Ocm0iQ1KEear_sCS1K1QJg" partition="_Ocm0iQ1KEear_sCS1K1QJg">
+      <ownedBehavior xmi:type="uml:StateMachine" xmi:id="_Ocm0WQ1KEear_sCS1K1QJg" name="ContextChecker2">
+        <region xmi:id="_Ocm0Wg1KEear_sCS1K1QJg" name="&lt;region>">
+          <transition xmi:id="_Ocm0Ww1KEear_sCS1K1QJg" name="init / " source="_Ocm0Zw1KEear_sCS1K1QJg" target="_Ocm0aA1KEear_sCS1K1QJg"/>
+          <transition xmi:id="_Ocm0XA1KEear_sCS1K1QJg" name="colorEvent / " source="_Ocm0aA1KEear_sCS1K1QJg" target="_Ocm0aA1KEear_sCS1K1QJg"/>
+          <transition xmi:id="_Ocm0XQ1KEear_sCS1K1QJg" name=" / speedRestriction" source="_Ocm0aA1KEear_sCS1K1QJg" target="_Ocm0aA1KEear_sCS1K1QJg"/>
+          <transition xmi:id="_Ocm0Xg1KEear_sCS1K1QJg" name="nfcEvent / " source="_Ocm0aA1KEear_sCS1K1QJg" target="_Ocm0aA1KEear_sCS1K1QJg"/>
+          <transition xmi:id="_Ocm0Xw1KEear_sCS1K1QJg" name="sensorStateEvent / " source="_Ocm0aA1KEear_sCS1K1QJg" target="_Ocm0aA1KEear_sCS1K1QJg"/>
+          <transition xmi:id="_Ocm0YA1KEear_sCS1K1QJg" name="temperatureEvent / " source="_Ocm0aA1KEear_sCS1K1QJg" target="_Ocm0aA1KEear_sCS1K1QJg"/>
+          <transition xmi:id="_Ocm0YQ1KEear_sCS1K1QJg" name=" / light" source="_Ocm0aA1KEear_sCS1K1QJg" target="_Ocm0aA1KEear_sCS1K1QJg"/>
+          <transition xmi:id="_Ocm0Yg1KEear_sCS1K1QJg" name="accelerometerEvent / " source="_Ocm0aA1KEear_sCS1K1QJg" target="_Ocm0aA1KEear_sCS1K1QJg"/>
+          <transition xmi:id="_Ocm0Yw1KEear_sCS1K1QJg" name="magnetometerEvent / " source="_Ocm0aA1KEear_sCS1K1QJg" target="_Ocm0aA1KEear_sCS1K1QJg"/>
+          <transition xmi:id="_Ocm0ZA1KEear_sCS1K1QJg" name="dummyEvent / " source="_Ocm0aA1KEear_sCS1K1QJg" target="_Ocm0aA1KEear_sCS1K1QJg"/>
+          <transition xmi:id="_Ocm0ZQ1KEear_sCS1K1QJg" name="/ " source="_Ocm0aA1KEear_sCS1K1QJg" target="_Ocm0aQ1KEear_sCS1K1QJg"/>
+          <transition xmi:id="_Ocm0Zg1KEear_sCS1K1QJg" name=" / stopTrain" source="_Ocm0aA1KEear_sCS1K1QJg" target="_Ocm0aA1KEear_sCS1K1QJg"/>
+          <subvertex xmi:type="uml:Pseudostate" xmi:id="_Ocm0Zw1KEear_sCS1K1QJg" name="&lt;initial>"/>
+          <subvertex xmi:type="uml:State" xmi:id="_Ocm0aA1KEear_sCS1K1QJg" name="active"/>
+          <subvertex xmi:type="uml:FinalState" xmi:id="_Ocm0aQ1KEear_sCS1K1QJg" name="&lt;final>"/>
+        </region>
+      </ownedBehavior>
+      <ownedOperation xmi:id="_Ocm0ag1KEear_sCS1K1QJg" name="init"/>
+      <ownedOperation xmi:id="_Ocm0aw1KEear_sCS1K1QJg" name="setTrainState"/>
+      <ownedOperation xmi:id="_Ocm0bA1KEear_sCS1K1QJg" name="handleColorEvent"/>
+      <ownedOperation xmi:id="_Ocm0bQ1KEear_sCS1K1QJg" name="sendSpeedRestriction"/>
+      <ownedOperation xmi:id="_Ocm0bg1KEear_sCS1K1QJg" name="getSpeed"/>
+      <ownedOperation xmi:id="_Ocm0bw1KEear_sCS1K1QJg" name="handleZoneEvent"/>
+      <ownedOperation xmi:id="_Ocm0cA1KEear_sCS1K1QJg" name="handleSensorStateEvent"/>
+      <ownedOperation xmi:id="_Ocm0cQ1KEear_sCS1K1QJg" name="handleWeatherEvent"/>
+      <ownedOperation xmi:id="_Ocm0cg1KEear_sCS1K1QJg" name="handleTemperatureEvent"/>
+      <ownedOperation xmi:id="_Ocm0cw1KEear_sCS1K1QJg" name="handleNFCEvent"/>
+      <ownedOperation xmi:id="_Ocm0dA1KEear_sCS1K1QJg" name="handleAccelerometerEvent"/>
+      <ownedOperation xmi:id="_Ocm0dQ1KEear_sCS1K1QJg" name="handleMagnetometerEvent"/>
+      <ownedOperation xmi:id="_Ocm0dg1KEear_sCS1K1QJg" name="handleDummyEvent"/>
+      <ownedOperation xmi:id="_Ocm0dw1KEear_sCS1K1QJg" name="getTrainRestriction"/>
+      <ownedOperation xmi:id="_Ocm0eA1KEear_sCS1K1QJg" name="getTrainProperties"/>
+      <ownedOperation xmi:id="_Ocm0eQ1KEear_sCS1K1QJg" name="updateTrainRestriction"/>
+      <ownedOperation xmi:id="_Ocm0eg1KEear_sCS1K1QJg" name="getBundleContext"/>
+      <ownedOperation xmi:id="_Ocm0ew1KEear_sCS1K1QJg" name="getTrainRestrictionChecker"/>
+      <ownedOperation xmi:id="_Ocm0fA1KEear_sCS1K1QJg" name="getMapRestrictions"/>
+      <ownedOperation xmi:id="_Ocm0fQ1KEear_sCS1K1QJg" name="getTrainStateController"/>
+      <ownedParameter xmi:id="_Ocm0fg1KEear_sCS1K1QJg" name="init"/>
+      <ownedParameter xmi:id="_Ocm0fw1KEear_sCS1K1QJg" name="colorEvent" type="_Ocm05Q1KEear_sCS1K1QJg" isStream="true"/>
+      <ownedParameter xmi:id="_Ocm0gA1KEear_sCS1K1QJg" name="speedRestriction" type="_Ocm00A1KEear_sCS1K1QJg" direction="out" isStream="true"/>
+      <ownedParameter xmi:id="_Ocm0gQ1KEear_sCS1K1QJg" name="nfcEvent" type="_Ocm05g1KEear_sCS1K1QJg" isStream="true"/>
+      <ownedParameter xmi:id="_Ocm0gg1KEear_sCS1K1QJg" name="sensorStateEvent" type="_Ocm0zw1KEear_sCS1K1QJg" isStream="true"/>
+      <ownedParameter xmi:id="_Ocm0gw1KEear_sCS1K1QJg" name="temperatureEvent" type="_Ocm05w1KEear_sCS1K1QJg" isStream="true"/>
+      <ownedParameter xmi:id="_Ocm0hA1KEear_sCS1K1QJg" name="light" direction="out" isStream="true"/>
+      <ownedParameter xmi:id="_Ocm0hQ1KEear_sCS1K1QJg" name="accelerometerEvent" type="_Ocm06A1KEear_sCS1K1QJg" isStream="true"/>
+      <ownedParameter xmi:id="_Ocm0hg1KEear_sCS1K1QJg" name="magnetometerEvent" type="_Ocm06Q1KEear_sCS1K1QJg" isStream="true"/>
+      <ownedParameter xmi:id="_Ocm0hw1KEear_sCS1K1QJg" name="dummyEvent" isStream="true"/>
+      <ownedParameter xmi:id="_Ocm0iA1KEear_sCS1K1QJg" name="stopTrain" direction="out" isStream="true"/>
+      <edge xmi:type="uml:ControlFlow" xmi:id="_Ocm0ig1KEear_sCS1K1QJg" name="e3" inPartition="_Ocm0iQ1KEear_sCS1K1QJg" target="_Ocm0oA1KEear_sCS1K1QJg" source="_Ocm0pA1KEear_sCS1K1QJg"/>
+      <edge xmi:type="uml:ObjectFlow" xmi:id="_Ocm0iw1KEear_sCS1K1QJg" name="e4" inPartition="_Ocm0iQ1KEear_sCS1K1QJg" target="_Ocm0nw1KEear_sCS1K1QJg" source="_Ocm0og1KEear_sCS1K1QJg"/>
+      <edge xmi:type="uml:ObjectFlow" xmi:id="_Ocm0jA1KEear_sCS1K1QJg" name="e5" inPartition="_Ocm0iQ1KEear_sCS1K1QJg" target="_Ocm0qQ1KEear_sCS1K1QJg" source="_Ocm0pQ1KEear_sCS1K1QJg"/>
+      <edge xmi:type="uml:ControlFlow" xmi:id="_Ocm0jQ1KEear_sCS1K1QJg" name="e8" inPartition="_Ocm0iQ1KEear_sCS1K1QJg" target="_Ocm0rg1KEear_sCS1K1QJg" source="_Ocm0pA1KEear_sCS1K1QJg"/>
+      <edge xmi:type="uml:ControlFlow" xmi:id="_Ocm0jg1KEear_sCS1K1QJg" name="e9" inPartition="_Ocm0iQ1KEear_sCS1K1QJg" target="_Ocm0sQ1KEear_sCS1K1QJg" source="_Ocm0rg1KEear_sCS1K1QJg"/>
+      <edge xmi:type="uml:ControlFlow" xmi:id="_Ocm0jw1KEear_sCS1K1QJg" name="e12" inPartition="_Ocm0iQ1KEear_sCS1K1QJg" target="_Ocm0uQ1KEear_sCS1K1QJg" source="_Ocm0uA1KEear_sCS1K1QJg"/>
+      <edge xmi:type="uml:ObjectFlow" xmi:id="_Ocm0kA1KEear_sCS1K1QJg" name="e10" inPartition="_Ocm0iQ1KEear_sCS1K1QJg" target="_Ocm0tA1KEear_sCS1K1QJg" source="_Ocm0sg1KEear_sCS1K1QJg"/>
+      <edge xmi:type="uml:ObjectFlow" xmi:id="_Ocm0kQ1KEear_sCS1K1QJg" name="e11" inPartition="_Ocm0iQ1KEear_sCS1K1QJg" target="_Ocm0tg1KEear_sCS1K1QJg" source="_Ocm0tw1KEear_sCS1K1QJg"/>
+      <edge xmi:type="uml:ObjectFlow" xmi:id="_Ocm0kg1KEear_sCS1K1QJg" name="e7" inPartition="_Ocm0iQ1KEear_sCS1K1QJg" target="_Ocm0rQ1KEear_sCS1K1QJg" source="_Ocm0pw1KEear_sCS1K1QJg"/>
+      <edge xmi:type="uml:ObjectFlow" xmi:id="_Ocm0kw1KEear_sCS1K1QJg" name="e6" inPartition="_Ocm0iQ1KEear_sCS1K1QJg" target="_Ocm0qw1KEear_sCS1K1QJg" source="_Ocm0pg1KEear_sCS1K1QJg"/>
+      <edge xmi:type="uml:ControlFlow" xmi:id="_Ocm0lA1KEear_sCS1K1QJg" name="e13" inPartition="_Ocm0iQ1KEear_sCS1K1QJg" target="_Ocm0uw1KEear_sCS1K1QJg" source="_Ocm0pA1KEear_sCS1K1QJg"/>
+      <edge xmi:type="uml:ControlFlow" xmi:id="_Ocm0lQ1KEear_sCS1K1QJg" name="e14" inPartition="_Ocm0iQ1KEear_sCS1K1QJg" target="_Ocm0ug1KEear_sCS1K1QJg" source="_Ocm0uw1KEear_sCS1K1QJg"/>
+      <edge xmi:type="uml:ObjectFlow" xmi:id="_Ocm0lg1KEear_sCS1K1QJg" name="e16" inPartition="_Ocm0iQ1KEear_sCS1K1QJg" target="_Ocm0wg1KEear_sCS1K1QJg" source="_Ocm0wA1KEear_sCS1K1QJg"/>
+      <edge xmi:type="uml:ObjectFlow" xmi:id="_Ocm0lw1KEear_sCS1K1QJg" name="e17" inPartition="_Ocm0iQ1KEear_sCS1K1QJg" target="_Ocm0ng1KEear_sCS1K1QJg" source="_Ocm0wg1KEear_sCS1K1QJg"/>
+      <edge xmi:type="uml:ControlFlow" xmi:id="_Ocm0mA1KEear_sCS1K1QJg" name="e1" inPartition="_Ocm0iQ1KEear_sCS1K1QJg" target="_Ocm0pA1KEear_sCS1K1QJg" source="_Ocm0ng1KEear_sCS1K1QJg"/>
+      <edge xmi:type="uml:ControlFlow" xmi:id="_Ocm0mQ1KEear_sCS1K1QJg" name="e2" inPartition="_Ocm0iQ1KEear_sCS1K1QJg" target="_Ocm0vw1KEear_sCS1K1QJg" source="_Ocm0nA1KEear_sCS1K1QJg"/>
+      <edge xmi:type="uml:ObjectFlow" xmi:id="_Ocm0mg1KEear_sCS1K1QJg" name="e0" inPartition="_Ocm0iQ1KEear_sCS1K1QJg" target="_Ocm0xA1KEear_sCS1K1QJg" source="_Ocm0nQ1KEear_sCS1K1QJg"/>
+      <variable xmi:id="_Ocm0mw1KEear_sCS1K1QJg" name="context" type="_Ocm03g1KEear_sCS1K1QJg"/>
+      <group xmi:type="uml:ActivityPartition" xmi:id="_Ocm0iQ1KEear_sCS1K1QJg" name="main" node="_Ocm0nA1KEear_sCS1K1QJg _Ocm0nQ1KEear_sCS1K1QJg _Ocm0ng1KEear_sCS1K1QJg _Ocm0nw1KEear_sCS1K1QJg _Ocm0oA1KEear_sCS1K1QJg _Ocm0pA1KEear_sCS1K1QJg _Ocm0og1KEear_sCS1K1QJg _Ocm0pQ1KEear_sCS1K1QJg _Ocm0pg1KEear_sCS1K1QJg _Ocm0pw1KEear_sCS1K1QJg _Ocm0qA1KEear_sCS1K1QJg _Ocm0qg1KEear_sCS1K1QJg _Ocm0rA1KEear_sCS1K1QJg _Ocm0rg1KEear_sCS1K1QJg _Ocm0sQ1KEear_sCS1K1QJg _Ocm0sg1KEear_sCS1K1QJg _Ocm0sw1KEear_sCS1K1QJg _Ocm0tQ1KEear_sCS1K1QJg _Ocm0tw1KEear_sCS1K1QJg _Ocm0uA1KEear_sCS1K1QJg _Ocm0uQ1KEear_sCS1K1QJg _Ocm0qQ1KEear_sCS1K1QJg _Ocm0qw1KEear_sCS1K1QJg _Ocm0rQ1KEear_sCS1K1QJg _Ocm0tA1KEear_sCS1K1QJg _Ocm0tg1KEear_sCS1K1QJg _Ocm0ug1KEear_sCS1K1QJg _Ocm0uw1KEear_sCS1K1QJg _Ocm0vg1KEear_sCS1K1QJg _Ocm0vw1KEear_sCS1K1QJg _Ocm0wA1KEear_sCS1K1QJg _Ocm0wQ1KEear_sCS1K1QJg _Ocm0wg1KEear_sCS1K1QJg _Ocm0ww1KEear_sCS1K1QJg _Ocm0xA1KEear_sCS1K1QJg" edge="_Ocm0ig1KEear_sCS1K1QJg _Ocm0iw1KEear_sCS1K1QJg _Ocm0jA1KEear_sCS1K1QJg _Ocm0jQ1KEear_sCS1K1QJg _Ocm0jg1KEear_sCS1K1QJg _Ocm0jw1KEear_sCS1K1QJg _Ocm0kA1KEear_sCS1K1QJg _Ocm0kQ1KEear_sCS1K1QJg _Ocm0kg1KEear_sCS1K1QJg _Ocm0kw1KEear_sCS1K1QJg _Ocm0lA1KEear_sCS1K1QJg _Ocm0lQ1KEear_sCS1K1QJg _Ocm0lg1KEear_sCS1K1QJg _Ocm0lw1KEear_sCS1K1QJg _Ocm0mA1KEear_sCS1K1QJg _Ocm0mQ1KEear_sCS1K1QJg _Ocm0mg1KEear_sCS1K1QJg"/>
+      <node xmi:type="uml:ActivityParameterNode" xmi:id="_Ocm0nA1KEear_sCS1K1QJg" name="init" outgoing="_Ocm0mQ1KEear_sCS1K1QJg" inPartition="_Ocm0iQ1KEear_sCS1K1QJg" parameter="_Ocm0fg1KEear_sCS1K1QJg"/>
+      <node xmi:type="uml:ActivityParameterNode" xmi:id="_Ocm0nQ1KEear_sCS1K1QJg" name="colorEvent" outgoing="_Ocm0mg1KEear_sCS1K1QJg" inPartition="_Ocm0iQ1KEear_sCS1K1QJg" type="_Ocm05Q1KEear_sCS1K1QJg" parameter="_Ocm0fw1KEear_sCS1K1QJg"/>
+      <node xmi:type="uml:CallOperationAction" xmi:id="_Ocm0ng1KEear_sCS1K1QJg" name="o1" incoming="_Ocm0lw1KEear_sCS1K1QJg" outgoing="_Ocm0mA1KEear_sCS1K1QJg" inPartition="_Ocm0iQ1KEear_sCS1K1QJg" operation="_Ocm0ag1KEear_sCS1K1QJg"/>
+      <node xmi:type="uml:ActivityParameterNode" xmi:id="_Ocm0nw1KEear_sCS1K1QJg" name="speedRestriction" incoming="_Ocm0iw1KEear_sCS1K1QJg" inPartition="_Ocm0iQ1KEear_sCS1K1QJg" type="_Ocm00A1KEear_sCS1K1QJg" parameter="_Ocm0gA1KEear_sCS1K1QJg"/>
+      <node xmi:type="uml:AcceptEventAction" xmi:id="_Ocm0oA1KEear_sCS1K1QJg" name="r0" incoming="_Ocm0ig1KEear_sCS1K1QJg" inPartition="_Ocm0iQ1KEear_sCS1K1QJg">
+        <ownedComment xmi:id="_Ocm0oQ1KEear_sCS1K1QJg">
+          <body>repeating</body>
+        </ownedComment>
+        <result xmi:id="_Ocm0og1KEear_sCS1K1QJg" name="parameter" outgoing="_Ocm0iw1KEear_sCS1K1QJg" inPartition="_Ocm0iQ1KEear_sCS1K1QJg" type="_Ocm00A1KEear_sCS1K1QJg"/>
+        <trigger xmi:id="_Ocm0ow1KEear_sCS1K1QJg" name="SPEED" event="_Ocm0yQ1KEear_sCS1K1QJg"/>
+      </node>
+      <node xmi:type="uml:ForkNode" xmi:id="_Ocm0pA1KEear_sCS1K1QJg" name="f0" incoming="_Ocm0mA1KEear_sCS1K1QJg" outgoing="_Ocm0ig1KEear_sCS1K1QJg _Ocm0jQ1KEear_sCS1K1QJg _Ocm0lA1KEear_sCS1K1QJg" inPartition="_Ocm0iQ1KEear_sCS1K1QJg"/>
+      <node xmi:type="uml:ActivityParameterNode" xmi:id="_Ocm0pQ1KEear_sCS1K1QJg" name="nfcEvent" outgoing="_Ocm0jA1KEear_sCS1K1QJg" inPartition="_Ocm0iQ1KEear_sCS1K1QJg" type="_Ocm05g1KEear_sCS1K1QJg" parameter="_Ocm0gQ1KEear_sCS1K1QJg"/>
+      <node xmi:type="uml:ActivityParameterNode" xmi:id="_Ocm0pg1KEear_sCS1K1QJg" name="sensorStateEvent" outgoing="_Ocm0kw1KEear_sCS1K1QJg" inPartition="_Ocm0iQ1KEear_sCS1K1QJg" type="_Ocm0zw1KEear_sCS1K1QJg" parameter="_Ocm0gg1KEear_sCS1K1QJg"/>
+      <node xmi:type="uml:ActivityParameterNode" xmi:id="_Ocm0pw1KEear_sCS1K1QJg" name="temperatureEvent" outgoing="_Ocm0kg1KEear_sCS1K1QJg" inPartition="_Ocm0iQ1KEear_sCS1K1QJg" type="_Ocm05w1KEear_sCS1K1QJg" parameter="_Ocm0gw1KEear_sCS1K1QJg"/>
+      <node xmi:type="uml:CallOperationAction" xmi:id="_Ocm0qA1KEear_sCS1K1QJg" name="o2" inPartition="_Ocm0iQ1KEear_sCS1K1QJg" operation="_Ocm0cw1KEear_sCS1K1QJg">
+        <argument xmi:id="_Ocm0qQ1KEear_sCS1K1QJg" name="hex" incoming="_Ocm0jA1KEear_sCS1K1QJg" inPartition="_Ocm0iQ1KEear_sCS1K1QJg" type="_Ocm05g1KEear_sCS1K1QJg"/>
+      </node>
+      <node xmi:type="uml:CallOperationAction" xmi:id="_Ocm0qg1KEear_sCS1K1QJg" name="o3" inPartition="_Ocm0iQ1KEear_sCS1K1QJg" operation="_Ocm0cA1KEear_sCS1K1QJg">
+        <argument xmi:id="_Ocm0qw1KEear_sCS1K1QJg" name="event" incoming="_Ocm0kw1KEear_sCS1K1QJg" inPartition="_Ocm0iQ1KEear_sCS1K1QJg" type="_Ocm0zw1KEear_sCS1K1QJg"/>
+      </node>
+      <node xmi:type="uml:CallOperationAction" xmi:id="_Ocm0rA1KEear_sCS1K1QJg" name="o4" inPartition="_Ocm0iQ1KEear_sCS1K1QJg" operation="_Ocm0cg1KEear_sCS1K1QJg">
+        <argument xmi:id="_Ocm0rQ1KEear_sCS1K1QJg" name="temp" incoming="_Ocm0kg1KEear_sCS1K1QJg" inPartition="_Ocm0iQ1KEear_sCS1K1QJg" type="_Ocm05w1KEear_sCS1K1QJg"/>
+      </node>
+      <node xmi:type="uml:AcceptEventAction" xmi:id="_Ocm0rg1KEear_sCS1K1QJg" name="r1" incoming="_Ocm0jQ1KEear_sCS1K1QJg" outgoing="_Ocm0jg1KEear_sCS1K1QJg" inPartition="_Ocm0iQ1KEear_sCS1K1QJg">
+        <ownedComment xmi:id="_Ocm0rw1KEear_sCS1K1QJg">
+          <body>repeating</body>
+        </ownedComment>
+        <trigger xmi:id="_Ocm0sA1KEear_sCS1K1QJg" name="LIGHT" event="_Ocm0zg1KEear_sCS1K1QJg"/>
+      </node>
+      <node xmi:type="uml:ActivityParameterNode" xmi:id="_Ocm0sQ1KEear_sCS1K1QJg" name="light" incoming="_Ocm0jg1KEear_sCS1K1QJg" inPartition="_Ocm0iQ1KEear_sCS1K1QJg" parameter="_Ocm0hA1KEear_sCS1K1QJg"/>
+      <node xmi:type="uml:ActivityParameterNode" xmi:id="_Ocm0sg1KEear_sCS1K1QJg" name="accelerometerEvent" outgoing="_Ocm0kA1KEear_sCS1K1QJg" inPartition="_Ocm0iQ1KEear_sCS1K1QJg" type="_Ocm06A1KEear_sCS1K1QJg" parameter="_Ocm0hQ1KEear_sCS1K1QJg"/>
+      <node xmi:type="uml:CallOperationAction" xmi:id="_Ocm0sw1KEear_sCS1K1QJg" name="o5" inPartition="_Ocm0iQ1KEear_sCS1K1QJg" operation="_Ocm0dA1KEear_sCS1K1QJg">
+        <argument xmi:id="_Ocm0tA1KEear_sCS1K1QJg" name="acc" incoming="_Ocm0kA1KEear_sCS1K1QJg" inPartition="_Ocm0iQ1KEear_sCS1K1QJg" type="_Ocm06A1KEear_sCS1K1QJg"/>
+      </node>
+      <node xmi:type="uml:CallOperationAction" xmi:id="_Ocm0tQ1KEear_sCS1K1QJg" name="o6" inPartition="_Ocm0iQ1KEear_sCS1K1QJg" operation="_Ocm0dQ1KEear_sCS1K1QJg">
+        <argument xmi:id="_Ocm0tg1KEear_sCS1K1QJg" name="reading" incoming="_Ocm0kQ1KEear_sCS1K1QJg" inPartition="_Ocm0iQ1KEear_sCS1K1QJg" type="_Ocm06Q1KEear_sCS1K1QJg"/>
+      </node>
+      <node xmi:type="uml:ActivityParameterNode" xmi:id="_Ocm0tw1KEear_sCS1K1QJg" name="magnetometerEvent" outgoing="_Ocm0kQ1KEear_sCS1K1QJg" inPartition="_Ocm0iQ1KEear_sCS1K1QJg" type="_Ocm06Q1KEear_sCS1K1QJg" parameter="_Ocm0hg1KEear_sCS1K1QJg"/>
+      <node xmi:type="uml:ActivityParameterNode" xmi:id="_Ocm0uA1KEear_sCS1K1QJg" name="dummyEvent" outgoing="_Ocm0jw1KEear_sCS1K1QJg" inPartition="_Ocm0iQ1KEear_sCS1K1QJg" parameter="_Ocm0hw1KEear_sCS1K1QJg"/>
+      <node xmi:type="uml:CallOperationAction" xmi:id="_Ocm0uQ1KEear_sCS1K1QJg" name="o7" incoming="_Ocm0jw1KEear_sCS1K1QJg" inPartition="_Ocm0iQ1KEear_sCS1K1QJg" operation="_Ocm0dg1KEear_sCS1K1QJg"/>
+      <node xmi:type="uml:ActivityParameterNode" xmi:id="_Ocm0ug1KEear_sCS1K1QJg" name="stopTrain" incoming="_Ocm0lQ1KEear_sCS1K1QJg" inPartition="_Ocm0iQ1KEear_sCS1K1QJg" parameter="_Ocm0iA1KEear_sCS1K1QJg"/>
+      <node xmi:type="uml:AcceptEventAction" xmi:id="_Ocm0uw1KEear_sCS1K1QJg" name="r2" incoming="_Ocm0lA1KEear_sCS1K1QJg" outgoing="_Ocm0lQ1KEear_sCS1K1QJg" inPartition="_Ocm0iQ1KEear_sCS1K1QJg">
+        <ownedComment xmi:id="_Ocm0vA1KEear_sCS1K1QJg">
+          <body>repeating</body>
+        </ownedComment>
+        <trigger xmi:id="_Ocm0vQ1KEear_sCS1K1QJg" name="STOP" event="_Ocm01Q1KEear_sCS1K1QJg"/>
+      </node>
+      <node xmi:type="uml:CallBehaviorAction" xmi:id="_Ocm0vg1KEear_sCS1K1QJg" name="b0" inPartition="_Ocm0iQ1KEear_sCS1K1QJg" behavior="_-1Bj4S-gEeSi4PD7l7flYw">
+        <argument xmi:id="_Ocm0vw1KEear_sCS1K1QJg" name="get" incoming="_Ocm0mQ1KEear_sCS1K1QJg" inPartition="_Ocm0iQ1KEear_sCS1K1QJg"/>
+        <result xmi:id="_Ocm0wA1KEear_sCS1K1QJg" name="ok" outgoing="_Ocm0lg1KEear_sCS1K1QJg" inPartition="_Ocm0iQ1KEear_sCS1K1QJg" type="_Ocm03g1KEear_sCS1K1QJg"/>
+        <result xmi:id="_Ocm0wQ1KEear_sCS1K1QJg" name="failed" inPartition="_Ocm0iQ1KEear_sCS1K1QJg" type="_Ocm03w1KEear_sCS1K1QJg"/>
+      </node>
+      <node xmi:type="uml:AddVariableValueAction" xmi:id="_Ocm0wg1KEear_sCS1K1QJg" name="sv0" incoming="_Ocm0lg1KEear_sCS1K1QJg" outgoing="_Ocm0lw1KEear_sCS1K1QJg" inPartition="_Ocm0iQ1KEear_sCS1K1QJg" variable="_Ocm0mw1KEear_sCS1K1QJg"/>
+      <node xmi:type="uml:CallOperationAction" xmi:id="_Ocm0ww1KEear_sCS1K1QJg" name="o0" inPartition="_Ocm0iQ1KEear_sCS1K1QJg" operation="_Ocm0bA1KEear_sCS1K1QJg">
+        <argument xmi:id="_Ocm0xA1KEear_sCS1K1QJg" name="color" incoming="_Ocm0mg1KEear_sCS1K1QJg" inPartition="_Ocm0iQ1KEear_sCS1K1QJg" type="_Ocm05Q1KEear_sCS1K1QJg"/>
+      </node>
+    </packagedElement>
+    <packagedElement xmi:type="uml:PrimitiveType" xmi:id="_Ocm0xQ1KEear_sCS1K1QJg" name="no.ntnu.item.its.train.adapter.enums.SleeperColor"/>
+    <packagedElement xmi:type="uml:Signal" xmi:id="_Ocm0xg1KEear_sCS1K1QJg" name="SPEED">
+      <ownedAttribute xmi:id="_Ocm0xw1KEear_sCS1K1QJg" name="parameter" type="_Ocm00A1KEear_sCS1K1QJg"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:SignalEvent" xmi:id="_Ocm0yA1KEear_sCS1K1QJg" name="r0"/>
+    <packagedElement xmi:type="uml:SignalEvent" xmi:id="_Ocm0yQ1KEear_sCS1K1QJg" name="" signal="_Ocm0xg1KEear_sCS1K1QJg"/>
+    <packagedElement xmi:type="uml:PrimitiveType" xmi:id="_Ocm0yg1KEear_sCS1K1QJg" name="int"/>
+    <packagedElement xmi:type="uml:PrimitiveType" xmi:id="_Ocm0yw1KEear_sCS1K1QJg" name="no.ntnu.item.its.train.adapter.enums.TrainZone"/>
+    <packagedElement xmi:type="uml:Signal" xmi:id="_Ocm0zA1KEear_sCS1K1QJg" name="LIGHT"/>
+    <packagedElement xmi:type="uml:SignalEvent" xmi:id="_Ocm0zQ1KEear_sCS1K1QJg" name="r1"/>
+    <packagedElement xmi:type="uml:SignalEvent" xmi:id="_Ocm0zg1KEear_sCS1K1QJg" name="" signal="_Ocm0zA1KEear_sCS1K1QJg"/>
+    <packagedElement xmi:type="uml:PrimitiveType" xmi:id="_Ocm0zw1KEear_sCS1K1QJg" name="org.osgi.framework.ServiceEvent"/>
+    <packagedElement xmi:type="uml:PrimitiveType" xmi:id="_Ocm00A1KEear_sCS1K1QJg" name="double"/>
+    <packagedElement xmi:type="uml:PrimitiveType" xmi:id="_Ocm00Q1KEear_sCS1K1QJg" name="no.ntnu.item.its.sensor.common.helpers.MagnetometerReading"/>
+    <packagedElement xmi:type="uml:PrimitiveType" xmi:id="_Ocm00g1KEear_sCS1K1QJg" name="no.ntnu.item.its.train.adapter.enums.SpeedLevel"/>
+    <packagedElement xmi:type="uml:Signal" xmi:id="_Ocm00w1KEear_sCS1K1QJg" name="STOP"/>
+    <packagedElement xmi:type="uml:SignalEvent" xmi:id="_Ocm01A1KEear_sCS1K1QJg" name="r2"/>
+    <packagedElement xmi:type="uml:SignalEvent" xmi:id="_Ocm01Q1KEear_sCS1K1QJg" name="" signal="_Ocm00w1KEear_sCS1K1QJg"/>
+    <packagedElement xmi:type="uml:PrimitiveType" xmi:id="_Ocm01g1KEear_sCS1K1QJg" name="no.ntnu.item.its.train.adapter.sensorReadings.MagnetometerReading"/>
+    <packagedElement xmi:type="uml:PrimitiveType" xmi:id="_Ocm01w1KEear_sCS1K1QJg" name="no.ntnu.item.its.train.adapter.sensorReadings.ColorReading"/>
+    <packagedElement xmi:type="uml:PrimitiveType" xmi:id="_Ocm02A1KEear_sCS1K1QJg" name="no.ntnu.item.its.train.adapter.sensorReadings.NFCReading"/>
+    <packagedElement xmi:type="uml:PrimitiveType" xmi:id="_Ocm02Q1KEear_sCS1K1QJg" name="no.ntnu.item.its.train.adapter.sensorReadings.TemperatureReading"/>
+    <packagedElement xmi:type="uml:PrimitiveType" xmi:id="_Ocm02g1KEear_sCS1K1QJg" name="no.ntnu.item.its.train.adapter.sensorReadings.AccelerometerReading"/>
+    <packagedElement xmi:type="uml:PrimitiveType" xmi:id="_Ocm02w1KEear_sCS1K1QJg" name="no.ntnu.item.its.train.adapter.interfaces.TrainRestrictions"/>
+    <packagedElement xmi:type="uml:SignalEvent" xmi:id="_Ocm03A1KEear_sCS1K1QJg" name="r3"/>
+    <packagedElement xmi:type="uml:SignalEvent" xmi:id="_Ocm03Q1KEear_sCS1K1QJg" name=""/>
+    <packagedElement xmi:type="uml:PrimitiveType" xmi:id="_Ocm03g1KEear_sCS1K1QJg" name="org.osgi.framework.BundleContext"/>
+    <packagedElement xmi:type="uml:PrimitiveType" xmi:id="_Ocm03w1KEear_sCS1K1QJg" name="java.lang.String"/>
+    <packagedElement xmi:type="uml:PrimitiveType" xmi:id="_Ocm04A1KEear_sCS1K1QJg" name="no.ntnu.item.ites.osgi.train.handlers.common.ColorReading"/>
+    <packagedElement xmi:type="uml:PrimitiveType" xmi:id="_Ocm04Q1KEear_sCS1K1QJg" name="no.ntnu.item.ites.osgi.train.handlers.common.NFCReading"/>
+    <packagedElement xmi:type="uml:PrimitiveType" xmi:id="_Ocm04g1KEear_sCS1K1QJg" name="no.ntnu.item.ites.osgi.train.handlers.common.TemperatureReading"/>
+    <packagedElement xmi:type="uml:PrimitiveType" xmi:id="_Ocm04w1KEear_sCS1K1QJg" name="no.ntnu.item.ites.osgi.train.handlers.common.AccelerometerReading"/>
+    <packagedElement xmi:type="uml:PrimitiveType" xmi:id="_Ocm05A1KEear_sCS1K1QJg" name="no.ntnu.item.ites.osgi.train.handlers.common.MagnetometerReading"/>
+    <packagedElement xmi:type="uml:PrimitiveType" xmi:id="_Ocm05Q1KEear_sCS1K1QJg" name="no.ntnu.item.its.osgi.train.adapter.handlers.common.readings.ColorReading"/>
+    <packagedElement xmi:type="uml:PrimitiveType" xmi:id="_Ocm05g1KEear_sCS1K1QJg" name="no.ntnu.item.its.osgi.train.adapter.handlers.common.readings.NFCReading"/>
+    <packagedElement xmi:type="uml:PrimitiveType" xmi:id="_Ocm05w1KEear_sCS1K1QJg" name="no.ntnu.item.its.osgi.train.adapter.handlers.common.readings.TemperatureReading"/>
+    <packagedElement xmi:type="uml:PrimitiveType" xmi:id="_Ocm06A1KEear_sCS1K1QJg" name="no.ntnu.item.its.osgi.train.adapter.handlers.common.readings.AccelerometerReading"/>
+    <packagedElement xmi:type="uml:PrimitiveType" xmi:id="_Ocm06Q1KEear_sCS1K1QJg" name="no.ntnu.item.its.osgi.train.adapter.handlers.common.readings.MagnetometerReading"/>
+    <packagedElement xmi:type="uml:PrimitiveType" xmi:id="_Ocm06g1KEear_sCS1K1QJg" name="BundleContext"/>
+    <packagedElement xmi:type="uml:PrimitiveType" xmi:id="_Ocm06w1KEear_sCS1K1QJg" name="ColorReading"/>
+    <packagedElement xmi:type="uml:PrimitiveType" xmi:id="_Ocm07A1KEear_sCS1K1QJg" name="NFCReading"/>
+    <packagedElement xmi:type="uml:PrimitiveType" xmi:id="_Ocm07Q1KEear_sCS1K1QJg" name="ServiceEvent"/>
+    <packagedElement xmi:type="uml:PrimitiveType" xmi:id="_Ocm07g1KEear_sCS1K1QJg" name="TemperatureReading"/>
+    <packagedElement xmi:type="uml:PrimitiveType" xmi:id="_Ocm07w1KEear_sCS1K1QJg" name="AccelerometerReading"/>
+    <packagedElement xmi:type="uml:PrimitiveType" xmi:id="_Ocm08A1KEear_sCS1K1QJg" name="MagnetometerReading"/>
+    <profileApplication xmi:id="_Ocm08Q1KEear_sCS1K1QJg">
+      <eAnnotations xmi:id="_Ocm08g1KEear_sCS1K1QJg" source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <references xmi:type="ecore:EPackage" href="pathmap://ARCTIS_PROFILES/arctis.profile.uml#_WFTqUXjGEdyxtoUMycQn9Q"/>
+      </eAnnotations>
+      <appliedProfile href="pathmap://ARCTIS_PROFILES/arctis.profile.uml#_rE77YK4iEduZSuTiwKs5Lw"/>
+    </profileApplication>
+    <profileApplication xmi:id="_Ocm08w1KEear_sCS1K1QJg">
+      <eAnnotations xmi:id="_Ocm09A1KEear_sCS1K1QJg" source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <references xmi:type="ecore:EPackage" href="pathmap://RAMSES_GRAPHIC_PROFILES/no.ntnu.item.ramses.graphicprofile.uml#_geG1wIuAEdytfOWtpACIqw"/>
+      </eAnnotations>
+      <appliedProfile href="pathmap://RAMSES_GRAPHIC_PROFILES/no.ntnu.item.ramses.graphicprofile.uml#_UEANMUVlEduH9aQE_pc66w"/>
+    </profileApplication>
+  </uml:Package>
+  <graphics:Shape xmi:id="_Ocm09Q1KEear_sCS1K1QJg" x="180" y="54" width="955" height="55" base_Element="_Ocm0WA1KEear_sCS1K1QJg"/>
+  <graphics:Shape xmi:id="_Ocm09g1KEear_sCS1K1QJg" x="180" y="108" width="955" height="487" base_Element="_Ocm0iQ1KEear_sCS1K1QJg"/>
+  <arctis:esm xmi:id="_Ocm09w1KEear_sCS1K1QJg" base_StateMachine="_Ocm0WQ1KEear_sCS1K1QJg"/>
+  <graphics:Shape xmi:id="_Ocm0-A1KEear_sCS1K1QJg" x="144" y="144" base_Element="_Ocm0nA1KEear_sCS1K1QJg" orientation="west"/>
+  <graphics:Shape xmi:id="_Ocm0-Q1KEear_sCS1K1QJg" x="18" y="198" base_Element="_Ocm0nQ1KEear_sCS1K1QJg" orientation="west"/>
+  <graphics:Shape xmi:id="_Ocm0-g1KEear_sCS1K1QJg" x="594" y="126" width="181" height="55" base_Element="_Ocm0ng1KEear_sCS1K1QJg" orientation="east"/>
+  <graphics:Shape xmi:id="_Ocm0-w1KEear_sCS1K1QJg" x="1134" y="144" base_Element="_Ocm0nw1KEear_sCS1K1QJg" orientation="east"/>
+  <graphics:Shape xmi:id="_Ocm0_A1KEear_sCS1K1QJg" x="900" y="126" width="199" height="55" base_Element="_Ocm0oA1KEear_sCS1K1QJg" orientation="east"/>
+  <graphics:Shape xmi:id="_Ocm0_Q1KEear_sCS1K1QJg" x="828" y="126" width="19" height="55" base_Element="_Ocm0pA1KEear_sCS1K1QJg" orientation="east"/>
+  <graphics:Shape xmi:id="_Ocm0_g1KEear_sCS1K1QJg" x="36" y="234" base_Element="_Ocm0pQ1KEear_sCS1K1QJg" orientation="west"/>
+  <graphics:Shape xmi:id="_Ocm0_w1KEear_sCS1K1QJg" x="-18" y="270" base_Element="_Ocm0pg1KEear_sCS1K1QJg" orientation="west"/>
+  <graphics:Shape xmi:id="_Ocm1AA1KEear_sCS1K1QJg" x="-54" y="306" base_Element="_Ocm0pw1KEear_sCS1K1QJg" orientation="west"/>
+  <graphics:Shape xmi:id="_Ocm1AQ1KEear_sCS1K1QJg" x="216" y="216" width="199" height="55" base_Element="_Ocm0qA1KEear_sCS1K1QJg" orientation="east"/>
+  <graphics:Shape xmi:id="_Ocm1Ag1KEear_sCS1K1QJg" x="216" y="252" width="199" height="55" base_Element="_Ocm0qg1KEear_sCS1K1QJg" orientation="east"/>
+  <graphics:Shape xmi:id="_Ocm1Aw1KEear_sCS1K1QJg" x="216" y="288" width="199" height="55" base_Element="_Ocm0rA1KEear_sCS1K1QJg" orientation="east"/>
+  <graphics:Shape xmi:id="_Ocm1BA1KEear_sCS1K1QJg" x="900" y="162" width="199" height="55" base_Element="_Ocm0rg1KEear_sCS1K1QJg"/>
+  <graphics:Shape xmi:id="_Ocm1BQ1KEear_sCS1K1QJg" aux1="0 36 -162 0 " base_Element="_Ocm0jQ1KEear_sCS1K1QJg"/>
+  <graphics:Shape xmi:id="_Ocm1Bg1KEear_sCS1K1QJg" x="1134" y="180" base_Element="_Ocm0sQ1KEear_sCS1K1QJg" orientation="east"/>
+  <graphics:Shape xmi:id="_Ocm1Bw1KEear_sCS1K1QJg" x="-72" y="342" base_Element="_Ocm0sg1KEear_sCS1K1QJg" orientation="west"/>
+  <graphics:Shape xmi:id="_Ocm1CA1KEear_sCS1K1QJg" x="216" y="324" width="199" height="55" base_Element="_Ocm0sw1KEear_sCS1K1QJg" orientation="east"/>
+  <graphics:Shape xmi:id="_Ocm1CQ1KEear_sCS1K1QJg" x="216" y="360" width="199" height="55" base_Element="_Ocm0tQ1KEear_sCS1K1QJg" orientation="east"/>
+  <graphics:Shape xmi:id="_Ocm1Cg1KEear_sCS1K1QJg" x="-72" y="378" base_Element="_Ocm0tw1KEear_sCS1K1QJg" orientation="west"/>
+  <graphics:Shape xmi:id="_Ocm1Cw1KEear_sCS1K1QJg" x="90" y="414" base_Element="_Ocm0uA1KEear_sCS1K1QJg" orientation="west"/>
+  <graphics:Shape xmi:id="_Ocm1DA1KEear_sCS1K1QJg" x="216" y="396" width="199" height="55" base_Element="_Ocm0uQ1KEear_sCS1K1QJg"/>
+  <arctis:event xmi:id="_Ocm1DQ1KEear_sCS1K1QJg" base_Transition="_Ocm0Ww1KEear_sCS1K1QJg" triggers="_Ocm0nA1KEear_sCS1K1QJg"/>
+  <arctis:event xmi:id="_Ocm1Dg1KEear_sCS1K1QJg" base_Transition="_Ocm0XA1KEear_sCS1K1QJg" triggers="_Ocm0nQ1KEear_sCS1K1QJg"/>
+  <arctis:event xmi:id="_Ocm1Dw1KEear_sCS1K1QJg" base_Transition="_Ocm0XQ1KEear_sCS1K1QJg" effects="_Ocm0nw1KEear_sCS1K1QJg"/>
+  <arctis:event xmi:id="_Ocm1EA1KEear_sCS1K1QJg" base_Transition="_Ocm0Xg1KEear_sCS1K1QJg" triggers="_Ocm0pQ1KEear_sCS1K1QJg"/>
+  <arctis:event xmi:id="_Ocm1EQ1KEear_sCS1K1QJg" base_Transition="_Ocm0Xw1KEear_sCS1K1QJg" triggers="_Ocm0pg1KEear_sCS1K1QJg"/>
+  <arctis:event xmi:id="_Ocm1Eg1KEear_sCS1K1QJg" base_Transition="_Ocm0YA1KEear_sCS1K1QJg" triggers="_Ocm0pw1KEear_sCS1K1QJg"/>
+  <arctis:event xmi:id="_Ocm1Ew1KEear_sCS1K1QJg" base_Transition="_Ocm0YQ1KEear_sCS1K1QJg" effects="_Ocm0sQ1KEear_sCS1K1QJg"/>
+  <arctis:event xmi:id="_Ocm1FA1KEear_sCS1K1QJg" base_Transition="_Ocm0Yg1KEear_sCS1K1QJg" triggers="_Ocm0sg1KEear_sCS1K1QJg"/>
+  <arctis:event xmi:id="_Ocm1FQ1KEear_sCS1K1QJg" base_Transition="_Ocm0Yw1KEear_sCS1K1QJg" triggers="_Ocm0tw1KEear_sCS1K1QJg"/>
+  <arctis:event xmi:id="_Ocm1Fg1KEear_sCS1K1QJg" base_Transition="_Ocm0ZA1KEear_sCS1K1QJg" triggers="_Ocm0uA1KEear_sCS1K1QJg"/>
+  <arctis:event xmi:id="_Ocm1Fw1KEear_sCS1K1QJg" base_Transition="_Ocm0ZQ1KEear_sCS1K1QJg"/>
+  <graphics:Shape xmi:id="_Ocm1GA1KEear_sCS1K1QJg" x="1134" y="216" base_Element="_Ocm0ug1KEear_sCS1K1QJg" orientation="east"/>
+  <graphics:Shape xmi:id="_Ocm1GQ1KEear_sCS1K1QJg" x="900" y="198" width="199" height="55" base_Element="_Ocm0uw1KEear_sCS1K1QJg"/>
+  <graphics:Shape xmi:id="_Ocm1Gg1KEear_sCS1K1QJg" aux1="0 72 -162 0 " base_Element="_Ocm0lA1KEear_sCS1K1QJg"/>
+  <arctis:event xmi:id="_Ocm1Gw1KEear_sCS1K1QJg" base_Transition="_Ocm0Zg1KEear_sCS1K1QJg" effects="_Ocm0ug1KEear_sCS1K1QJg"/>
+  <arctis:esm xmi:id="_Ocm1HA1KEear_sCS1K1QJg" base_StateMachine="_Ocm0Qw1KEear_sCS1K1QJg"/>
+  <arctis:event xmi:id="_Ocm1HQ1KEear_sCS1K1QJg" base_Transition="_Ocm0RQ1KEear_sCS1K1QJg" triggers="_Ocm0UQ1KEear_sCS1K1QJg" effects="_Ocm0Ug1KEear_sCS1K1QJg"/>
+  <graphics:Shape xmi:id="_Ocm1Hg1KEear_sCS1K1QJg" x="116" y="179" base_Element="_Ocm0Ug1KEear_sCS1K1QJg" orientation="south"/>
+  <arctis:event xmi:id="_Ocm1Hw1KEear_sCS1K1QJg" base_Transition="_Ocm0Rg1KEear_sCS1K1QJg" triggers="_Ocm0UQ1KEear_sCS1K1QJg" effects="_Ocm0Uw1KEear_sCS1K1QJg"/>
+  <graphics:Shape xmi:id="_Ocm1IA1KEear_sCS1K1QJg" x="409" y="159" base_Element="_Ocm0Uw1KEear_sCS1K1QJg" orientation="south"/>
+  <graphics:Shape xmi:id="_Ocm1IQ1KEear_sCS1K1QJg" x="18" y="18" base_Element="_Ocm0wA1KEear_sCS1K1QJg" orientation="east"/>
+  <graphics:Shape xmi:id="_Ocm1Ig1KEear_sCS1K1QJg" x="90" y="90" base_Element="_Ocm0wQ1KEear_sCS1K1QJg" orientation="west"/>
+  <graphics:Shape xmi:id="_Ocm1Iw1KEear_sCS1K1QJg" x="18" y="18" base_Element="_Ocm0vw1KEear_sCS1K1QJg" orientation="west"/>
+  <graphics:Shape xmi:id="_Ocm1JA1KEear_sCS1K1QJg" x="234" y="108" width="181" height="91" base_Element="_Ocm0vg1KEear_sCS1K1QJg"/>
+  <arctis:location xmi:id="_Ocm1JQ1KEear_sCS1K1QJg" base_Variable="_Ocm0mw1KEear_sCS1K1QJg" partition="_Ocm0iQ1KEear_sCS1K1QJg"/>
+  <graphics:Shape xmi:id="_Ocm1Jg1KEear_sCS1K1QJg" x="612" y="108" base_Element="_Ocm0mw1KEear_sCS1K1QJg"/>
+  <graphics:Shape xmi:id="_Ocm1Jw1KEear_sCS1K1QJg" x="432" y="126" width="125" height="55" base_Element="_Ocm0wg1KEear_sCS1K1QJg"/>
+  <graphics:Shape xmi:id="_Ocm1KA1KEear_sCS1K1QJg" x="216" y="180" width="199" height="55" base_Element="_Ocm0ww1KEear_sCS1K1QJg" orientation="east"/>
+</xmi:XMI>
