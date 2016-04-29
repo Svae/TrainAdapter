@@ -9,16 +9,25 @@ public class AMQPMessage {
 	private String consumerTag;
 	private Envelope envelope;
 	private AMQP.BasicProperties properties;
-	private byte[] body;
+	private byte[] rawBody;
+	
+	private String topic;
+	private Object body;
 
 	public AMQPMessage(String consumerTag, Envelope envelope,
             AMQP.BasicProperties properties, byte[] body) {
 		this.consumerTag = consumerTag;
 		this.envelope = envelope;
 		this.properties = properties;
-		this.body = body;
+		this.rawBody = body;
 	}
 
+	public AMQPMessage(String topic, Object body){
+		this.topic = topic;
+		this.body = body;
+	}
+	
+	
 	public String getConsumerTag() {
 		return consumerTag;
 	}
@@ -31,8 +40,15 @@ public class AMQPMessage {
 		return properties;
 	}
 
-	public byte[] getBody() {
-		return body;
+	public byte[] getRawBody() {
+		return rawBody;
 	}
 	
+	public String getTopic(){
+		return topic;
+	}
+	
+	public Object getBody(){
+		return body;
+	}
 }

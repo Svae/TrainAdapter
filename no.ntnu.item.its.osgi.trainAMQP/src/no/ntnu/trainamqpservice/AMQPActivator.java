@@ -8,6 +8,7 @@ import org.osgi.framework.ServiceRegistration;
 import org.osgi.service.log.LogService;
 import org.osgi.util.tracker.ServiceTracker;
 
+import no.ntnu.trainamqpservice.interfaces.TrainAMQPSendService;
 import no.ntnu.trainamqpservice.interfaces.TrainAMQPService;
 
 public class AMQPActivator implements BundleActivator {
@@ -15,7 +16,8 @@ public class AMQPActivator implements BundleActivator {
 	protected static ServiceTracker<LogService, Object> logServiceTracker;
 
 	private static BundleContext context;
-	private ServiceRegistration reg;
+	private ServiceRegistration<TrainAMQPService> reg;
+	private ServiceRegistration<TrainAMQPSendService> sendReg;
 	
 	static BundleContext getContext() {
 		return context;
@@ -29,8 +31,8 @@ public class AMQPActivator implements BundleActivator {
 		AMQPActivator.context = bundleContext;
 		logServiceTracker = new ServiceTracker<>(AMQPActivator.getContext(), LogService.class, null);
 		logServiceTracker.open();
-		AMQPService service = new AMQPService();
-		reg = context.registerService(TrainAMQPService.class.getName(), service, null);
+		reg = (ServiceRegistration<TrainAMQPService>) context.registerService(TrainAMQPService.class.getName(), new AMQPService(), null);
+		
 	}
 
 	/*

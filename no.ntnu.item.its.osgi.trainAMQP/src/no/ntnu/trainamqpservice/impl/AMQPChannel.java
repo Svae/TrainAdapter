@@ -45,9 +45,8 @@ public class AMQPChannel implements TrainAMQPChannel{
 	
 	@Override
 	public void subscribe(List<String> topics) throws IOException{
-		for (String topic : topics) {
-			 channel.queueBind(queueName, exchangeName, topic);
-		}		
+		if(channel == null) return;
+		for (String t : topics) {subscribe(t);}
 	}
 
 	@Override
