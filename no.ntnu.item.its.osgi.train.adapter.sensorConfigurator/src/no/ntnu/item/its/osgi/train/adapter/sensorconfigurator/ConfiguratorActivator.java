@@ -21,7 +21,7 @@ public class ConfiguratorActivator implements BundleActivator {
 	 */
 	public void start(BundleContext bundleContext) throws Exception {
 		ConfiguratorActivator.context = bundleContext;
-		reg = context.registerService(TrainSensorConfiguratorController.class, new SensorConfiguratorController(), null);
+		reg = context.registerService(TrainSensorConfiguratorController.class, new SensorConfiguratorController(context), null);
 	}
 
 	/*

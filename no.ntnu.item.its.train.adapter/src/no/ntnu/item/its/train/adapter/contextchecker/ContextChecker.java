@@ -150,19 +150,33 @@ public class ContextChecker extends Block implements TrainContext {
 	public void setInturn(boolean b) {
 		trainInfo.setInTurn(b);
 	}
+	
+	@Override
+	public double getHeading(){
+		return trainInfo.getHeading();
+	}
+	
+	@Override
+	public void setHeading(double heading){
+		trainInfo.setHeading(heading);
+	}
 
 	@Override
 	public void increaseSpeedForTurn() {
 		trainInfo.setInTurn(true);
 		logger.info("Train in turn increasing speed");
-		sendToBlock(speedRestriction, trainInfo.getSpeed() + getTrainRestrictionChecker().getSpeedIncreaseInTurne());
+		double newSpeed = trainInfo.getSpeed() + getTrainRestrictionChecker().getSpeedIncreaseInTurne();
+		trainInfo.setSpeed(newSpeed);
+		sendToBlock(speedRestriction, newSpeed );
 	}
 
 	@Override
 	public void decreaseSpeedForTurn() {
 		trainInfo.setInTurn(false);
 		logger.info("Train out of turn decreasing speed");
-		sendToBlock(speedRestriction, trainInfo.getSpeed() - getTrainRestrictionChecker().getSpeedIncreaseInTurne());
+		double newSpeed = trainInfo.getSpeed() - getTrainRestrictionChecker().getSpeedIncreaseInTurne();
+		trainInfo.setSpeed(newSpeed);
+		sendToBlock(speedRestriction, newSpeed);
 	}
 	
 	

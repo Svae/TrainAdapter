@@ -4,6 +4,7 @@ public class TrainInfo {
 	
 	private double speed = 0;
 	private boolean inTurn = false;
+	private double heading = Double.MAX_VALUE;
 	
 	public double getSpeed() {
 		return speed;
@@ -16,6 +17,12 @@ public class TrainInfo {
 	}
 	public void setInTurn(boolean inTurn) {
 		this.inTurn = inTurn;
+	}
+	public double getHeading() {
+		return heading;
+	}
+	public void setHeading(double heading) {
+		this.heading = heading;
 	}
 	
 	

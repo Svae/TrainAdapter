@@ -19,5 +19,7 @@ public interface TrainContext {
 	public void setInturn(boolean b);
 	public void increaseSpeedForTurn();
 	public void decreaseSpeedForTurn();
+	public double getHeading();
+	public void setHeading(double heading);
 	
 }
