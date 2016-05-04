@@ -12,6 +12,7 @@ import static no.ntnu.item.its.osgi.train.adapter.trainrestrictions.legotrain.Le
 import static no.ntnu.item.its.osgi.train.adapter.trainrestrictions.legotrain.LegoTrainRestrictionProperties.TEMPERATUREOKMIN;
 import static no.ntnu.item.its.osgi.train.adapter.trainrestrictions.legotrain.LegoTrainRestrictionProperties.TEMPERATUREWARNINGMAX;
 import static no.ntnu.item.its.osgi.train.adapter.trainrestrictions.legotrain.LegoTrainRestrictionProperties.TEMPERATUREWARNINGMIN;
+import static no.ntnu.item.its.osgi.train.adapter.trainrestrictions.legotrain.LegoTrainRestrictionProperties.SPEEDINCREASETURN;
 
 import no.ntnu.item.its.osgi.common.enums.PublisherType;
 import no.ntnu.item.its.osgi.train.adapter.trainrestrictions.common.SensorPriorityLevel;
@@ -109,6 +110,8 @@ public class LegoTrainRestrictionChecker implements TrainRestrictionsChecker {
 		return res;
 	}
 
-
-
+	@Override
+	public double getSpeedIncreaseInTurne() {
+		return SPEEDINCREASETURN;
+	}
 }

@@ -11,4 +11,17 @@ public class Train extends Block {
 	public void initAMQP() {
 	}
 
+	public int getSpeed() {
+		return 100;
+	}
+
+	public int convertSpeed(double speed) {
+		logger.info("Changing train speed to " + speed);
+		return (int) speed;
+	}
+
+	public void logSpeed(int speed) {
+		logger.info("Train speed change");
+	}
+
 }

@@ -1,16 +1,16 @@
 package no.ntnu.item.its.osgi.train.adapter.handlers.common.readings;
 
-import no.ntnu.item.its.osgi.common.enums.EColor;
+import no.ntnu.item.its.osgi.train.adapter.handlers.common.enums.SleeperColor;
 
 public class ColorReading {
 
-	EColor color; 
+	SleeperColor color; 
 	
-	public ColorReading(EColor color) {
+	public ColorReading(SleeperColor color) {
 		this.color = color;
 	}
 	
-	public EColor getReading(){
+	public SleeperColor getReading(){
 		return color;
 	}
 }

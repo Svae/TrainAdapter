@@ -28,7 +28,7 @@
       <ownedParameter xmi:id="_dKbOQPZ6EeWeAbkntfzL5A" name="stopped" direction="out" parameterSet="_dK2sEPZ6EeWeAbkntfzL5A"/>
       <ownedParameter xmi:id="_nGKeoPZ6EeWeAbkntfzL5A" name="stop" isStream="true"/>
       <ownedParameter xmi:id="_xnFjsPswEeWhVZWPsiNV3g" name="bcFail" type="_F49KIeuREeWrQIhWnzYPtA" direction="out" parameterSet="_xnl6APswEeWhVZWPsiNV3g"/>
-      <ownedParameter xmi:id="_1RT-4AcGEeaoX9Rju4v9YQ" name="speedRestriction" type="_RPEf5exQEeWRPsrxj_5csA" direction="out" isStream="true"/>
+      <ownedParameter xmi:id="_1RT-4AcGEeaoX9Rju4v9YQ" name="speedRestriction" type="_8MeTlvaGEeWeAbkntfzL5A" direction="out" isStream="true"/>
       <ownedParameter xmi:id="_4PfAMAcGEeaoX9Rju4v9YQ" name="stopTrain" direction="out" isStream="true"/>
       <ownedParameter xmi:id="_xtvRsA1tEea364fhqzOEpg" name="light" direction="out" isStream="true"/>
       <ownedParameterSet xmi:id="_a8jogPZ6EeWeAbkntfzL5A" name="failed" parameter="_a8FHYPZ6EeWeAbkntfzL5A"/>
@@ -109,7 +109,7 @@
         <argument xmi:id="__-aucPZ2EeWeAbkntfzL5A" name="accelerometerEvent" incoming="_IjUHsPZ3EeWeAbkntfzL5A" inPartition="_F49KFOuREeWrQIhWnzYPtA" type="_-UByAwcFEeaoX9Rju4v9YQ"/>
         <argument xmi:id="__-9hAPZ2EeWeAbkntfzL5A" name="magnetometerEvent" incoming="_IHnDIPZ3EeWeAbkntfzL5A" inPartition="_F49KFOuREeWrQIhWnzYPtA" type="_-UByBQcFEeaoX9Rju4v9YQ"/>
         <argument xmi:id="___fFcPZ2EeWeAbkntfzL5A" name="dummyEvent" incoming="_GIRBkPZ3EeWeAbkntfzL5A" inPartition="_F49KFOuREeWrQIhWnzYPtA"/>
-        <result xmi:id="_RPXa0OxQEeWRPsrxj_5csA" name="speedRestriction" outgoing="_2ahpsAcGEeaoX9Rju4v9YQ" inPartition="_F49KFOuREeWrQIhWnzYPtA" type="_RPEf5exQEeWRPsrxj_5csA"/>
+        <result xmi:id="_RPXa0OxQEeWRPsrxj_5csA" name="speedRestriction" outgoing="_2ahpsAcGEeaoX9Rju4v9YQ" inPartition="_F49KFOuREeWrQIhWnzYPtA" type="_8MeTlvaGEeWeAbkntfzL5A"/>
         <result xmi:id="_FDHe0PWwEeWjmpfQuHOybQ" name="light" outgoing="_zOVhwA1tEea364fhqzOEpg" inPartition="_F49KFOuREeWrQIhWnzYPtA"/>
         <result xmi:id="_G8CPoPgeEeWHq_5st3TcTQ" name="stopTrain" outgoing="_5SNBcAcGEeaoX9Rju4v9YQ" inPartition="_F49KFOuREeWrQIhWnzYPtA"/>
         <result xmi:id="_bx3v8A1wEea364fhqzOEpg" name="color" inPartition="_F49KFOuREeWrQIhWnzYPtA"/>
@@ -128,7 +128,7 @@
       </node>
       <node xmi:type="uml:ActivityParameterNode" xmi:id="_xmdRkPswEeWhVZWPsiNV3g" name="bcFail" incoming="_3xRWYPsiEeWhVZWPsiNV3g" inPartition="_F49KFOuREeWrQIhWnzYPtA" type="_F49KIeuREeWrQIhWnzYPtA" parameter="_xnFjsPswEeWhVZWPsiNV3g"/>
       <node xmi:type="uml:AddVariableValueAction" xmi:id="_R8M9wP2KEeWc2Jz66D1IgQ" name="sv1" incoming="_TP1v4P2KEeWc2Jz66D1IgQ" outgoing="_TmDQcP2KEeWc2Jz66D1IgQ" inPartition="_F49KFOuREeWrQIhWnzYPtA" variable="_PngXQP2KEeWc2Jz66D1IgQ"/>
-      <node xmi:type="uml:ActivityParameterNode" xmi:id="_1Q36AAcGEeaoX9Rju4v9YQ" name="speedRestriction" incoming="_2ahpsAcGEeaoX9Rju4v9YQ" inPartition="_F49KFOuREeWrQIhWnzYPtA" type="_RPEf5exQEeWRPsrxj_5csA" parameter="_1RT-4AcGEeaoX9Rju4v9YQ"/>
+      <node xmi:type="uml:ActivityParameterNode" xmi:id="_1Q36AAcGEeaoX9Rju4v9YQ" name="speedRestriction" incoming="_2ahpsAcGEeaoX9Rju4v9YQ" inPartition="_F49KFOuREeWrQIhWnzYPtA" type="_8MeTlvaGEeWeAbkntfzL5A" parameter="_1RT-4AcGEeaoX9Rju4v9YQ"/>
       <node xmi:type="uml:ActivityParameterNode" xmi:id="_4PHMwAcGEeaoX9Rju4v9YQ" name="stopTrain" incoming="_5SNBcAcGEeaoX9Rju4v9YQ" inPartition="_F49KFOuREeWrQIhWnzYPtA" parameter="_4PfAMAcGEeaoX9Rju4v9YQ"/>
       <node xmi:type="uml:ActivityParameterNode" xmi:id="_xtO7YA1tEea364fhqzOEpg" name="light" incoming="_zOVhwA1tEea364fhqzOEpg" inPartition="_F49KFOuREeWrQIhWnzYPtA" parameter="_xtvRsA1tEea364fhqzOEpg"/>
       <node xmi:type="uml:CallOperationAction" xmi:id="_gYQXIA1uEea364fhqzOEpg" name="o0" incoming="_aIV4wP2KEeWc2Jz66D1IgQ" inPartition="_F49KFOuREeWrQIhWnzYPtA" operation="_gYj5IA1uEea364fhqzOEpg">
@@ -238,31 +238,31 @@
             <subvertex xmi:type="uml:FinalState" xmi:id="_IBJlgexVEeWRPsrxj_5csA" name="&lt;final>"/>
           </region>
         </ownedBehavior>
-        <ownedParameter xmi:id="_bxumAA1wEea364fhqzOEpg" name="init"/>
-        <ownedParameter xmi:id="_bxumAQ1wEea364fhqzOEpg" name="colorEvent" type="_-UBK8QcFEeaoX9Rju4v9YQ" isStream="true"/>
-        <ownedParameter xmi:id="_bxumAg1wEea364fhqzOEpg" name="speedRestriction" type="_RPEf5exQEeWRPsrxj_5csA" direction="out" isStream="true"/>
-        <ownedParameter xmi:id="_bxumAw1wEea364fhqzOEpg" name="nfcEvent" type="_-UBK9AcFEeaoX9Rju4v9YQ" isStream="true"/>
-        <ownedParameter xmi:id="_bxvNEA1wEea364fhqzOEpg" name="sensorStateEvent" type="_F50ssOuREeWrQIhWnzYPtA" isStream="true"/>
-        <ownedParameter xmi:id="_bxvNEQ1wEea364fhqzOEpg" name="temperatureEvent" type="_-UByAAcFEeaoX9Rju4v9YQ" isStream="true"/>
-        <ownedParameter xmi:id="_bxvNEg1wEea364fhqzOEpg" name="light" direction="out" isStream="true"/>
-        <ownedParameter xmi:id="_bxvNEw1wEea364fhqzOEpg" name="accelerometerEvent" type="_-UByAwcFEeaoX9Rju4v9YQ" isStream="true"/>
-        <ownedParameter xmi:id="_bxvNFA1wEea364fhqzOEpg" name="magnetometerEvent" type="_-UByBQcFEeaoX9Rju4v9YQ" isStream="true"/>
-        <ownedParameter xmi:id="_bxvNFQ1wEea364fhqzOEpg" name="dummyEvent" isStream="true"/>
-        <ownedParameter xmi:id="_bxvNFg1wEea364fhqzOEpg" name="stopTrain" direction="out" isStream="true"/>
-        <ownedParameter xmi:id="_bxvNGA1wEea364fhqzOEpg" name="color" direction="out" isStream="true"/>
+        <ownedParameter xmi:id="_gpyN8A4cEeaVQbI-YC7ulg" name="init"/>
+        <ownedParameter xmi:id="_gpy1AA4cEeaVQbI-YC7ulg" name="colorEvent" type="_-UBK8QcFEeaoX9Rju4v9YQ" isStream="true"/>
+        <ownedParameter xmi:id="_gpy1AQ4cEeaVQbI-YC7ulg" name="speedRestriction" type="_8MeTlvaGEeWeAbkntfzL5A" direction="out" isStream="true"/>
+        <ownedParameter xmi:id="_gpy1Ag4cEeaVQbI-YC7ulg" name="nfcEvent" type="_-UBK9AcFEeaoX9Rju4v9YQ" isStream="true"/>
+        <ownedParameter xmi:id="_gpzcEA4cEeaVQbI-YC7ulg" name="sensorStateEvent" type="_F50ssOuREeWrQIhWnzYPtA" isStream="true"/>
+        <ownedParameter xmi:id="_gpzcEQ4cEeaVQbI-YC7ulg" name="temperatureEvent" type="_-UByAAcFEeaoX9Rju4v9YQ" isStream="true"/>
+        <ownedParameter xmi:id="_gpzcEg4cEeaVQbI-YC7ulg" name="light" direction="out" isStream="true"/>
+        <ownedParameter xmi:id="_gpzcEw4cEeaVQbI-YC7ulg" name="accelerometerEvent" type="_-UByAwcFEeaoX9Rju4v9YQ" isStream="true"/>
+        <ownedParameter xmi:id="_gpzcFA4cEeaVQbI-YC7ulg" name="magnetometerEvent" type="_-UByBQcFEeaoX9Rju4v9YQ" isStream="true"/>
+        <ownedParameter xmi:id="_gpzcFQ4cEeaVQbI-YC7ulg" name="dummyEvent" isStream="true"/>
+        <ownedParameter xmi:id="_gp0DIA4cEeaVQbI-YC7ulg" name="stopTrain" direction="out" isStream="true"/>
+        <ownedParameter xmi:id="_gp0DIQ4cEeaVQbI-YC7ulg" name="color" direction="out" isStream="true"/>
         <group xmi:type="uml:ActivityPartition" xmi:id="_RPEf4OxQEeWRPsrxj_5csA" name="main" node="_RPEf4exQEeWRPsrxj_5csA _RPEf4-xQEeWRPsrxj_5csA _RPEf5uxQEeWRPsrxj_5csA _c2CDMvBGEeW_V8QLlF228A _FCtPI_WwEeWjmpfQuHOybQ __5H-wPZ2EeWeAbkntfzL5A __5Il0vZ2EeWeAbkntfzL5A __5JM4vZ2EeWeAbkntfzL5A __5Jz8fZ2EeWeAbkntfzL5A __5KbAfZ2EeWeAbkntfzL5A _G3P2QvgeEeWHq_5st3TcTQ _bxvNFw1wEea364fhqzOEpg"/>
-        <node xmi:type="uml:ActivityParameterNode" xmi:id="_RPEf4exQEeWRPsrxj_5csA" name="init" inPartition="_RPEf4OxQEeWRPsrxj_5csA" parameter="_bxumAA1wEea364fhqzOEpg"/>
-        <node xmi:type="uml:ActivityParameterNode" xmi:id="_RPEf4-xQEeWRPsrxj_5csA" name="colorEvent" inPartition="_RPEf4OxQEeWRPsrxj_5csA" type="_-UBK8QcFEeaoX9Rju4v9YQ" parameter="_bxumAQ1wEea364fhqzOEpg"/>
-        <node xmi:type="uml:ActivityParameterNode" xmi:id="_RPEf5uxQEeWRPsrxj_5csA" name="speedRestriction" inPartition="_RPEf4OxQEeWRPsrxj_5csA" type="_RPEf5exQEeWRPsrxj_5csA" parameter="_bxumAg1wEea364fhqzOEpg"/>
-        <node xmi:type="uml:ActivityParameterNode" xmi:id="_c2CDMvBGEeW_V8QLlF228A" name="sensorStateEvent" inPartition="_RPEf4OxQEeWRPsrxj_5csA" type="_F50ssOuREeWrQIhWnzYPtA" parameter="_bxvNEA1wEea364fhqzOEpg"/>
-        <node xmi:type="uml:ActivityParameterNode" xmi:id="_FCtPI_WwEeWjmpfQuHOybQ" name="light" inPartition="_RPEf4OxQEeWRPsrxj_5csA" parameter="_bxvNEg1wEea364fhqzOEpg"/>
-        <node xmi:type="uml:ActivityParameterNode" xmi:id="__5H-wPZ2EeWeAbkntfzL5A" name="nfcEvent" inPartition="_RPEf4OxQEeWRPsrxj_5csA" type="_-UBK9AcFEeaoX9Rju4v9YQ" parameter="_bxumAw1wEea364fhqzOEpg"/>
-        <node xmi:type="uml:ActivityParameterNode" xmi:id="__5Il0vZ2EeWeAbkntfzL5A" name="temperatureEvent" inPartition="_RPEf4OxQEeWRPsrxj_5csA" type="_-UByAAcFEeaoX9Rju4v9YQ" parameter="_bxvNEQ1wEea364fhqzOEpg"/>
-        <node xmi:type="uml:ActivityParameterNode" xmi:id="__5JM4vZ2EeWeAbkntfzL5A" name="accelerometerEvent" inPartition="_RPEf4OxQEeWRPsrxj_5csA" type="_-UByAwcFEeaoX9Rju4v9YQ" parameter="_bxvNEw1wEea364fhqzOEpg"/>
-        <node xmi:type="uml:ActivityParameterNode" xmi:id="__5Jz8fZ2EeWeAbkntfzL5A" name="magnetometerEvent" inPartition="_RPEf4OxQEeWRPsrxj_5csA" type="_-UByBQcFEeaoX9Rju4v9YQ" parameter="_bxvNFA1wEea364fhqzOEpg"/>
-        <node xmi:type="uml:ActivityParameterNode" xmi:id="__5KbAfZ2EeWeAbkntfzL5A" name="dummyEvent" inPartition="_RPEf4OxQEeWRPsrxj_5csA" parameter="_bxvNFQ1wEea364fhqzOEpg"/>
-        <node xmi:type="uml:ActivityParameterNode" xmi:id="_G3P2QvgeEeWHq_5st3TcTQ" name="stopTrain" inPartition="_RPEf4OxQEeWRPsrxj_5csA" parameter="_bxvNFg1wEea364fhqzOEpg"/>
-        <node xmi:type="uml:ActivityParameterNode" xmi:id="_bxvNFw1wEea364fhqzOEpg" name="color" inPartition="_RPEf4OxQEeWRPsrxj_5csA" parameter="_bxvNGA1wEea364fhqzOEpg"/>
+        <node xmi:type="uml:ActivityParameterNode" xmi:id="_RPEf4exQEeWRPsrxj_5csA" name="init" inPartition="_RPEf4OxQEeWRPsrxj_5csA" parameter="_gpyN8A4cEeaVQbI-YC7ulg"/>
+        <node xmi:type="uml:ActivityParameterNode" xmi:id="_RPEf4-xQEeWRPsrxj_5csA" name="colorEvent" inPartition="_RPEf4OxQEeWRPsrxj_5csA" type="_-UBK8QcFEeaoX9Rju4v9YQ" parameter="_gpy1AA4cEeaVQbI-YC7ulg"/>
+        <node xmi:type="uml:ActivityParameterNode" xmi:id="_RPEf5uxQEeWRPsrxj_5csA" name="speedRestriction" inPartition="_RPEf4OxQEeWRPsrxj_5csA" type="_8MeTlvaGEeWeAbkntfzL5A" parameter="_gpy1AQ4cEeaVQbI-YC7ulg"/>
+        <node xmi:type="uml:ActivityParameterNode" xmi:id="_c2CDMvBGEeW_V8QLlF228A" name="sensorStateEvent" inPartition="_RPEf4OxQEeWRPsrxj_5csA" type="_F50ssOuREeWrQIhWnzYPtA" parameter="_gpzcEA4cEeaVQbI-YC7ulg"/>
+        <node xmi:type="uml:ActivityParameterNode" xmi:id="_FCtPI_WwEeWjmpfQuHOybQ" name="light" inPartition="_RPEf4OxQEeWRPsrxj_5csA" parameter="_gpzcEg4cEeaVQbI-YC7ulg"/>
+        <node xmi:type="uml:ActivityParameterNode" xmi:id="__5H-wPZ2EeWeAbkntfzL5A" name="nfcEvent" inPartition="_RPEf4OxQEeWRPsrxj_5csA" type="_-UBK9AcFEeaoX9Rju4v9YQ" parameter="_gpy1Ag4cEeaVQbI-YC7ulg"/>
+        <node xmi:type="uml:ActivityParameterNode" xmi:id="__5Il0vZ2EeWeAbkntfzL5A" name="temperatureEvent" inPartition="_RPEf4OxQEeWRPsrxj_5csA" type="_-UByAAcFEeaoX9Rju4v9YQ" parameter="_gpzcEQ4cEeaVQbI-YC7ulg"/>
+        <node xmi:type="uml:ActivityParameterNode" xmi:id="__5JM4vZ2EeWeAbkntfzL5A" name="accelerometerEvent" inPartition="_RPEf4OxQEeWRPsrxj_5csA" type="_-UByAwcFEeaoX9Rju4v9YQ" parameter="_gpzcEw4cEeaVQbI-YC7ulg"/>
+        <node xmi:type="uml:ActivityParameterNode" xmi:id="__5Jz8fZ2EeWeAbkntfzL5A" name="magnetometerEvent" inPartition="_RPEf4OxQEeWRPsrxj_5csA" type="_-UByBQcFEeaoX9Rju4v9YQ" parameter="_gpzcFA4cEeaVQbI-YC7ulg"/>
+        <node xmi:type="uml:ActivityParameterNode" xmi:id="__5KbAfZ2EeWeAbkntfzL5A" name="dummyEvent" inPartition="_RPEf4OxQEeWRPsrxj_5csA" parameter="_gpzcFQ4cEeaVQbI-YC7ulg"/>
+        <node xmi:type="uml:ActivityParameterNode" xmi:id="_G3P2QvgeEeWHq_5st3TcTQ" name="stopTrain" inPartition="_RPEf4OxQEeWRPsrxj_5csA" parameter="_gp0DIA4cEeaVQbI-YC7ulg"/>
+        <node xmi:type="uml:ActivityParameterNode" xmi:id="_bxvNFw1wEea364fhqzOEpg" name="color" inPartition="_RPEf4OxQEeWRPsrxj_5csA" parameter="_gp0DIQ4cEeaVQbI-YC7ulg"/>
       </packagedElement>
       <profileApplication xmi:id="_RPFG8exQEeWRPsrxj_5csA">
         <eAnnotations xmi:id="_RPFG8uxQEeWRPsrxj_5csA" source="http://www.eclipse.org/uml2/2.0.0/UML">

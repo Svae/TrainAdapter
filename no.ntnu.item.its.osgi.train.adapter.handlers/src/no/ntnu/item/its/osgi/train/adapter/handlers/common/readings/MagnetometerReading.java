@@ -5,6 +5,7 @@ public class MagnetometerReading {
 	private double x, y, z;
 	private long timestamp;
 	private double heading;
+	private boolean turning;
 	
 	public MagnetometerReading(double x, double y, double z) {
 		this.x = x;
@@ -20,9 +21,10 @@ public class MagnetometerReading {
 		this.timestamp = timestamp;
 	}
 	
-	public MagnetometerReading(long timestamp, double heading) {
+	public MagnetometerReading(long timestamp, double heading, boolean turning) {
 		this.timestamp = timestamp;
 		this.heading = heading;
+		this.turning = turning;
 	}
 
 	public double getX() {
@@ -47,6 +49,10 @@ public class MagnetometerReading {
 	
 	public long getTimestamp(){
 		return timestamp;
+	}
+
+	public boolean isTurning() {
+		return turning;
 	}
 	
 }

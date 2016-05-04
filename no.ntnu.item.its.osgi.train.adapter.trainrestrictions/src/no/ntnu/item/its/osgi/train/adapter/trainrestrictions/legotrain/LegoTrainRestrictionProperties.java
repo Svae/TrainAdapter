@@ -8,10 +8,11 @@ public final class LegoTrainRestrictionProperties {
 	// Restrict instantiation
 	private LegoTrainRestrictionProperties(){}
 	
-	public static final double SPEEDNORMAL = 100;
-	public static final double SPEEDCITY = 75;
-	public static final double SPEEDINNERCITY = 50;
-	public static final double SPEEDLOW = 25;
+	public static final double SPEEDNORMAL = 120;
+	public static final double SPEEDCITY = 100;
+	public static final double SPEEDINNERCITY = 80;
+	public static final double SPEEDLOW = 60;
+	public static final double SPEEDINCREASETURN = 20;
 	
 	public static final int TEMPERATUREOKMIN = 5;
 	public static final int TEMPERATUREOKMAX = 35;
@@ -21,7 +22,7 @@ public final class LegoTrainRestrictionProperties {
 	public static final int LIGHTTHERSHOLD = 10;
 	
 	public static final SensorPriorityLevel SENSORLIGHT = SensorPriorityLevel.PERIPHERAL;
-	public static final SensorPriorityLevel SENSORCOLOR = SensorPriorityLevel.IMPORTENT;
+	public static final SensorPriorityLevel SENSORCOLOR = SensorPriorityLevel.VITAL;
 	public static final SensorPriorityLevel SENSORBEACON = SensorPriorityLevel.VITAL;
 	public static final SensorPriorityLevel SENSORMAGNETOMETER = SensorPriorityLevel.PERIPHERAL;
 	public static final SensorPriorityLevel SENSORTEMPERATURE = SensorPriorityLevel.IMPORTENT;

@@ -3,13 +3,15 @@ Bundle-ManifestVersion: 2
 Bundle-Name: no.ntnu.item.its.train.adapter
 Bundle-SymbolicName: no.ntnu.item.its.train.adapter
 Bundle-Version: 1.0.0
-Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Import-Package: no.ntnu.item.arctis.runtime,
  no.ntnu.item.ites.osgi.train.adapter.handlers.common.interfaces,
  no.ntnu.item.its.osgi.common.enums,
  no.ntnu.item.its.osgi.common.interfaces,
  no.ntnu.item.its.osgi.train.adapter.handlers.common.readings,
  no.ntnu.item.its.osgi.train.adapter.maprestrictions.interfaces,
+ no.ntnu.item.its.osgi.train.adapter.sensorconfigurator.interfaces,
+ no.ntnu.item.its.osgi.train.adapter.trainrestrictions.common,
  no.ntnu.item.its.osgi.train.adapter.trainrestrictions.interfaces,
  no.ntnu.item.its.osgi.train.adapter.trainstates.interfaces,
  org.osgi.framework,

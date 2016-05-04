@@ -11,6 +11,7 @@ import no.ntnu.item.its.osgi.train.adapter.handlers.common.readings.Magnetometer
 public class DefaultMagnetometerEventHandler implements SensorHandler{
 	
 	private EventReceiver receiver;
+	private double prevHeading = Double.MAX_VALUE;
 	
 	public DefaultMagnetometerEventHandler(EventReceiver receiver) {
 		this.receiver = receiver;
@@ -20,7 +21,12 @@ public class DefaultMagnetometerEventHandler implements SensorHandler{
 	public void handleEvent(Event e) {
 		long time = (long) e.getProperty(AccelerationControllerService.TIMESTAMP_KEY);
 		double heading = (double) e.getProperty(MagControllerService.HEADING_KEY);
-		receiver.sendMagnetometerEvent(new MagnetometerReading(time,heading));
+		if (prevHeading == Double.MAX_VALUE) {
+			prevHeading = heading;
+		}
+		boolean turning = Math.abs(heading - prevHeading) > 2;
+		prevHeading = heading;
+		receiver.sendMagnetometerEvent(new MagnetometerReading(time,heading, turning));
 	}
 
 }

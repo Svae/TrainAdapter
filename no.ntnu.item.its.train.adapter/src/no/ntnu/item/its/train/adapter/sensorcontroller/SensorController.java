@@ -1,5 +1,6 @@
 package no.ntnu.item.its.train.adapter.sensorcontroller;
 
+import java.util.ArrayList;
 import java.util.Dictionary;
 import java.util.HashMap;
 import java.util.Hashtable;
@@ -9,6 +10,7 @@ import org.osgi.framework.BundleContext;
 import org.osgi.framework.InvalidSyntaxException;
 import org.osgi.framework.ServiceEvent;
 import org.osgi.framework.ServiceListener;
+import org.osgi.framework.ServiceReference;
 import org.osgi.framework.ServiceRegistration;
 import org.osgi.service.event.EventConstants;
 import org.osgi.service.event.EventHandler;
@@ -23,6 +25,7 @@ import no.ntnu.item.its.osgi.common.interfaces.AccelerationControllerService;
 import no.ntnu.item.its.osgi.common.interfaces.ColorControllerService;
 import no.ntnu.item.its.osgi.common.interfaces.MagControllerService;
 import no.ntnu.item.its.osgi.common.interfaces.MifareControllerService;
+import no.ntnu.item.its.osgi.common.interfaces.PublisherService;
 import no.ntnu.item.its.osgi.train.adapter.handlers.common.readings.AccelerometerReading;
 import no.ntnu.item.its.osgi.train.adapter.handlers.common.readings.ColorReading;
 import no.ntnu.item.its.osgi.train.adapter.handlers.common.readings.MagnetometerReading;
@@ -39,10 +42,9 @@ public class SensorController extends Block implements EventReceiver {
 	private final String dummyEvent = "DUMMYEVENT";
 	private final String tempEvent = "TEMPERATUREEVENT";
 	
-	
 	private final String eventHandlerName = EventHandler.class.getName();
 	private final String eventHandlerCtrFilter = "(objectclass=" + SensorHandlerController.class.getName() + ")";
-	private ServiceTracker eventHandlerCtrTracker;
+	private ServiceTracker<SensorHandlerController, SensorHandlerController> eventHandlerCtrTracker;
 	private ServiceListener eventHandlerListener;
 	private HashMap<PublisherType, ServiceRegistration> registrations;
 	public BundleContext context;
@@ -72,12 +74,27 @@ public class SensorController extends Block implements EventReceiver {
 		} catch (InvalidSyntaxException e) {
 			e.printStackTrace();
 		}
+		
+		getRegisteredPublishers();
 	}
 	
 	
 	
+	private void getRegisteredPublishers() {
+		try {
+			if(context.getServiceReferences(PublisherService.class, null).isEmpty()) return;
+			ArrayList<ServiceReference<PublisherService>> refs = (ArrayList<ServiceReference<PublisherService>>) context.getServiceReferences(PublisherService.class, null);
+			logger.info(refs.size() + " publisher registerd with the framework");
+			refs.forEach(ref -> registerSensorHandler((PublisherType)ref.getProperty(PublisherType.class.getSimpleName())));
+		} catch (InvalidSyntaxException e) {
+			e.printStackTrace();
+		}
+		
+	}
+
+
+
 	public void registerSensor(ServiceEvent ev){
-		System.out.println("NEW SENSOR");
 		PublisherType type = (PublisherType) ev.getServiceReference().getProperty(PublisherType.class.getSimpleName());
 		if(type == null){
 			logger.info("Sensor type property is not set");
@@ -87,12 +104,8 @@ public class SensorController extends Block implements EventReceiver {
 	}
 	
 	public void registerSensorHandler(PublisherType type){
-		if(eventHandlerCtrTracker.getService() == null){
-			System.out.println("LOL");
-			return;
-		}
 		Dictionary<String, String> p = new Hashtable<>();
-		SensorHandler handler = ((SensorHandlerController)eventHandlerCtrTracker.getService()).getSensorHandler(type, this);
+		SensorHandler handler = getHandlerController().getSensorHandler(type, this);
 		
 		switch (type) {
 			case SLEEPER:
@@ -131,6 +144,7 @@ public class SensorController extends Block implements EventReceiver {
 	
 	private void unregisterSensorHandler(PublisherType type){
 		ServiceRegistration reg = registrations.get(type);
+		if(reg == null) return;
 		reg.unregister();
 		registrations.remove(reg);
 		logger.debug("Unregistered handler for sensor of type: " + type);
@@ -198,6 +212,11 @@ public class SensorController extends Block implements EventReceiver {
 			reg.unregister();
 		}
 		logger.info("Stopped Sensor Controller");
+	}
+	
+	private SensorHandlerController getHandlerController(){
+		if(eventHandlerCtrTracker.getService() == null) logger.warn("Can not find EventHandlerController");
+		return (SensorHandlerController)eventHandlerCtrTracker.getService();
 	}
 
 }

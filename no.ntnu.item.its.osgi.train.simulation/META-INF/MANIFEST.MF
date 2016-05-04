@@ -1,9 +1,14 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
-Bundle-Name: no.ntnu.item.its.osgi.train.simulation
+Bundle-Name: SimulatedTest
 Bundle-SymbolicName: no.ntnu.item.its.osgi.train.simulation
 Bundle-Version: 1.0.0
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+Bundle-Activator: no.ntnu.item.its.osgi.train.simulation.simulatedtest.Activator
 Import-Package: no.ntnu.item.arctis.runtime,
+ no.ntnu.item.its.osgi.train.adapter.handlers.common.readings,
+ no.ntnu.item.its.osgi.train.adapter.trainstates.interfaces,
  org.osgi.framework,
  org.slf4j
+Require-Bundle: com.bitreactive.library.osgi,
+ no.ntnu.item.its.train.adapter

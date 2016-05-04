@@ -4,7 +4,7 @@ public class AMQPProperties {
 	
 	private String hostname = "192.168.0.196";
 	private int port = 5672;
-	private String exchangename = "trainAMQPtest";
+	private String exchangename = "trainCommunication";
 	private String username = "test";
 	private String password = "test";
 	

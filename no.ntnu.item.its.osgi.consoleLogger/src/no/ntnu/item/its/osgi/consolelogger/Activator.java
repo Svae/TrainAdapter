@@ -66,8 +66,6 @@ public class Activator implements BundleActivator, LogListener {
 			level = "ERROR";
 			break;
 		}
-		if(arg0.getMessage().contains("Runtime"))return;
-		if(arg0.getMessage().contains("equinox"))return;
 		System.out.println(String.format(
 				"[%s]%s: %s",
 				level, 

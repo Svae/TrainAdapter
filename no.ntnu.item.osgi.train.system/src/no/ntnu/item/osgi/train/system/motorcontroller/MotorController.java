@@ -20,6 +20,10 @@ public class MotorController extends Block {
 	}
 	
 	public void setSpeed(int speed){
+		if(getController() == null){
+			logger.warn("Can not find motor controller");
+			return;
+		}
 		getController().send(MotorCommand.FORWARD, speed);
 	}
 	

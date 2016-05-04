@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<block
+    name="System" 
+    uuid="_RTj_8A4eEeaVQbI-YC7ulg" 
+    status="under construction" 
+    type="system" 
+    >
+    <required>
+        <block name="b0" uuid="_gVoBQA1rEea364fhqzOEpg"/>
+    </required>
+</block>

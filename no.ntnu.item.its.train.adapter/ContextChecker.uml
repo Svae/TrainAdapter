@@ -77,9 +77,12 @@
       <ownedOperation xmi:id="_H0gF0AywEeae8LBKyOoXQg" name="getTrainRestrictionChecker"/>
       <ownedOperation xmi:id="_H0xLkAywEeae8LBKyOoXQg" name="getMapRestrictions"/>
       <ownedOperation xmi:id="_H0_OAAywEeae8LBKyOoXQg" name="getTrainStateController"/>
+      <ownedOperation xmi:id="_1r2PABHsEeaO2fCtRmwR4w" name="isInTurn"/>
+      <ownedOperation xmi:id="_1sjZoBHsEeaO2fCtRmwR4w" name="setInturn"/>
+      <ownedOperation xmi:id="_1s_egBHsEeaO2fCtRmwR4w" name="getSensorConfigurator"/>
       <ownedParameter xmi:id="_CXrVMOxNEeWRPsrxj_5csA" name="init"/>
       <ownedParameter xmi:id="_2PiMwOxOEeWRPsrxj_5csA" name="colorEvent" type="_tq35UAcDEeaoX9Rju4v9YQ" isStream="true"/>
-      <ownedParameter xmi:id="_E5aAMOxPEeWRPsrxj_5csA" name="speedRestriction" type="_YDdaQOxPEeWRPsrxj_5csA" direction="out" isStream="true"/>
+      <ownedParameter xmi:id="_E5aAMOxPEeWRPsrxj_5csA" name="speedRestriction" type="_DIwJMPaHEeWeAbkntfzL5A" direction="out" isStream="true"/>
       <ownedParameter xmi:id="_l3ThUPBEEeW_V8QLlF228A" name="nfcEvent" type="_trBDQAcDEeaoX9Rju4v9YQ" isStream="true"/>
       <ownedParameter xmi:id="_o7d14PBEEeW_V8QLlF228A" name="sensorStateEvent" type="_BdzDQPaHEeWeAbkntfzL5A" isStream="true"/>
       <ownedParameter xmi:id="_r1ORQPBEEeW_V8QLlF228A" name="temperatureEvent" type="_trFUsAcDEeaoX9Rju4v9YQ" isStream="true"/>
@@ -113,12 +116,12 @@
       <node xmi:type="uml:ActivityParameterNode" xmi:id="_CXoR4OxNEeWRPsrxj_5csA" name="init" outgoing="_8UJ6UAGGEea6g7vuLslp6w" inPartition="_mXnjwOxMEeWRPsrxj_5csA" parameter="_CXrVMOxNEeWRPsrxj_5csA"/>
       <node xmi:type="uml:ActivityParameterNode" xmi:id="_2PeiYOxOEeWRPsrxj_5csA" name="colorEvent" outgoing="_M8y5QA1IEear_sCS1K1QJg" inPartition="_mXnjwOxMEeWRPsrxj_5csA" type="_tq35UAcDEeaoX9Rju4v9YQ" parameter="_2PiMwOxOEeWRPsrxj_5csA"/>
       <node xmi:type="uml:CallOperationAction" xmi:id="_-DlX4OxOEeWRPsrxj_5csA" name="o1" incoming="_vaVIMAGGEea6g7vuLslp6w" outgoing="_7WIL0AGGEea6g7vuLslp6w" inPartition="_mXnjwOxMEeWRPsrxj_5csA" operation="_y85-YOxOEeWRPsrxj_5csA"/>
-      <node xmi:type="uml:ActivityParameterNode" xmi:id="_E5WV0OxPEeWRPsrxj_5csA" name="speedRestriction" incoming="_ZbMpQOxPEeWRPsrxj_5csA" inPartition="_mXnjwOxMEeWRPsrxj_5csA" type="_YDdaQOxPEeWRPsrxj_5csA" parameter="_E5aAMOxPEeWRPsrxj_5csA"/>
+      <node xmi:type="uml:ActivityParameterNode" xmi:id="_E5WV0OxPEeWRPsrxj_5csA" name="speedRestriction" incoming="_ZbMpQOxPEeWRPsrxj_5csA" inPartition="_mXnjwOxMEeWRPsrxj_5csA" type="_DIwJMPaHEeWeAbkntfzL5A" parameter="_E5aAMOxPEeWRPsrxj_5csA"/>
       <node xmi:type="uml:AcceptEventAction" xmi:id="_SOCfAexPEeWRPsrxj_5csA" name="r0" incoming="_U2jZYOxPEeWRPsrxj_5csA" inPartition="_mXnjwOxMEeWRPsrxj_5csA">
         <ownedComment xmi:id="_VxuBIOxPEeWRPsrxj_5csA">
           <body>repeating</body>
         </ownedComment>
-        <result xmi:id="_YDeBUOxPEeWRPsrxj_5csA" name="parameter" outgoing="_ZbMpQOxPEeWRPsrxj_5csA" inPartition="_mXnjwOxMEeWRPsrxj_5csA" type="_YDdaQOxPEeWRPsrxj_5csA"/>
+        <result xmi:id="_YDeBUOxPEeWRPsrxj_5csA" name="parameter" outgoing="_ZbMpQOxPEeWRPsrxj_5csA" inPartition="_mXnjwOxMEeWRPsrxj_5csA" type="_DIwJMPaHEeWeAbkntfzL5A"/>
         <trigger xmi:id="_SOLo8OxPEeWRPsrxj_5csA" name="SPEED" event="_SONeIOxPEeWRPsrxj_5csA"/>
       </node>
       <node xmi:type="uml:ForkNode" xmi:id="_UDp80OxPEeWRPsrxj_5csA" name="f0" incoming="_7WIL0AGGEea6g7vuLslp6w" outgoing="_U2jZYOxPEeWRPsrxj_5csA _RYlCEPKvEeWPTdFc4zHfIQ _nzHh4PaTEeWeAbkntfzL5A _HhT2QA1vEea364fhqzOEpg" inPartition="_mXnjwOxMEeWRPsrxj_5csA"/>
@@ -177,7 +180,7 @@
     </packagedElement>
     <packagedElement xmi:type="uml:PrimitiveType" xmi:id="_5IKmwOxOEeWRPsrxj_5csA" name="no.ntnu.item.its.train.adapter.enums.SleeperColor"/>
     <packagedElement xmi:type="uml:Signal" xmi:id="_SOCfAOxPEeWRPsrxj_5csA" name="SPEED">
-      <ownedAttribute xmi:id="_YDdaQexPEeWRPsrxj_5csA" name="parameter" type="_YDdaQOxPEeWRPsrxj_5csA"/>
+      <ownedAttribute xmi:id="_YDdaQexPEeWRPsrxj_5csA" name="parameter" type="_DIwJMPaHEeWeAbkntfzL5A"/>
     </packagedElement>
     <packagedElement xmi:type="uml:SignalEvent" xmi:id="_SOIloOxPEeWRPsrxj_5csA" name="r0"/>
     <packagedElement xmi:type="uml:SignalEvent" xmi:id="_SONeIOxPEeWRPsrxj_5csA" name="" signal="_SOCfAOxPEeWRPsrxj_5csA"/>

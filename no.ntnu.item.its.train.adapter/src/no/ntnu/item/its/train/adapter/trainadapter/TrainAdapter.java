@@ -14,6 +14,6 @@ public class TrainAdapter extends Block {
 
 
 	public String getFilter() {
-		return filter.isEmpty() ? String.format("(objectclass=%s)", PublisherService.class) : filter;
+		return filter.isEmpty() ? String.format("(objectclass=%s)", PublisherService.class.getName()) : filter;
 	}
 }

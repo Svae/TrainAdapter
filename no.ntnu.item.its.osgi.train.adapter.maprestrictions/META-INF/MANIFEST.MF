@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: Maprestrictions
 Bundle-SymbolicName: no.ntnu.item.its.osgi.train.adapter.maprestrictions
-Bundle-Version: 1.0.0.qualifier
+Bundle-Version: 1.0.0
 Bundle-Activator: no.ntnu.item.its.osgi.train.adapter.maprestrictions.RestrictionActivator
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Import-Package: no.ntnu.item.its.osgi.train.adapter.trainrestrictions.common,
