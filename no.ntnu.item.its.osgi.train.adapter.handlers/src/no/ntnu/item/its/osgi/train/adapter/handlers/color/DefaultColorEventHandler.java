@@ -21,7 +21,6 @@ public class DefaultColorEventHandler implements SensorHandler{
 	public void handleEvent(Event e) {
 		if(e.getProperty(ColorControllerService.COLOR_KEY) == null || !(e.getProperty(ColorControllerService.COLOR_KEY) instanceof EColor)) return;
 		ColorReading cr = new ColorReading(convert((EColor)e.getProperty(ColorControllerService.COLOR_KEY)));
-		System.out.println("CR: " + cr.getReading());
 		receiver.sendColorEvent(cr);
 	}
 	

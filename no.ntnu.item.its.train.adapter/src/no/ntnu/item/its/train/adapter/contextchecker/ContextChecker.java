@@ -39,6 +39,7 @@ public class ContextChecker extends Block implements TrainContext {
 	public void init(){
 		trainInfo = new TrainInfo();
 		setUpTrackers();
+		trainInfo.setSpeed(getTrainRestrictionChecker().getSpeedRestriction(SpeedRestrictionLevel.CITY));
 		setTrainState(TrainStates.RUNNINGCITY);
 	}
 	
@@ -91,7 +92,6 @@ public class ContextChecker extends Block implements TrainContext {
 	}
 
 	public void handleMagnetometerEvent(MagnetometerReading reading) {
-		logger.info("Magnetometer event");
 		trainState.magnetometerUpdate(reading);
 	}
 	
@@ -120,7 +120,7 @@ public class ContextChecker extends Block implements TrainContext {
 
 	@Override
 	public double getSpeed() {
-		return 0;
+		return trainInfo.getSpeed();
 	}
 
 	@Override
