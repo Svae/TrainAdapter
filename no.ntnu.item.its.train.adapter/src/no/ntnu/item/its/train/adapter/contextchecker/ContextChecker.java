@@ -71,7 +71,6 @@ public class ContextChecker extends Block implements TrainContext {
 	
 	
 	public void handleColorEvent(ColorReading color){
-		logger.info("Color event");
 		trainState.colorUpdate(color);
 	}
 	
@@ -92,6 +91,7 @@ public class ContextChecker extends Block implements TrainContext {
 	}
 
 	public void handleMagnetometerEvent(MagnetometerReading reading) {
+		logger.info("Magnetometer event");
 		trainState.magnetometerUpdate(reading);
 	}
 	
@@ -154,12 +154,14 @@ public class ContextChecker extends Block implements TrainContext {
 	@Override
 	public void increaseSpeedForTurn() {
 		trainInfo.setInTurn(true);
+		logger.info("Train in turn increasing speed");
 		sendToBlock(speedRestriction, trainInfo.getSpeed() + getTrainRestrictionChecker().getSpeedIncreaseInTurne());
 	}
 
 	@Override
 	public void decreaseSpeedForTurn() {
 		trainInfo.setInTurn(false);
+		logger.info("Train out of turn decreasing speed");
 		sendToBlock(speedRestriction, trainInfo.getSpeed() - getTrainRestrictionChecker().getSpeedIncreaseInTurne());
 	}
 	

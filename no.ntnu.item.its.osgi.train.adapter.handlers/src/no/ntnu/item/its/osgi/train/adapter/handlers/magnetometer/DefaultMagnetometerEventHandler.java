@@ -26,6 +26,7 @@ public class DefaultMagnetometerEventHandler implements SensorHandler{
 		}
 		boolean turning = Math.abs(heading - prevHeading) > 2;
 		prevHeading = heading;
+		System.out.println("MAGEVENT: " + heading + " : " + turning);
 		receiver.sendMagnetometerEvent(new MagnetometerReading(time,heading, turning));
 	}
 
