@@ -153,11 +153,13 @@ public class ContextChecker extends Block implements TrainContext {
 
 	@Override
 	public void increaseSpeedForTurn() {
+		trainInfo.setInTurn(true);
 		sendToBlock(speedRestriction, trainInfo.getSpeed() + getTrainRestrictionChecker().getSpeedIncreaseInTurne());
 	}
 
 	@Override
 	public void decreaseSpeedForTurn() {
+		trainInfo.setInTurn(false);
 		sendToBlock(speedRestriction, trainInfo.getSpeed() - getTrainRestrictionChecker().getSpeedIncreaseInTurne());
 	}
 	

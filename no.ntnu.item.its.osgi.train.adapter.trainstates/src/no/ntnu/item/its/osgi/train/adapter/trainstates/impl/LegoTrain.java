@@ -48,8 +48,8 @@ public abstract class LegoTrain implements TrainState{
 	@Override
 	public void magnetometerUpdate(MagnetometerReading reading) {
 		if(train.getSpeed() == 0) return;
-		if(!train.isInTurn() && reading.isTurning()){
-		}
+		if(!train.isInTurn() && reading.isTurning()) train.increaseSpeedForTurn();
+		if(train.isInTurn() && !reading.isTurning()) train.decreaseSpeedForTurn();
 	}
 
 	@Override

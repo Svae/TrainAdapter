@@ -106,7 +106,7 @@ public class SensorController extends Block implements EventReceiver {
 	public void registerSensorHandler(PublisherType type){
 		Dictionary<String, String> p = new Hashtable<>();
 		SensorHandler handler = getHandlerController().getSensorHandler(type, this);
-		
+		if(handler == null) return;
 		switch (type) {
 			case SLEEPER:
 				p.put(EventConstants.EVENT_TOPIC, ColorControllerService.EVENT_TOPIC);
@@ -119,6 +119,7 @@ public class SensorController extends Block implements EventReceiver {
 				break;
 			case MAG:
 				p.put(EventConstants.EVENT_TOPIC, MagControllerService.EVENT_TOPIC);
+				break;
 			case DISTANCE:
 				logger.info("Distance sensor is not yet implemented");
 				return;
