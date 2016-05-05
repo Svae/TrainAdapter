@@ -15,7 +15,7 @@ import no.ntnu.item.its.osgi.train.adapter.sensorconfigurator.common.SensorConfi
 public class MagConfigurator implements SensorConfigurator{
 
 	private BundleContext context;
-	private String filterString = String.format("%s=%s", PublisherType.class.getSimpleName(), PublisherType.MAG);
+	private String filterString = String.format("(%s=%s)", PublisherType.class.getSimpleName(), PublisherType.MAG);
 	private ServiceTracker<PublisherService, PublisherService> magTracker;
 	
 	public MagConfigurator(BundleContext context) {

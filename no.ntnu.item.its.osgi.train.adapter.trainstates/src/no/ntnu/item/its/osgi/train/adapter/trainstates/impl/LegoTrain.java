@@ -108,8 +108,8 @@ public abstract class LegoTrain implements TrainState{
 	}
 
 	protected long calculateMagPullRate(SpeedRestrictionLevel level){
-		if(level == SpeedRestrictionLevel.CITY) return 400;
-		if(level == SpeedRestrictionLevel.INNERCITY) return 800;
+		if(level == SpeedRestrictionLevel.CITY) return 500;
+		if(level == SpeedRestrictionLevel.INNERCITY) return 700;
 		return train.getTrainRestrictionChecker().getPublishRate(PublisherType.MAG);
 	}
 	

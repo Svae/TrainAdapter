@@ -9,10 +9,10 @@ public final class LegoTrainRestrictionProperties {
 	private LegoTrainRestrictionProperties(){}
 	
 	public static final double SPEEDNORMAL = 120;
-	public static final double SPEEDCITY = 100;
-	public static final double SPEEDINNERCITY = 80;
-	public static final double SPEEDLOW = 60;
-	public static final double SPEEDINCREASETURN = 20;
+	public static final double SPEEDCITY = 105;
+	public static final double SPEEDINNERCITY = 90;
+	public static final double SPEEDLOW = 75;
+	public static final double SPEEDINCREASETURN = 15;
 	
 	public static final int TEMPERATUREOKMIN = 5;
 	public static final int TEMPERATUREOKMAX = 35;
@@ -31,5 +31,5 @@ public final class LegoTrainRestrictionProperties {
 	
 
 	public static final long DEFAULTCOLORPUBLISHRATE = 25;
-	public static final long DEFAULTMAGPUBLISHRATE = 200;
+	public static final long DEFAULTMAGPUBLISHRATE = 300;
 }

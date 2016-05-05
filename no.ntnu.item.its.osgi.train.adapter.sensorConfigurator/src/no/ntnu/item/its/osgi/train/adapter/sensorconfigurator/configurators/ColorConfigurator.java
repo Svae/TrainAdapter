@@ -23,7 +23,6 @@ public class ColorConfigurator implements SensorConfigurator {
 		Filter filter = null;
 		try {
 			filter = context.createFilter(filterString);
-			System.out.println("FILTER: " + filter);
 			colorTracker = new ServiceTracker<>(context, filter, null);
 			colorTracker.open();
 		} catch (InvalidSyntaxException e) {
