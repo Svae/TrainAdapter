@@ -39,7 +39,9 @@ public class ContextChecker extends Block implements TrainContext {
 	public void init(){
 		trainInfo = new TrainInfo();
 		setUpTrackers();
+		//Test set up
 		trainInfo.setSpeed(getTrainRestrictionChecker().getSpeedRestriction(SpeedRestrictionLevel.NORMAL));
+		trainInfo.setTrainState(TrainStates.RUNNING);
 		setTrainState(TrainStates.RUNNING);
 	}
 	
@@ -177,6 +179,12 @@ public class ContextChecker extends Block implements TrainContext {
 		logger.info("Train out of turn decreasing speed " + newSpeed);
 		trainInfo.setSpeed(newSpeed);
 		sendToBlock(speedRestriction, newSpeed);
+	}
+
+	@Override
+	public TrainStates getCurrentTrainState() {
+		// TODO Auto-generated method stub
+		return trainInfo.getTrainState();
 	}
 	
 	

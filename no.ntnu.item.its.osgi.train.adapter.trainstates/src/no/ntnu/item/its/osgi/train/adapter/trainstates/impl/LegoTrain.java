@@ -48,6 +48,7 @@ public abstract class LegoTrain implements TrainState{
 			default:
 				return;
 		}
+		if(train.getCurrentTrainState() == newState) return;
 		train.setTrainState(newState);
 		reconfigureSensors(PublisherType.MAG, level);
 		train.sendSpeedRestriction(level);

@@ -1,10 +1,13 @@
 package no.ntnu.item.its.train.adapter.trainInfo;
 
+import no.ntnu.item.its.osgi.train.adapter.trainstates.interfaces.TrainStateController.TrainStates;
+
 public class TrainInfo {
 	
 	private double speed = 0;
 	private boolean inTurn = false;
 	private double heading = Double.MAX_VALUE;
+	private TrainStates state;
 	
 	public double getSpeed() {
 		return speed;
@@ -23,6 +26,14 @@ public class TrainInfo {
 	}
 	public void setHeading(double heading) {
 		this.heading = heading;
+	}
+	
+	public TrainStates getTrainState() {
+		return state;
+	}
+	
+	public void setTrainState(TrainStates state){
+		this.state = state;
 	}
 	
 	

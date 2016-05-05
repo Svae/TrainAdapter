@@ -9,6 +9,7 @@ import no.ntnu.item.its.osgi.train.adapter.trainstates.interfaces.TrainStateCont
 public interface TrainContext {
 
 	public void setTrainState(TrainStates state);
+	public TrainStates getCurrentTrainState();
 	public void sendSpeedRestriction(SpeedRestrictionLevel level);
 	public double getSpeed();
 	public TrainRestrictionsChecker getTrainRestrictionChecker();
