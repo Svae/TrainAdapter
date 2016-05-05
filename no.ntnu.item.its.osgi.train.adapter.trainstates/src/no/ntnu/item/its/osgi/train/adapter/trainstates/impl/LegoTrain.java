@@ -47,7 +47,7 @@ public abstract class LegoTrain implements TrainState{
 				break;
 			case YELLOW:
 				System.out.println("YELLOW");
-				break;
+				return;
 			default:
 				return;
 		}

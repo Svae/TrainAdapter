@@ -59,6 +59,7 @@ public class ContextChecker extends Block implements TrainContext {
 	@Override
 	public void setTrainState(TrainStates state) {
 		logger.info("Trainstate changed to: " + state);
+		trainInfo.setTrainState(state);
 		this.trainState = getTrainStateController().getTrainState(state, this);
 	}
 	
