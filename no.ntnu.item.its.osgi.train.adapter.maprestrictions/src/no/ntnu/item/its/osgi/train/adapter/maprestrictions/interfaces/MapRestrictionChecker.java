@@ -8,6 +8,7 @@ public interface MapRestrictionChecker {
 	
 	public SpeedRestrictionLevel getSpeedLevelforZone(MapZone zone);
 	
+	
 
 
 }

@@ -13,6 +13,8 @@ import static no.ntnu.item.its.osgi.train.adapter.trainrestrictions.legotrain.Le
 import static no.ntnu.item.its.osgi.train.adapter.trainrestrictions.legotrain.LegoTrainRestrictionProperties.TEMPERATUREWARNINGMAX;
 import static no.ntnu.item.its.osgi.train.adapter.trainrestrictions.legotrain.LegoTrainRestrictionProperties.TEMPERATUREWARNINGMIN;
 import static no.ntnu.item.its.osgi.train.adapter.trainrestrictions.legotrain.LegoTrainRestrictionProperties.SPEEDINCREASETURN;
+import static no.ntnu.item.its.osgi.train.adapter.trainrestrictions.legotrain.LegoTrainRestrictionProperties.DEFAULTCOLORPUBLISHRATE;
+import static no.ntnu.item.its.osgi.train.adapter.trainrestrictions.legotrain.LegoTrainRestrictionProperties.DEFAULTMAGPUBLISHRATE;
 
 import no.ntnu.item.its.osgi.common.enums.PublisherType;
 import no.ntnu.item.its.osgi.train.adapter.trainrestrictions.common.SensorPriorityLevel;
@@ -113,5 +115,12 @@ public class LegoTrainRestrictionChecker implements TrainRestrictionsChecker {
 	@Override
 	public double getSpeedIncreaseInTurne() {
 		return SPEEDINCREASETURN;
+	}
+
+	@Override
+	public long getPublishRate(PublisherType type) {
+		if(type == PublisherType.SLEEPER) return DEFAULTCOLORPUBLISHRATE;
+		if(type == PublisherType.MAG) return DEFAULTMAGPUBLISHRATE;
+		return 0;
 	}
 }

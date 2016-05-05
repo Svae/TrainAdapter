@@ -28,4 +28,8 @@ public final class LegoTrainRestrictionProperties {
 	public static final SensorPriorityLevel SENSORTEMPERATURE = SensorPriorityLevel.IMPORTENT;
 	public static final SensorPriorityLevel SENSORACCELEROMETER = SensorPriorityLevel.PERIPHERAL;
 		
+	
+
+	public static final long DEFAULTCOLORPUBLISHRATE = 25;
+	public static final long DEFAULTMAGPUBLISHRATE = 200;
 }

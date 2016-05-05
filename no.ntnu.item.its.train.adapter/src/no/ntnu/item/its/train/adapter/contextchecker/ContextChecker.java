@@ -39,8 +39,8 @@ public class ContextChecker extends Block implements TrainContext {
 	public void init(){
 		trainInfo = new TrainInfo();
 		setUpTrackers();
-		trainInfo.setSpeed(getTrainRestrictionChecker().getSpeedRestriction(SpeedRestrictionLevel.CITY));
-		setTrainState(TrainStates.RUNNINGCITY);
+		trainInfo.setSpeed(getTrainRestrictionChecker().getSpeedRestriction(SpeedRestrictionLevel.NORMAL));
+		setTrainState(TrainStates.RUNNING);
 	}
 	
 	private void setUpTrackers(){
@@ -164,8 +164,8 @@ public class ContextChecker extends Block implements TrainContext {
 	@Override
 	public void increaseSpeedForTurn() {
 		trainInfo.setInTurn(true);
-		logger.info("Train in turn increasing speed");
 		double newSpeed = trainInfo.getSpeed() + getTrainRestrictionChecker().getSpeedIncreaseInTurne();
+		logger.info("Train in turn increasing speed to " + newSpeed);
 		trainInfo.setSpeed(newSpeed);
 		sendToBlock(speedRestriction, newSpeed );
 	}
@@ -173,8 +173,8 @@ public class ContextChecker extends Block implements TrainContext {
 	@Override
 	public void decreaseSpeedForTurn() {
 		trainInfo.setInTurn(false);
-		logger.info("Train out of turn decreasing speed");
 		double newSpeed = trainInfo.getSpeed() - getTrainRestrictionChecker().getSpeedIncreaseInTurne();
+		logger.info("Train out of turn decreasing speed " + newSpeed);
 		trainInfo.setSpeed(newSpeed);
 		sendToBlock(speedRestriction, newSpeed);
 	}

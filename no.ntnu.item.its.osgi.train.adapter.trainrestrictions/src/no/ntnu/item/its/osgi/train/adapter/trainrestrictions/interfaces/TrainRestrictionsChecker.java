@@ -14,6 +14,7 @@ public interface TrainRestrictionsChecker {
 	public boolean checkTemperture(double temp, TrainTemperatureLevel level);
 	public SpeedRestrictionLevel getSpeedLevel(double speed);
 	public double getSpeedIncreaseInTurne();
+	public long getPublishRate(PublisherType type);
 	
 	
 }

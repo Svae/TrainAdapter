@@ -10,4 +10,5 @@ public final class LegoMapRestrictionProperties {
 	public static final SpeedRestrictionLevel SPEEDGREEN = SpeedRestrictionLevel.NORMAL;
 	public static final SpeedRestrictionLevel SPEEDYELLOW = SpeedRestrictionLevel.CITY;
 	public static final SpeedRestrictionLevel SPEEDBLUE = SpeedRestrictionLevel.NORMAL;
+	
 }
