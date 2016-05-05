@@ -46,7 +46,7 @@ public abstract class LegoTrain implements TrainState{
 				level = SpeedRestrictionLevel.INNERCITY;
 				break;
 			default:
-				break;
+				return;
 		}
 		train.setTrainState(newState);
 		reconfigureSensors(PublisherType.MAG, level);
@@ -55,6 +55,7 @@ public abstract class LegoTrain implements TrainState{
 	}
 	
 	protected void reconfigureSensors(PublisherType type, SpeedRestrictionLevel level){
+		
 		train.getSensorConfigurator().configureSensor(SensorConfigurationOption.PUBLISHRATE, calculateMagPullRate(level), type);
 	}
 
@@ -86,6 +87,18 @@ public abstract class LegoTrain implements TrainState{
 	public void dummyUpdate() {
 		// TODO Auto-generated method stub
 		
+	}
+	
+	protected long calculatePullRate(PublisherType type, SpeedRestrictionLevel level){
+		switch (type) {
+		case MAG:
+			return calculateMagPullRate(level);
+		case SLEEPER:
+			return calculateColorPullRate(level);
+		default:
+			break;
+		}
+		return 0;
 	}
 	
 	protected long calculateColorPullRate(SpeedRestrictionLevel level){
