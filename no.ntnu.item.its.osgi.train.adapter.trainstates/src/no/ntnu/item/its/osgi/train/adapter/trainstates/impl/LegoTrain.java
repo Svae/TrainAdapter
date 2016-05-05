@@ -45,6 +45,9 @@ public abstract class LegoTrain implements TrainState{
 				newState = TrainStates.RUNNINGINNERCITY;
 				level = SpeedRestrictionLevel.INNERCITY;
 				break;
+			case YELLOW:
+				System.out.println("YELLOW");
+				break;
 			default:
 				return;
 		}

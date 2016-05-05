@@ -4,7 +4,7 @@ Bundle-Name: System
 Bundle-SymbolicName: no.ntnu.item.osgi.train.system
 Bundle-Version: 1.0.0
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
-Bundle-Activator: no.ntnu.item.osgi.train.system.system.SystemActivator
+Bundle-Activator: no.ntnu.item.osgi.train.system.system.Activator
 Import-Package: no.ntnu.item.arctis.runtime,
  no.ntnu.item.its.osgi.common.enums,
  no.ntnu.item.its.osgi.common.interfaces,
