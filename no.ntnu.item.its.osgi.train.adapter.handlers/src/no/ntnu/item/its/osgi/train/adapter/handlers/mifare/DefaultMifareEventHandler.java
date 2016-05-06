@@ -17,6 +17,8 @@ public class DefaultMifareEventHandler implements SensorHandler{
 
 	@Override
 	public void handleEvent(Event e) {
+		System.out.println("MiFare event");
+		System.out.println("Value: " + (String)e.getProperty(MifareControllerService.LOC_ID_KEY));
 		receiver.sendNFCEvent(new NFCReading((String)e.getProperty(MifareControllerService.LOC_ID_KEY)));
 	}
 }

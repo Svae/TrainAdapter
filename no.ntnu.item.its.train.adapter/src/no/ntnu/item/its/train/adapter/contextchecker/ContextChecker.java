@@ -5,6 +5,7 @@ import org.osgi.framework.ServiceEvent;
 import org.osgi.util.tracker.ServiceTracker;
 
 import no.ntnu.item.arctis.runtime.Block;
+import no.ntnu.item.its.osgi.common.enums.PublisherType;
 import no.ntnu.item.its.osgi.train.adapter.handlers.common.readings.AccelerometerReading;
 import no.ntnu.item.its.osgi.train.adapter.handlers.common.readings.ColorReading;
 import no.ntnu.item.its.osgi.train.adapter.handlers.common.readings.MagnetometerReading;
@@ -41,7 +42,6 @@ public class ContextChecker extends Block implements TrainContext {
 		setUpTrackers();
 		//Test set up
 		trainInfo.setSpeed(getTrainRestrictionChecker().getSpeedRestriction(SpeedRestrictionLevel.NORMAL));
-		trainInfo.setTrainState(TrainStates.RUNNING);
 		setTrainState(TrainStates.RUNNING);
 	}
 	

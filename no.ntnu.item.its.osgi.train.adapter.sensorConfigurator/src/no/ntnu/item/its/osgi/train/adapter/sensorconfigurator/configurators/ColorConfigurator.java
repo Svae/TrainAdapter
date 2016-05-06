@@ -33,10 +33,7 @@ public class ColorConfigurator implements SensorConfigurator {
 	
 	@Override
 	public void configure(SensorConfigurationOption property, Object value) {
-		if(colorTracker.getService() == null){
-			System.out.println("COLORTRACKER == NULL");
-			return;
-		}
+		if(colorTracker.getService() == null) return;
 		switch (property) {
 		case PUBLISHRATE:
 			if(!(value instanceof Long)) return;
@@ -45,6 +42,10 @@ public class ColorConfigurator implements SensorConfigurator {
 			break;
 		case STOP:
 			stopPublisher();
+			break;
+		case READ:
+			doRead();
+			break;
 		default:
 			break;
 		}
@@ -57,6 +58,10 @@ public class ColorConfigurator implements SensorConfigurator {
 	private void changePublishRate(long rate) {
 		colorTracker.getService().setPublishRate(rate);
 		
+	}
+	
+	private void doRead(){
+		colorTracker.getService().read();
 	}
 
 	@Override

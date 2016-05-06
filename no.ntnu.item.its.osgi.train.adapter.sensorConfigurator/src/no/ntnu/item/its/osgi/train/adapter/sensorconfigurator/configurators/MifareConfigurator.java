@@ -12,23 +12,23 @@ import no.ntnu.item.its.osgi.common.enums.PublisherType;
 import no.ntnu.item.its.osgi.common.interfaces.PublisherService;
 import no.ntnu.item.its.osgi.train.adapter.sensorconfigurator.common.SensorConfigurationOption;
 
-public class MagConfigurator implements SensorConfigurator{
+public class MifareConfigurator implements SensorConfigurator{
 
-	private BundleContext context;
-	private String filterString = String.format("(%s=%s)", PublisherType.class.getSimpleName(), PublisherType.MAG);
-	private ServiceTracker<PublisherService, PublisherService> magTracker;
 	
-	public MagConfigurator(BundleContext context) {
+	private BundleContext context;
+	private String filterString = String.format("(%s=%s)", PublisherType.class.getSimpleName(), PublisherType.BEACON);
+	private ServiceTracker<PublisherService, PublisherService> beaconTracker;
+	
+	public MifareConfigurator(BundleContext context) {
 		this.context = context;
 		Filter filter = null;
 		try {
 			filter = context.createFilter(filterString);
-			magTracker = new ServiceTracker<>(context, filter, null);
-			magTracker.open();
+			beaconTracker = new ServiceTracker<>(context, filter, null);
+			beaconTracker.open();
 		} catch (InvalidSyntaxException e) {
 			e.printStackTrace();
 		}
-		
 	}
 	
 	@Override
@@ -40,38 +40,28 @@ public class MagConfigurator implements SensorConfigurator{
 
 	@Override
 	public void configure(SensorConfigurationOption property, Object value) {
-		if(magTracker.getService() == null) return;
+		if(beaconTracker.getService() == null) return;
 		switch (property) {
-		//TODO: ADD LOGGING
 			case PUBLISHRATE:
-				if(!(value instanceof Long)) return;
-				changePublishRate((long) value);
-				break;
-			case STOP:
-				stopPublisher();
 				break;
 			case READ:
 				doRead();
 				break;
+			case STOP:
+				stopPublisher();
+				break;
 			default:
 				break;
 		}
-	}
-	
-	private void doRead(){
-		magTracker.getService().read();
-	}
-	
-	private void stopPublisher() {
-		magTracker.getService().stopPublisher();
-	}
-
-	private void changePublishRate(long rate) {
-		System.out.println("Reconfiguring the publish rate of Mag sensor to "+ rate);
-		magTracker.getService().setPublishRate(rate);
 		
 	}
 	
+	private void doRead(){
+		beaconTracker.getService().read();
+	}
 	
+	private void stopPublisher() {
+		beaconTracker.getService().stopPublisher();
+	}
 
 }

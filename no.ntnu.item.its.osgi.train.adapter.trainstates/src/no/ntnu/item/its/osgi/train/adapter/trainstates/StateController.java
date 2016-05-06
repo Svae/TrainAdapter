@@ -4,6 +4,7 @@ import org.osgi.service.log.LogService;
 
 import no.ntnu.item.its.osgi.train.adapter.trainstates.impl.City;
 import no.ntnu.item.its.osgi.train.adapter.trainstates.impl.Innercity;
+import no.ntnu.item.its.osgi.train.adapter.trainstates.impl.LocalTest;
 import no.ntnu.item.its.osgi.train.adapter.trainstates.impl.Running;
 import no.ntnu.item.its.osgi.train.adapter.trainstates.impl.Stopped;
 import no.ntnu.item.its.osgi.train.adapter.trainstates.interfaces.TrainContext;
@@ -23,6 +24,8 @@ public class StateController implements TrainStateController{
 			return new City(train);
 		case RUNNINGINNERCITY:
 			return new Innercity(train);
+		case TEST:
+			return new LocalTest(train);
 		default:
 			((LogService)StateActivator.logServiceTracker.getService()).log(LogService.LOG_WARNING, "Could not find train state " + state);
 			break;
