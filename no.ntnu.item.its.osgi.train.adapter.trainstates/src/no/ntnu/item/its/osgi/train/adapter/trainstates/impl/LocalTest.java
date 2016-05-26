@@ -9,6 +9,7 @@ import no.ntnu.item.its.osgi.train.adapter.handlers.common.readings.NFCReading;
 import no.ntnu.item.its.osgi.train.adapter.handlers.common.readings.TemperatureReading;
 import no.ntnu.item.its.osgi.train.adapter.sensorconfigurator.common.SensorConfigurationOption;
 import no.ntnu.item.its.osgi.train.adapter.trainrestrictions.common.SpeedRestrictionLevel;
+import no.ntnu.item.its.osgi.train.adapter.trainstates.StateActivator;
 import no.ntnu.item.its.osgi.train.adapter.trainstates.interfaces.TrainContext;
 import no.ntnu.item.its.osgi.train.adapter.trainstates.interfaces.TrainState;
 import no.ntnu.item.its.osgi.train.adapter.trainstates.interfaces.TrainStateController.TrainStates;
@@ -16,9 +17,11 @@ import no.ntnu.item.its.osgi.train.adapter.trainstates.interfaces.TrainStateCont
 public class LocalTest implements TrainState {
 
 	protected final TrainContext train;
-
+	private SpeedRestrictionLevel speed = SpeedRestrictionLevel.NORMAL;
+	
 	public LocalTest(TrainContext train) {
 		this.train = train;
+		train.sendSpeedRestriction(speed);
 	}
 
 	@Override
@@ -27,34 +30,9 @@ public class LocalTest implements TrainState {
 
 	@Override
 	public void colorUpdate(ColorReading reading) {
-		TrainStates newState = null;
-		SpeedRestrictionLevel level = null;
-		switch (reading.getReading()) {
-			// case GREEN:
-			// newState = TrainStates.RUNNING;
-			// level = SpeedRestrictionLevel.NORMAL;
-			// break;
-			// case BLUE:
-			// newState = TrainStates.RUNNINGCITY;
-			// level = SpeedRestrictionLevel.CITY;
-			// break;
-			// case RED:
-			// newState = TrainStates.RUNNINGINNERCITY;
-			// level = SpeedRestrictionLevel.INNERCITY;
-			// break;
-			case YELLOW:
-				System.out.println("YELLOW");
-				train.getSensorConfigurator().configureSensor(SensorConfigurationOption.READ, 0, PublisherType.BEACON);
-				return;
-			default:
-				return;
-		}
-		/*if (train.getCurrentTrainState() == newState)
-			return;
-		train.setTrainState(newState);
-		reconfigureSensors(PublisherType.MAG, level);
-		train.sendSpeedRestriction(level);
-		*/
+		speed = (speed== SpeedRestrictionLevel.NORMAL) ? SpeedRestrictionLevel.CITY : SpeedRestrictionLevel.NORMAL;
+		train.sendSpeedRestriction(speed);
+		
 	}
 
 	protected void reconfigureSensors(PublisherType type, SpeedRestrictionLevel level) {

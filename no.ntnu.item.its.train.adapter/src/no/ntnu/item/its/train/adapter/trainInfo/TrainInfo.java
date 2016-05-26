@@ -1,5 +1,6 @@
 package no.ntnu.item.its.train.adapter.trainInfo;
 
+import no.ntnu.item.its.osgi.train.adapter.trainrestrictions.common.SpeedRestrictionLevel;
 import no.ntnu.item.its.osgi.train.adapter.trainstates.interfaces.TrainStateController.TrainStates;
 
 public class TrainInfo {
@@ -8,6 +9,7 @@ public class TrainInfo {
 	private boolean inTurn = false;
 	private double heading = Double.MAX_VALUE;
 	private TrainStates state;
+	private SpeedRestrictionLevel speedRestrictionLevel;
 	
 	public double getSpeed() {
 		return speed;

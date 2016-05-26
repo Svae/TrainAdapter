@@ -11,9 +11,9 @@ public interface EventReceiver {
 
 	public void sendColorEvent(ColorReading color);
 	public void sendSensorStatusEvent(PublisherType type);
-	public void sendNFCEvent(NFCReading hex);
+	public void sendNFCEvent(NFCReading locationID);
 	public void sendAccelerationEvent(AccelerometerReading acc);
-	public void sendMagnetometerEvent(MagnetometerReading r);
+	public void sendMagnetometerEvent(MagnetometerReading direction);
 	public void sendDummyEvent();
 	public void sendTemperaturEvent(TemperatureReading temp);
 }

@@ -50,18 +50,34 @@ public class MifareConfigurator implements SensorConfigurator{
 			case STOP:
 				stopPublisher();
 				break;
+			case WRITE:
+				doWrite((String) value);
 			default:
 				break;
 		}
 		
 	}
 	
+	private void doWrite(String content) {
+		beaconTracker.getService().write(content);
+	}
+
 	private void doRead(){
 		beaconTracker.getService().read();
 	}
 	
 	private void stopPublisher() {
 		beaconTracker.getService().stopPublisher();
+	}
+
+	@Override
+	public long getPublishRate() {
+		return beaconTracker.getService().getPublishRate();
+	}
+
+	@Override
+	public long getDefaultPublishRate() {
+		return beaconTracker.getService().getDefaultPublishRate();
 	}
 
 }

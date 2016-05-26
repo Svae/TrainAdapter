@@ -4,7 +4,8 @@ Bundle-Name: no.ntnu.item.its.train.adapter
 Bundle-SymbolicName: no.ntnu.item.its.train.adapter
 Bundle-Version: 1.0.0
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
-Import-Package: no.ntnu.item.arctis.runtime,
+Import-Package: com.google.gson;version="2.2.4",
+ no.ntnu.item.arctis.runtime,
  no.ntnu.item.ites.osgi.train.adapter.handlers.common.interfaces,
  no.ntnu.item.its.osgi.common.enums,
  no.ntnu.item.its.osgi.common.interfaces,
@@ -14,13 +15,35 @@ Import-Package: no.ntnu.item.arctis.runtime,
  no.ntnu.item.its.osgi.train.adapter.trainrestrictions.common,
  no.ntnu.item.its.osgi.train.adapter.trainrestrictions.interfaces,
  no.ntnu.item.its.osgi.train.adapter.trainstates.interfaces,
+ no.ntnu.trainamqpservice.common,
+ no.ntnu.trainamqpservice.interfaces,
  org.osgi.framework,
  org.osgi.service.event,
  org.osgi.util.tracker;version="1.5.1",
  org.slf4j
-Export-Package: no.ntnu.item.its.train.adapter.contextchecker;uses:="org.osgi.framework, no.ntnu.item.its.train.adapter.enums, no.ntnu.item.arctis.runtime, no.ntnu.item.its.osgi.train.adapter.trainrestrictions.interfaces, no.ntnu.item.its.train.adapter.interfaces, no.ntnu.item.its.train.adapter.trainInfo, no.ntnu.item.its.osgi.train.adapter.trainstates.interfaces, no.ntnu.item.its.osgi.train.adapter.handlers.common.readings",
- no.ntnu.item.its.train.adapter.customeservicelistener;uses:="org.osgi.framework, no.ntnu.item.arctis.runtime",
+Export-Package: no.ntnu.item.its.train.adapter.common,
+ no.ntnu.item.its.train.adapter.contextchecker;
+  uses:="org.osgi.framework,
+   no.ntnu.item.its.train.adapter.enums,
+   no.ntnu.item.arctis.runtime,
+   no.ntnu.item.its.osgi.train.adapter.trainrestrictions.interfaces,
+   no.ntnu.item.its.train.adapter.interfaces,
+   no.ntnu.item.its.train.adapter.trainInfo,
+   no.ntnu.item.its.osgi.train.adapter.trainstates.interfaces,
+   no.ntnu.item.its.osgi.train.adapter.handlers.common.readings",
+ no.ntnu.item.its.train.adapter.customeservicelistener;uses:="org.osgi.framework,no.ntnu.item.arctis.runtime",
+ no.ntnu.item.its.train.adapter.customeservicetracker,
  no.ntnu.item.its.train.adapter.enums,
- no.ntnu.item.its.train.adapter.interfaces;uses:="no.ntnu.item.its.train.adapter.enums, no.ntnu.item.its.osgi.train.adapter.trainrestrictions.interfaces, no.ntnu.item.its.train.adapter.trainInfo, no.ntnu.item.its.osgi.train.adapter.trainstates.interfaces",
- no.ntnu.item.its.train.adapter.sensorcontroller;uses:="org.osgi.framework, no.ntnu.item.its.osgi.sensors.common.enums, no.ntnu.item.arctis.runtime, no.ntnu.item.ites.osgi.train.adapter.handlers.common.interfaces, no.ntnu.item.its.osgi.train.adapter.handlers.common.readings",
- no.ntnu.item.its.train.adapter.trainadapter;uses:="org.osgi.framework, no.ntnu.item.arctis.runtime"
+ no.ntnu.item.its.train.adapter.interfaces;
+  uses:="no.ntnu.item.its.train.adapter.enums,
+   no.ntnu.item.its.osgi.train.adapter.trainrestrictions.interfaces,
+   no.ntnu.item.its.train.adapter.trainInfo,
+   no.ntnu.item.its.osgi.train.adapter.trainstates.interfaces",
+ no.ntnu.item.its.train.adapter.remotecontrol,
+ no.ntnu.item.its.train.adapter.sensorcontroller;
+  uses:="org.osgi.framework,
+   no.ntnu.item.its.osgi.sensors.common.enums,
+   no.ntnu.item.arctis.runtime,
+   no.ntnu.item.ites.osgi.train.adapter.handlers.common.interfaces,
+   no.ntnu.item.its.osgi.train.adapter.handlers.common.readings",
+ no.ntnu.item.its.train.adapter.trainadapter;uses:="org.osgi.framework,no.ntnu.item.arctis.runtime"

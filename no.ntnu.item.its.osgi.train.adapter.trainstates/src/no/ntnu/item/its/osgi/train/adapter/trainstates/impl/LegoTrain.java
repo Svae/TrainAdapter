@@ -42,11 +42,9 @@ public abstract class LegoTrain implements TrainState{
 				level = SpeedRestrictionLevel.CITY;
 				break;
 			case RED:
-				newState = TrainStates.RUNNINGINNERCITY;
-				level = SpeedRestrictionLevel.INNERCITY;
-				break;
+				train.getSensorConfigurator().configureSensor(SensorConfigurationOption.READ, 0, PublisherType.BEACON);
+				return;
 			case YELLOW:
-				System.out.println("YELLOW");
 				return;
 			default:
 				return;

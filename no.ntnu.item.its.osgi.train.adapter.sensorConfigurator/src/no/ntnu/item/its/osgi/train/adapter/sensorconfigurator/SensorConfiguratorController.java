@@ -5,10 +5,12 @@ import java.util.HashMap;
 import org.osgi.framework.BundleContext;
 
 import no.ntnu.item.its.osgi.common.enums.PublisherType;
+import no.ntnu.item.its.osgi.common.interfaces.PublisherService;
 import no.ntnu.item.its.osgi.train.adapter.sensorconfigurator.common.SensorConfigurationOption;
 import no.ntnu.item.its.osgi.train.adapter.sensorconfigurator.configurators.ColorConfigurator;
 import no.ntnu.item.its.osgi.train.adapter.sensorconfigurator.configurators.MagConfigurator;
 import no.ntnu.item.its.osgi.train.adapter.sensorconfigurator.configurators.MifareConfigurator;
+import no.ntnu.item.its.osgi.train.adapter.sensorconfigurator.configurators.SensorConfigurator;
 import no.ntnu.item.its.osgi.train.adapter.sensorconfigurator.interfaces.TrainSensorConfiguratorController;
 
 public class SensorConfiguratorController implements TrainSensorConfiguratorController {
@@ -26,35 +28,33 @@ public class SensorConfiguratorController implements TrainSensorConfiguratorCont
 	}
 	
 	public void configureSensor(HashMap<SensorConfigurationOption, Object> properties, PublisherType type){
-		switch (type) {
-		case SLEEPER:
-			color.configure(properties);
-			break;
-		case MAG:
-			mag.configure(properties);
-			break;
-		case BEACON:
-			mifare.configure(properties);
-			break;
-		default:
-			break;
-		}
+		getConfigurator(type).configure(properties);
 	}
 
 	@Override
 	public void configureSensor(SensorConfigurationOption property, Object value, PublisherType type) {
+		getConfigurator(type).configure(property, value);
+	}
+
+	private SensorConfigurator getConfigurator(PublisherType type){
 		switch (type) {
-		case SLEEPER:
-			color.configure(property,value);
-			break;
-		case MAG:
-			mag.configure(property, value);
-			break;
-		case BEACON:
-			mifare.configure(property, value);
-			break;
-		default:
-			break;
-		}		
+			case SLEEPER:
+				return color; 
+			case MAG:
+				return mag;
+			case BEACON:
+				return mifare;
+			default:
+				return null;
+			}
+	}
+	@Override
+	public long getPublish(PublisherType type) {
+		return getConfigurator(type).getPublishRate();
+	}
+
+	@Override
+	public long getDefaultPublishRate(PublisherType type) {
+		return getConfigurator(type).getDefaultPublishRate();
 	}
 }

@@ -19,7 +19,9 @@ import no.ntnu.item.its.osgi.train.adapter.trainstates.interfaces.TrainContext;
 import no.ntnu.item.its.osgi.train.adapter.trainstates.interfaces.TrainState;
 import no.ntnu.item.its.osgi.train.adapter.trainstates.interfaces.TrainStateController;
 import no.ntnu.item.its.osgi.train.adapter.trainstates.interfaces.TrainStateController.TrainStates;
+import no.ntnu.item.its.train.adapter.common.TrainCommand;
 import no.ntnu.item.its.train.adapter.trainInfo.TrainInfo;
+import no.ntnu.trainamqpservice.common.AMQPMessage;
 
 
 
@@ -27,6 +29,13 @@ public class ContextChecker extends Block implements TrainContext {
 
 	
 	private final String speedRestriction = "SPEED";
+	private final String stopTrain = "STOP";
+	private final String changeFilter = "CHANGEFILTER";
+	private final String sendMessage = "MESSSAGE";
+	private final String addTopic = "ADDTOPIC";
+	private final String removeTopic = "REMOVETOPIC";
+	private final String light = "LIGHT";
+	
 	private TrainState trainState;
 	private TrainInfo trainInfo;
 	
@@ -41,8 +50,8 @@ public class ContextChecker extends Block implements TrainContext {
 		trainInfo = new TrainInfo();
 		setUpTrackers();
 		//Test set up
-		trainInfo.setSpeed(getTrainRestrictionChecker().getSpeedRestriction(SpeedRestrictionLevel.NORMAL));
-		setTrainState(TrainStates.RUNNING);
+		//trainInfo.setSpeed(getTrainRestrictionChecker().getSpeedRestriction(SpeedRestrictionLevel.NORMAL));
+		setTrainState(TrainStates.TEST);
 	}
 	
 	private void setUpTrackers(){
@@ -67,7 +76,7 @@ public class ContextChecker extends Block implements TrainContext {
 	@Override
 	public void sendSpeedRestriction(SpeedRestrictionLevel level) {
 		double speed = getTrainRestrictionChecker().getSpeedRestriction(level);
-		logger.info("Sending speed restriction: " + speed);
+		logger.info("" + System.currentTimeMillis());
 		trainInfo.setSpeed(speed);
 		sendToBlock(speedRestriction, speed);
 	}
@@ -184,8 +193,53 @@ public class ContextChecker extends Block implements TrainContext {
 
 	@Override
 	public TrainStates getCurrentTrainState() {
-		// TODO Auto-generated method stub
 		return trainInfo.getTrainState();
+	}
+
+	@Override
+	public void stopTrain() {
+		logger.info("Stopping train");
+		sendToBlock(stopTrain);
+	}
+
+	public void handleMessage(TrainCommand message) {
+		switch (message.getCmd()) {
+			case START:
+				sendSpeedRestriction((SpeedRestrictionLevel)message.getValue());
+				break;
+			case STOP:
+				stopTrain();
+				break;
+			case FILTER:
+				sendToBlock(changeFilter, (String)message.getValue());
+				break;
+			case LIGHT:
+				sendToBlock(light, (boolean) message.getValue());
+				break;
+			case ADDTOPIC:
+				sendToBlock(addTopic, (String) message.getValue());
+				break;
+			case REMOVETOPIC:
+				sendToBlock(removeTopic, (String) message.getValue());
+				break;
+			case CHANGEFILTER:
+				sendToBlock(changeFilter, (String) message.getValue());
+				break;
+			case TEMPERATUR:
+				handleTemperatureEvent(new TemperatureReading((double) message.getValue()));
+				break;
+			default:
+				break;
+		}
+		
+	}
+
+	public void sendMessage(AMQPMessage message){
+		sendToBlock(sendMessage, message);
+	}
+	
+	public void handleSendError(String error) {
+		logger.error(error);
 	}
 	
 	

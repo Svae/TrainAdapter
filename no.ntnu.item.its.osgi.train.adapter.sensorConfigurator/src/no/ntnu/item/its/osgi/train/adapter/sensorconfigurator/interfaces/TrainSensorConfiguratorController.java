@@ -8,5 +8,7 @@ import no.ntnu.item.its.osgi.train.adapter.sensorconfigurator.common.SensorConfi
 public interface TrainSensorConfiguratorController {
 	public void configureSensor(HashMap<SensorConfigurationOption, Object> properties, PublisherType type);
 	public void configureSensor(SensorConfigurationOption property, Object value, PublisherType type);
+	public long getPublish(PublisherType type);
+	public long getDefaultPublishRate(PublisherType type);
 
 }

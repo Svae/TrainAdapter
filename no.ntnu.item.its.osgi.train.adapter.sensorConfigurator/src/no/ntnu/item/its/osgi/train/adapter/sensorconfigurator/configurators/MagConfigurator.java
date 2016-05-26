@@ -71,6 +71,16 @@ public class MagConfigurator implements SensorConfigurator{
 		magTracker.getService().setPublishRate(rate);
 		
 	}
+
+	@Override
+	public long getPublishRate() {
+		return 0;
+	}
+
+	@Override
+	public long getDefaultPublishRate() {
+		return 0;
+	}
 	
 	
 

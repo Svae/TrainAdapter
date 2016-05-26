@@ -16,11 +16,16 @@ public class Train extends Block {
 	}
 
 	public int convertSpeed(double speed) {
+		logger.info(""+System.currentTimeMillis());
 		return (int) speed;
 	}
 
 	public void logSpeed(int speed) {
 		logger.info("Train speed change");
+	}
+
+	public void stop() {
+		logger.info("Stopping train");
 	}
 
 }

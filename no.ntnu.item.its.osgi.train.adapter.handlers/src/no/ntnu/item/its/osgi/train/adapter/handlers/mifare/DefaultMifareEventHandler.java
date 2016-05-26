@@ -1,10 +1,12 @@
 package no.ntnu.item.its.osgi.train.adapter.handlers.mifare;
 
 import org.osgi.service.event.Event;
+import org.osgi.service.log.LogService;
 
 import no.ntnu.item.ites.osgi.train.adapter.handlers.common.interfaces.EventReceiver;
 import no.ntnu.item.ites.osgi.train.adapter.handlers.common.interfaces.SensorHandler;
 import no.ntnu.item.its.osgi.common.interfaces.MifareControllerService;
+import no.ntnu.item.its.osgi.train.adapter.handlers.HandlersActivator;
 import no.ntnu.item.its.osgi.train.adapter.handlers.common.readings.NFCReading;
 
 public class DefaultMifareEventHandler implements SensorHandler{
@@ -17,8 +19,8 @@ public class DefaultMifareEventHandler implements SensorHandler{
 
 	@Override
 	public void handleEvent(Event e) {
-		System.out.println("MiFare event");
-		System.out.println("Value: " + (String)e.getProperty(MifareControllerService.LOC_ID_KEY));
-		receiver.sendNFCEvent(new NFCReading((String)e.getProperty(MifareControllerService.LOC_ID_KEY)));
+		String id = (String)e.getProperty(MifareControllerService.LOC_ID_KEY);
+		HandlersActivator.getLogger().log(LogService.LOG_DEBUG, String.format("[%s] %d %s", this.getClass().getSimpleName(), System.currentTimeMillis(),id));
+		receiver.sendNFCEvent(new NFCReading(id));
 	}
 }

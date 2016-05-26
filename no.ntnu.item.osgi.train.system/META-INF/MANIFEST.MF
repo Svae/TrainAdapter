@@ -10,6 +10,7 @@ Import-Package: no.ntnu.item.arctis.runtime,
  no.ntnu.item.its.osgi.common.interfaces,
  no.ntnu.item.its.osgi.train.adapter.handlers.common.readings,
  no.ntnu.item.its.osgi.train.adapter.trainstates.interfaces,
+ no.ntnu.trainamqpservice.common,
  org.osgi.framework,
  org.osgi.util.tracker;version="1.5.1",
  org.slf4j

@@ -12,7 +12,7 @@ public class StateActivator implements BundleActivator {
 
 	private static BundleContext context;
 	private ServiceRegistration<TrainStateController> reg;
-	protected static ServiceTracker<LogService, Object> logServiceTracker;
+	private static ServiceTracker<LogService, LogService> logServiceTracker;
 
 	
 	static BundleContext getContext() {
@@ -38,6 +38,10 @@ public class StateActivator implements BundleActivator {
 		logServiceTracker.close();
 		reg.unregister();
 		StateActivator.context = null;
+	}
+	
+	public static LogService getLogger(){
+		return logServiceTracker.getService();
 	}
 
 }

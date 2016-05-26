@@ -6,10 +6,12 @@ import org.osgi.framework.BundleContext;
 import org.osgi.framework.Constants;
 import org.osgi.framework.Filter;
 import org.osgi.framework.InvalidSyntaxException;
+import org.osgi.service.log.LogService;
 import org.osgi.util.tracker.ServiceTracker;
 
 import no.ntnu.item.its.osgi.common.enums.PublisherType;
 import no.ntnu.item.its.osgi.common.interfaces.PublisherService;
+import no.ntnu.item.its.osgi.train.adapter.sensorconfigurator.ConfiguratorActivator;
 import no.ntnu.item.its.osgi.train.adapter.sensorconfigurator.common.SensorConfigurationOption;
 
 public class ColorConfigurator implements SensorConfigurator {
@@ -34,6 +36,7 @@ public class ColorConfigurator implements SensorConfigurator {
 	@Override
 	public void configure(SensorConfigurationOption property, Object value) {
 		if(colorTracker.getService() == null) return;
+		ConfiguratorActivator.getLogger().log(LogService.LOG_DEBUG, "[" + this.getClass().getSimpleName() + "] " + System.currentTimeMillis());
 		switch (property) {
 		case PUBLISHRATE:
 			if(!(value instanceof Long)) return;
@@ -70,21 +73,23 @@ public class ColorConfigurator implements SensorConfigurator {
 	}
 	
 	private void startBundle(){
-//		try {
-//			FrameworkUtil.getBundle(ColorPubActivator.class).start();
-//		} catch (BundleException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}
+
 	}
 	
 	private void stopBundle(){
-//		try {
-//			FrameworkUtil.getBundle(ColorPubActivator.class).stop();
-//		} catch (BundleException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}
+
+	}
+
+	@Override
+	public long getPublishRate() {
+		// TODO Auto-generated method stub
+		return colorTracker.getService().getPublishRate();
+	}
+
+	@Override
+	public long getDefaultPublishRate() {
+		// TODO Auto-generated method stub
+		return colorTracker.getService().getDefaultPublishRate();
 	}
 
 	

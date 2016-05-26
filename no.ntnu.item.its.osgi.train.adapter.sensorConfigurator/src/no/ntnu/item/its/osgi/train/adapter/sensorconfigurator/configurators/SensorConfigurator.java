@@ -8,5 +8,7 @@ public interface SensorConfigurator {
 	
 	public void configure(HashMap<SensorConfigurationOption, Object> properties);
 	public void configure(SensorConfigurationOption property, Object value);
+	public long getPublishRate();
+	public long getDefaultPublishRate();
 
 }

@@ -15,6 +15,7 @@ import org.osgi.framework.ServiceRegistration;
 import org.osgi.service.event.EventConstants;
 import org.osgi.service.event.EventHandler;
 import org.osgi.util.tracker.ServiceTracker;
+import org.osgi.util.tracker.ServiceTrackerCustomizer;
 
 import no.ntnu.item.arctis.runtime.Block;
 import no.ntnu.item.ites.osgi.train.adapter.handlers.common.interfaces.EventReceiver;
@@ -43,59 +44,20 @@ public class SensorController extends Block implements EventReceiver {
 	private final String tempEvent = "TEMPERATUREEVENT";
 	
 	private final String eventHandlerName = EventHandler.class.getName();
-	private final String eventHandlerCtrFilter = "(objectclass=" + SensorHandlerController.class.getName() + ")";
 	private ServiceTracker<SensorHandlerController, SensorHandlerController> eventHandlerCtrTracker;
-	private ServiceListener eventHandlerListener;
 	private HashMap<PublisherType, ServiceRegistration> registrations;
 	public BundleContext context;
 	
 	public void init() {
 		registrations = new HashMap<PublisherType, ServiceRegistration>();
-		eventHandlerCtrTracker = new ServiceTracker<>(context, SensorHandlerController.class.getName(), null);
+		eventHandlerCtrTracker = new ServiceTracker<>(context, SensorHandlerController.class.getName(), new EventHandlerTrackerCustomizer());
 		eventHandlerCtrTracker.open();
-		eventHandlerListener = new ServiceListener() {
-			
-			@Override
-			public void serviceChanged(ServiceEvent ev) {
-				switch (ev.getType()) {
-				case ServiceEvent.REGISTERED:
-					updateSensorHandlers();
-					break;
-				case ServiceEvent.MODIFIED:
-					updateSensorHandlers();
-					break;
-				default:
-					break;
-				}
-			}
-		};
-		try {
-			context.addServiceListener(eventHandlerListener, eventHandlerCtrFilter);
-		} catch (InvalidSyntaxException e) {
-			e.printStackTrace();
-		}
-		
-		getRegisteredPublishers();
-	}
-	
-	
-	
-	private void getRegisteredPublishers() {
-		try {
-			if(context.getServiceReferences(PublisherService.class, null).isEmpty()) return;
-			ArrayList<ServiceReference<PublisherService>> refs = (ArrayList<ServiceReference<PublisherService>>) context.getServiceReferences(PublisherService.class, null);
-			logger.info(refs.size() + " publisher registerd with the framework");
-			refs.forEach(ref -> registerSensorHandler((PublisherType)ref.getProperty(PublisherType.class.getSimpleName())));
-		} catch (InvalidSyntaxException e) {
-			e.printStackTrace();
-		}
 		
 	}
 
 
-
-	public void registerSensor(ServiceEvent ev){
-		PublisherType type = (PublisherType) ev.getServiceReference().getProperty(PublisherType.class.getSimpleName());
+	public void registerSensor(ServiceReference ev){
+		PublisherType type = (PublisherType) ev.getProperty(PublisherType.class.getSimpleName());
 		if(type == null){
 			logger.info("Sensor type property is not set");
 			return;
@@ -137,8 +99,8 @@ public class SensorController extends Block implements EventReceiver {
 	
 	
 	
-	public void unregisterSensor(ServiceEvent ev){
-		PublisherType type = (PublisherType) ev.getServiceReference().getProperty(PublisherType.class.getSimpleName());
+	public void unregisterSensor(ServiceReference ev){
+		PublisherType type = (PublisherType) ev.getProperty(PublisherType.class.getSimpleName());
 		unregisterSensorHandler(type);
 	}
 	
@@ -161,7 +123,7 @@ public class SensorController extends Block implements EventReceiver {
 		logger.info("Sensor handlers has been updated");
 	}
 	
-	public void modifiedSensor(ServiceEvent ev) {
+	public void modifiedSensor(ServiceReference ev) {
 		registerSensor(ev);
 		sendToBlock(sensorStatusEvent, ev);
 	}
@@ -205,19 +167,33 @@ public class SensorController extends Block implements EventReceiver {
 		sendToBlock(tempEvent, temp);
 	}
 	
-	
-
-
 	public void stop() {
-		for (ServiceRegistration reg : registrations.values()) {
-			reg.unregister();
-		}
+		registrations.values().forEach(reg -> reg.unregister());
 		logger.info("Stopped Sensor Controller");
 	}
 	
 	private SensorHandlerController getHandlerController(){
 		if(eventHandlerCtrTracker.getService() == null) logger.warn("Can not find EventHandlerController");
-		return (SensorHandlerController)eventHandlerCtrTracker.getService();
+		return eventHandlerCtrTracker.getService();
 	}
 
+	private class EventHandlerTrackerCustomizer implements ServiceTrackerCustomizer<SensorHandlerController, SensorHandlerController>{
+
+		@Override
+		public SensorHandlerController addingService(ServiceReference<SensorHandlerController> ev) {
+			if(!registrations.isEmpty()) updateSensorHandlers();
+			return (SensorHandlerController) context.getService(ev);
+		}
+
+		@Override
+		public void modifiedService(ServiceReference<SensorHandlerController> arg0, SensorHandlerController arg1) {
+			updateSensorHandlers();
+		}
+
+		@Override
+		public void removedService(ServiceReference<SensorHandlerController> arg0, SensorHandlerController arg1) {			
+		}
+		
+	}
+	
 }

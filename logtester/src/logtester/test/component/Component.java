@@ -49,7 +49,7 @@ public class Component extends Block {
 
 			@Override
 			public Void apply(AMQPMessage t) {
-				String msg = new String(t.getBody());
+				String msg = new String(t.getRawBody());
 				sendToBlock("MSG", msg);
 				return null;
 			}
@@ -62,7 +62,7 @@ public class Component extends Block {
 
 			@Override
 			public Void apply(AMQPMessage t) {
-				String msg = new String(t.getBody());
+				String msg = new String(t.getRawBody());
 				msg += " new function";
 				sendToBlock("MSG", msg);
 				return null;

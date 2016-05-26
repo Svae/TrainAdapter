@@ -3,8 +3,10 @@ package no.ntnu.item.its.osgi.train.adapter.trainstates;
 import org.osgi.service.log.LogService;
 
 import no.ntnu.item.its.osgi.train.adapter.trainstates.impl.City;
+import no.ntnu.item.its.osgi.train.adapter.trainstates.impl.ColorAndNFCTest;
+import no.ntnu.item.its.osgi.train.adapter.trainstates.impl.ColorTest;
 import no.ntnu.item.its.osgi.train.adapter.trainstates.impl.Innercity;
-import no.ntnu.item.its.osgi.train.adapter.trainstates.impl.LocalTest;
+import no.ntnu.item.its.osgi.train.adapter.trainstates.impl.NFCTest;
 import no.ntnu.item.its.osgi.train.adapter.trainstates.impl.Running;
 import no.ntnu.item.its.osgi.train.adapter.trainstates.impl.Stopped;
 import no.ntnu.item.its.osgi.train.adapter.trainstates.interfaces.TrainContext;
@@ -25,9 +27,9 @@ public class StateController implements TrainStateController{
 		case RUNNINGINNERCITY:
 			return new Innercity(train);
 		case TEST:
-			return new LocalTest(train);
+			return new NFCTest(train);
 		default:
-			((LogService)StateActivator.logServiceTracker.getService()).log(LogService.LOG_WARNING, "Could not find train state " + state);
+			StateActivator.getLogger().log(LogService.LOG_WARNING, "Could not find train state " + state);
 			break;
 		}
 		return null;

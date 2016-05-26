@@ -32,7 +32,7 @@ public class MotorController extends Block {
 	}
 	
 	public void stopTrain(){
-		getController().send(MotorCommand.STOP);
+		getController().send(MotorCommand.FORWARD, 0);
 	}
 	
 	private ActuatorControllerService getController(){

@@ -10,6 +10,7 @@ public interface TrainContext {
 
 	public void setTrainState(TrainStates state);
 	public TrainStates getCurrentTrainState();
+	public void stopTrain();
 	public void sendSpeedRestriction(SpeedRestrictionLevel level);
 	public double getSpeed();
 	public TrainRestrictionsChecker getTrainRestrictionChecker();
