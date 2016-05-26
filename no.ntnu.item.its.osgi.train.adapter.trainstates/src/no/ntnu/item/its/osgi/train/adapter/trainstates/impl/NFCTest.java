@@ -33,10 +33,10 @@ public class NFCTest implements TrainState{
 		
 		if(color.getReading() == SleeperColor.BLUE){
 			StateActivator.getLogger().log(LogService.LOG_INFO, String.format("[%s] %d %s", this.getClass().getSimpleName(), System.currentTimeMillis(), color.getReading()));
-			train.getSensorConfigurator().configureSensor(SensorConfigurationOption.READ, 0, PublisherType.BEACON);
+			//train.getSensorConfigurator().configureSensor(SensorConfigurationOption.READ, 0, PublisherType.BEACON);
 		}
 		if(color.getReading() == SleeperColor.GREEN){
-			train.stopTrain();
+			//train.stopTrain();
 		}
 		
 	}

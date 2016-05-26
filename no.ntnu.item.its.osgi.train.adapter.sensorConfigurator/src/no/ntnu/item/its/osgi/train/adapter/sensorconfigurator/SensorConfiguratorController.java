@@ -5,6 +5,7 @@ import java.util.HashMap;
 import org.osgi.framework.BundleContext;
 
 import no.ntnu.item.its.osgi.common.enums.PublisherType;
+import no.ntnu.item.its.osgi.common.enums.Status;
 import no.ntnu.item.its.osgi.common.interfaces.PublisherService;
 import no.ntnu.item.its.osgi.train.adapter.sensorconfigurator.common.SensorConfigurationOption;
 import no.ntnu.item.its.osgi.train.adapter.sensorconfigurator.configurators.ColorConfigurator;
@@ -49,12 +50,17 @@ public class SensorConfiguratorController implements TrainSensorConfiguratorCont
 			}
 	}
 	@Override
-	public long getPublish(PublisherType type) {
+	public long getPublishRate(PublisherType type) {
 		return getConfigurator(type).getPublishRate();
 	}
 
 	@Override
 	public long getDefaultPublishRate(PublisherType type) {
 		return getConfigurator(type).getDefaultPublishRate();
+	}
+
+	@Override
+	public Status getPublisherStatus(PublisherType type) {
+		return getConfigurator(type).getPublisherStatus();
 	}
 }

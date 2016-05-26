@@ -49,15 +49,14 @@ public class AMQPService implements TrainAMQPService {
 		return createNewFactory(properties);
 	}
 
-	public ConnectionFactory createNewFactory(AMQPProperties properties) throws IOException, TimeoutException {
+	public ConnectionFactory createNewFactory(AMQPProperties properties){
 
 		factory = new ConnectionFactory();
 		factory.setHost(properties.getHostname());
 		factory.setPort(properties.getPort());
 		factory.setUsername(properties.getUsername());
-		factory.setPassword(properties.getPassword());
-		getLogger().log(LogService.LOG_INFO,
-				String.format("Connection made to %s:%d", factory.getHost(), factory.getPort()));
+		factory.setPassword(properties.getPassword());getLogger().log(LogService.LOG_INFO,
+				String.format("Factory set up to connect to %s:%d", factory.getHost(), factory.getPort()));
 		return factory;
 	}
 

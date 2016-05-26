@@ -8,4 +8,10 @@ public class Innercity extends LegoTrain {
 		super(train);
 	}
 
+	@Override
+	public void dummyUpdate() {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

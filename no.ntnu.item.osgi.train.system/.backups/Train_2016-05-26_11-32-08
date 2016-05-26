@@ -231,6 +231,6 @@
   <graphics:Shape xmi:id="_EQRLsBEyEeaveqFmvwW5Ug" aux1="576 0 0 -76 " base_Element="_DoahgBEyEeaveqFmvwW5Ug"/>
   <graphics:Shape xmi:id="_ZYRV8CNWEeattcQhoN0TWw" x="828" y="306" width="199" height="55" base_Element="_ZWDIYCNWEeattcQhoN0TWw"/>
   <arctis:event xmi:id="_zraTwCNwEeattcQhoN0TWw" base_Transition="_zrZssiNwEeattcQhoN0TWw" triggers="_js44BQ1rEea364fhqzOEpg"/>
-  <graphics:Shape xmi:id="_QHBr4COJEeattcQhoN0TWw" x="630" y="450" width="199" height="55" base_Element="_QGlnACOJEeattcQhoN0TWw"/>
+  <graphics:Shape xmi:id="_QHBr4COJEeattcQhoN0TWw" x="630" y="468" width="199" height="55" base_Element="_QGlnACOJEeattcQhoN0TWw"/>
   <graphics:Shape xmi:id="_SJSekCOJEeattcQhoN0TWw" x="486" y="486" width="199" height="55" base_Element="_SI6EECOJEeattcQhoN0TWw"/>
 </xmi:XMI>

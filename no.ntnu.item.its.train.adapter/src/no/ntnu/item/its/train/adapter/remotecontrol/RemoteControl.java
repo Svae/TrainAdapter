@@ -24,7 +24,6 @@ public class RemoteControl extends Block {
 	private TrainDefaultConsumer consumer;
 	private Function<AMQPMessage, Void> function;
 	private String topic;
-	private int id;
 	private Gson gson;
 	
 	private String error = "ERROR";
@@ -37,8 +36,7 @@ public class RemoteControl extends Block {
 		amqpTracker.open();
 		gson = new Gson();
 		//For testing
-		id = 1;
-		topic = "traincommand/" + id;
+		topic = "traincommand";
 		Runnable r = new Runnable() {
 			
 			@Override
@@ -72,8 +70,9 @@ public class RemoteControl extends Block {
 			@Override
 			public Void apply(AMQPMessage t) {
 				String msg = decodeBody(t.getRawBody());
+				logger.debug("Received message");
 				if(msg == null) return null;
-				sendToBlock(received, gson.fromJson(msg, TrainCommand.class));
+				sendToBlock(received, (TrainCommand)gson.fromJson(msg, TrainCommand.class));
 				return null;
 			}
 			

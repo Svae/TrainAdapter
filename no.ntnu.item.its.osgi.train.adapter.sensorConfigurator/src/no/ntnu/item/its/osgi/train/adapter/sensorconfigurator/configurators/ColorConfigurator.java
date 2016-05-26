@@ -3,13 +3,13 @@ package no.ntnu.item.its.osgi.train.adapter.sensorconfigurator.configurators;
 import java.util.HashMap;
 
 import org.osgi.framework.BundleContext;
-import org.osgi.framework.Constants;
 import org.osgi.framework.Filter;
 import org.osgi.framework.InvalidSyntaxException;
 import org.osgi.service.log.LogService;
 import org.osgi.util.tracker.ServiceTracker;
 
 import no.ntnu.item.its.osgi.common.enums.PublisherType;
+import no.ntnu.item.its.osgi.common.enums.Status;
 import no.ntnu.item.its.osgi.common.interfaces.PublisherService;
 import no.ntnu.item.its.osgi.train.adapter.sensorconfigurator.ConfiguratorActivator;
 import no.ntnu.item.its.osgi.train.adapter.sensorconfigurator.common.SensorConfigurationOption;
@@ -40,7 +40,6 @@ public class ColorConfigurator implements SensorConfigurator {
 		switch (property) {
 		case PUBLISHRATE:
 			if(!(value instanceof Long)) return;
-				//TODO: ADD LOGGING
 			changePublishRate((long) value);
 			break;
 		case STOP:
@@ -72,13 +71,6 @@ public class ColorConfigurator implements SensorConfigurator {
 		
 	}
 	
-	private void startBundle(){
-
-	}
-	
-	private void stopBundle(){
-
-	}
 
 	@Override
 	public long getPublishRate() {
@@ -92,7 +84,10 @@ public class ColorConfigurator implements SensorConfigurator {
 		return colorTracker.getService().getDefaultPublishRate();
 	}
 
-	
+	@Override
+	public Status getPublisherStatus() {
+		return colorTracker.getService().getStatus();
+	}
 
 	
 	

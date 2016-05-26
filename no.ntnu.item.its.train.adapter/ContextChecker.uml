@@ -94,6 +94,7 @@
       <ownedOperation xmi:id="_16de4CNoEeattcQhoN0TWw" name="handleMessage"/>
       <ownedOperation xmi:id="_b56U0CNtEeattcQhoN0TWw" name="handleSendError"/>
       <ownedOperation xmi:id="_8OXBsCNvEeattcQhoN0TWw" name="sendMessage"/>
+      <ownedOperation xmi:id="_Lk8AwCOJEeattcQhoN0TWw" name="getSpeedRestrictionLevel"/>
       <ownedParameter xmi:id="_CXrVMOxNEeWRPsrxj_5csA" name="init"/>
       <ownedParameter xmi:id="_2PiMwOxOEeWRPsrxj_5csA" name="colorEvent" type="_tq35UAcDEeaoX9Rju4v9YQ" isStream="true"/>
       <ownedParameter xmi:id="_E5aAMOxPEeWRPsrxj_5csA" name="speedRestriction" type="_DIwJMPaHEeWeAbkntfzL5A" direction="out" isStream="true"/>

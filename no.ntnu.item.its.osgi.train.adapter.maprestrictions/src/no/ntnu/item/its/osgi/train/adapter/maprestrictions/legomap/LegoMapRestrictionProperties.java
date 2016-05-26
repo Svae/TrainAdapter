@@ -6,11 +6,11 @@ public final class LegoMapRestrictionProperties {
 
 	private LegoMapRestrictionProperties(){};
 	
-	public static final SpeedRestrictionLevel SPEEDRED = SpeedRestrictionLevel.INNERCITY;
-	public static final SpeedRestrictionLevel SPEEDGREEN = SpeedRestrictionLevel.NORMAL;
-	public static final SpeedRestrictionLevel SPEEDYELLOW = SpeedRestrictionLevel.CITY;
-	public static final SpeedRestrictionLevel SPEEDBLUE = SpeedRestrictionLevel.NORMAL;
+	public static final String[] NORMAL = {"99999991", "99999990"};
+	public static final String[] CITY = {"99999992", "99999994", "99999989"};
+	public static final String[] INNERCITY = {"99999994"};
 	
+
 	
 	
 }

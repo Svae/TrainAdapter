@@ -7,6 +7,12 @@ public class City extends LegoTrain{
 	public City(TrainContext train) {
 		super(train);
 	}
+
+	@Override
+	public void dummyUpdate() {
+		// TODO Auto-generated method stub
+		
+	}
 	
 	
 

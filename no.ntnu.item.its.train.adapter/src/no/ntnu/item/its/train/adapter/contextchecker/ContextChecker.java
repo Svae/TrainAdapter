@@ -50,8 +50,7 @@ public class ContextChecker extends Block implements TrainContext {
 		trainInfo = new TrainInfo();
 		setUpTrackers();
 		//Test set up
-		//trainInfo.setSpeed(getTrainRestrictionChecker().getSpeedRestriction(SpeedRestrictionLevel.NORMAL));
-		setTrainState(TrainStates.TEST);
+		setTrainState(TrainStates.RUNNING);
 	}
 	
 	private void setUpTrackers(){
@@ -78,6 +77,7 @@ public class ContextChecker extends Block implements TrainContext {
 		double speed = getTrainRestrictionChecker().getSpeedRestriction(level);
 		logger.info("" + System.currentTimeMillis());
 		trainInfo.setSpeed(speed);
+		trainInfo.setSpeedRestrictionLevel(level);
 		sendToBlock(speedRestriction, speed);
 	}
 
@@ -179,7 +179,7 @@ public class ContextChecker extends Block implements TrainContext {
 		double newSpeed = trainInfo.getSpeed() + getTrainRestrictionChecker().getSpeedIncreaseInTurne();
 		logger.info("Train in turn increasing speed to " + newSpeed);
 		trainInfo.setSpeed(newSpeed);
-		sendToBlock(speedRestriction, newSpeed );
+		sendToBlock(speedRestriction, newSpeed);
 	}
 
 	@Override
@@ -205,7 +205,7 @@ public class ContextChecker extends Block implements TrainContext {
 	public void handleMessage(TrainCommand message) {
 		switch (message.getCmd()) {
 			case START:
-				sendSpeedRestriction((SpeedRestrictionLevel)message.getValue());
+				sendSpeedRestriction(SpeedRestrictionLevel.valueOf((String)message.getValue()));
 				break;
 			case STOP:
 				stopTrain();
@@ -229,6 +229,7 @@ public class ContextChecker extends Block implements TrainContext {
 				handleTemperatureEvent(new TemperatureReading((double) message.getValue()));
 				break;
 			default:
+				logger.info("Unknow train command");
 				break;
 		}
 		
@@ -240,6 +241,22 @@ public class ContextChecker extends Block implements TrainContext {
 	
 	public void handleSendError(String error) {
 		logger.error(error);
+	}
+
+	@Override
+	public SpeedRestrictionLevel getSpeedRestrictionLevel() {
+		return trainInfo.getSpeedRestrictionLevel();
+	}
+
+	@Override
+	public String getCurrentLocationID() {
+		// TODO Auto-generated method stub
+		return trainInfo.getCurrentLocationID();
+	}
+
+	@Override
+	public void setCurrentLocationID(String locationID) {
+		trainInfo.setCurrentLocationID(locationID);
 	}
 	
 	

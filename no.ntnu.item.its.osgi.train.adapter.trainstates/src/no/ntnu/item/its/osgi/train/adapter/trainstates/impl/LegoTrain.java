@@ -1,16 +1,19 @@
 package no.ntnu.item.its.osgi.train.adapter.trainstates.impl;
 
 import org.osgi.framework.ServiceEvent;
+import org.osgi.service.log.LogService;
 
 import no.ntnu.item.its.osgi.common.enums.PublisherType;
+import no.ntnu.item.its.osgi.common.enums.Status;
 import no.ntnu.item.its.osgi.train.adapter.handlers.common.enums.SleeperColor;
 import no.ntnu.item.its.osgi.train.adapter.handlers.common.readings.AccelerometerReading;
 import no.ntnu.item.its.osgi.train.adapter.handlers.common.readings.ColorReading;
 import no.ntnu.item.its.osgi.train.adapter.handlers.common.readings.MagnetometerReading;
 import no.ntnu.item.its.osgi.train.adapter.handlers.common.readings.NFCReading;
 import no.ntnu.item.its.osgi.train.adapter.handlers.common.readings.TemperatureReading;
+import no.ntnu.item.its.osgi.train.adapter.maprestrictions.common.MapZone;
 import no.ntnu.item.its.osgi.train.adapter.sensorconfigurator.common.SensorConfigurationOption;
-import no.ntnu.item.its.osgi.train.adapter.trainrestrictions.common.SpeedRestrictionLevel;
+import no.ntnu.item.its.osgi.train.adapter.trainstates.StateActivator;
 import no.ntnu.item.its.osgi.train.adapter.trainstates.interfaces.TrainContext;
 import no.ntnu.item.its.osgi.train.adapter.trainstates.interfaces.TrainState;
 import no.ntnu.item.its.osgi.train.adapter.trainstates.interfaces.TrainStateController.TrainStates;
@@ -30,35 +33,35 @@ public abstract class LegoTrain implements TrainState{
 	
 	@Override
 	public void colorUpdate(ColorReading reading){
-		TrainStates newState = null;
-		SpeedRestrictionLevel level = null;
+		SleeperColor color = reading.getReading();
+		if(color == SleeperColor.UNKNOWN || color == SleeperColor.GRAY) return;
+		StateActivator.getLogger().log(LogService.LOG_DEBUG, String.format("[%s] %s", this.getClass().getSimpleName(), color));
 		switch (reading.getReading()) {
 			case GREEN:
-				newState = TrainStates.RUNNING;
-				level = SpeedRestrictionLevel.NORMAL;
 				break;
 			case BLUE:
-				newState = TrainStates.RUNNINGCITY;
-				level = SpeedRestrictionLevel.CITY;
+				train.getSensorConfigurator().configureSensor(SensorConfigurationOption.READ, 0, PublisherType.BEACON);
 				break;
 			case RED:
-				train.getSensorConfigurator().configureSensor(SensorConfigurationOption.READ, 0, PublisherType.BEACON);
-				return;
+				Status sensorstatus = train.getSensorConfigurator().getPublisherStatus(PublisherType.MAG);
+				if(sensorstatus == Status.STOPPED) reconfigurePublisherRate(PublisherType.MAG, train.getSpeed());
+				else stopPublisher(PublisherType.MAG);
 			case YELLOW:
-				return;
+				if(train.isInTurn()) train.decreaseSpeedForTurn();
+				else train.increaseSpeedForTurn();
+				break;
 			default:
 				return;
 		}
-		if(train.getCurrentTrainState() == newState) return;
-		train.setTrainState(newState);
-		reconfigureSensors(PublisherType.MAG, level);
-		train.sendSpeedRestriction(level);
 		
 	}
 	
-	protected void reconfigureSensors(PublisherType type, SpeedRestrictionLevel level){
-		
-		train.getSensorConfigurator().configureSensor(SensorConfigurationOption.PUBLISHRATE, calculateMagPullRate(level), type);
+	protected void reconfigurePublisherRate(PublisherType type, double speed){
+		if(type == PublisherType.MAG) train.getSensorConfigurator().configureSensor(SensorConfigurationOption.PUBLISHRATE, calculateMagPullRate(speed), type);
+	}
+	
+	protected void stopPublisher(PublisherType type){
+		train.getSensorConfigurator().configureSensor(SensorConfigurationOption.STOP, null, type);
 	}
 
 	@Override
@@ -67,10 +70,27 @@ public abstract class LegoTrain implements TrainState{
 	}
 
 	@Override
+	public void nfcUpdate(NFCReading hex) {
+		MapZone zone;
+		if(hex.getReading().equals("00000000")){
+			if(train.getCurrentLocationID() == "00000000"){
+				train.stopTrain();
+				return;
+			}
+			zone = train.getMapRestrictions().getNextMapZone(train.getCurrentLocationID(), true);
+		}
+		else zone = train.getMapRestrictions().getMapZoneFromLocation(hex.getReading());
+		train.setCurrentLocationID(hex.getReading());
+		if(zone == MapZone.CITY) train.setTrainState(TrainStates.RUNNINGCITY);
+		if(zone == MapZone.INNERCITY) train.setTrainState(TrainStates.RUNNINGINNERCITY);
+		if(zone == MapZone.NORMAL) train.setTrainState(TrainStates.RUNNING);
+	}
+	
+	@Override
 	public void magnetometerUpdate(MagnetometerReading reading) {
 		if(train.getSpeed() == 0) return;
-		if(!train.isInTurn() && reading.isTurning()) train.increaseSpeedForTurn();
-		if(train.isInTurn() && !reading.isTurning()) train.decreaseSpeedForTurn();
+		StateActivator.getLogger().log(LogService.LOG_DEBUG, String.format("[%s] %s", this.getClass().getSimpleName(), reading.isTurning() ? "Turning" : "Not turning"));
+
 	}
 
 	@Override
@@ -79,40 +99,14 @@ public abstract class LegoTrain implements TrainState{
 		
 	}
 
-	@Override
-	public void nfcUpdate(NFCReading hex) {
-		// TODO Auto-generated method stub
-		
+
+	
+	protected long calculateColorPullRate(double speed){
+		return (long) (145 - speed);
 	}
 
-	@Override
-	public void dummyUpdate() {
-		// TODO Auto-generated method stub
-		
-	}
-	
-	protected long calculatePullRate(PublisherType type, SpeedRestrictionLevel level){
-		switch (type) {
-		case MAG:
-			return calculateMagPullRate(level);
-		case SLEEPER:
-			return calculateColorPullRate(level);
-		default:
-			break;
-		}
-		return 0;
-	}
-	
-	protected long calculateColorPullRate(SpeedRestrictionLevel level){
-		if(level == SpeedRestrictionLevel.CITY) return 50;
-		if(level == SpeedRestrictionLevel.INNERCITY) return 100;
-		return train.getTrainRestrictionChecker().getPublishRate(PublisherType.SLEEPER);
-	}
-
-	protected long calculateMagPullRate(SpeedRestrictionLevel level){
-		if(level == SpeedRestrictionLevel.CITY) return 500;
-		if(level == SpeedRestrictionLevel.INNERCITY) return 700;
-		return train.getTrainRestrictionChecker().getPublishRate(PublisherType.MAG);
+	protected long calculateMagPullRate(double speed){
+		return (long) (1000 - 5*speed);
 	}
 	
 }

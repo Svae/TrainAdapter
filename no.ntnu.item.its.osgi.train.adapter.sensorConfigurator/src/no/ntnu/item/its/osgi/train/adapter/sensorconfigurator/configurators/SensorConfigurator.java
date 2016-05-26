@@ -2,6 +2,7 @@ package no.ntnu.item.its.osgi.train.adapter.sensorconfigurator.configurators;
 
 import java.util.HashMap;
 
+import no.ntnu.item.its.osgi.common.enums.Status;
 import no.ntnu.item.its.osgi.train.adapter.sensorconfigurator.common.SensorConfigurationOption;
 
 public interface SensorConfigurator {
@@ -10,5 +11,6 @@ public interface SensorConfigurator {
 	public void configure(SensorConfigurationOption property, Object value);
 	public long getPublishRate();
 	public long getDefaultPublishRate();
+	public Status getPublisherStatus();
 
 }

@@ -8,6 +8,7 @@ Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Import-Package: no.ntnu.item.its.osgi.common.enums,
  no.ntnu.item.its.osgi.train.adapter.handlers.common.enums,
  no.ntnu.item.its.osgi.train.adapter.handlers.common.readings,
+ no.ntnu.item.its.osgi.train.adapter.maprestrictions.common,
  no.ntnu.item.its.osgi.train.adapter.maprestrictions.interfaces,
  no.ntnu.item.its.osgi.train.adapter.sensorconfigurator.common,
  no.ntnu.item.its.osgi.train.adapter.sensorconfigurator.interfaces,

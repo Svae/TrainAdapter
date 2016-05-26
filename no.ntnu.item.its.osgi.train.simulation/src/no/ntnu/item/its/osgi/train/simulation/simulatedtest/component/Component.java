@@ -9,7 +9,15 @@ public class Component extends Block {
 	}
 
 	public void logSpeed(double speed) {
-		System.out.println("Speed: " + speed);
+		logger.info("Speed: " + speed);
+	}
+
+	public void stop() {
+		logger.info("TRAIN STOP");
+	}
+
+	public void light(boolean t) {
+		logger.info(t ? "Light on" : "Light off");
 	}
 
 }

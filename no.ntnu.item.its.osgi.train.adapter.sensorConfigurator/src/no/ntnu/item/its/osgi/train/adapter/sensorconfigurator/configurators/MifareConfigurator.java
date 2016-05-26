@@ -9,6 +9,7 @@ import org.osgi.framework.InvalidSyntaxException;
 import org.osgi.util.tracker.ServiceTracker;
 
 import no.ntnu.item.its.osgi.common.enums.PublisherType;
+import no.ntnu.item.its.osgi.common.enums.Status;
 import no.ntnu.item.its.osgi.common.interfaces.PublisherService;
 import no.ntnu.item.its.osgi.train.adapter.sensorconfigurator.common.SensorConfigurationOption;
 
@@ -52,6 +53,7 @@ public class MifareConfigurator implements SensorConfigurator{
 				break;
 			case WRITE:
 				doWrite((String) value);
+				break;
 			default:
 				break;
 		}
@@ -79,5 +81,11 @@ public class MifareConfigurator implements SensorConfigurator{
 	public long getDefaultPublishRate() {
 		return beaconTracker.getService().getDefaultPublishRate();
 	}
+
+	@Override
+	public Status getPublisherStatus() {
+		return beaconTracker.getService().getStatus();
+	}
+	
 
 }

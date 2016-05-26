@@ -16,6 +16,9 @@ public class Running extends LegoTrain{
 		// TODO Auto-generated method stub
 		
 	}
+
+
+	
 	
 	
 	

@@ -12,6 +12,7 @@ public interface TrainContext {
 	public TrainStates getCurrentTrainState();
 	public void stopTrain();
 	public void sendSpeedRestriction(SpeedRestrictionLevel level);
+	public SpeedRestrictionLevel getSpeedRestrictionLevel();
 	public double getSpeed();
 	public TrainRestrictionsChecker getTrainRestrictionChecker();
 	public TrainStateController getTrainStateController();
@@ -23,5 +24,7 @@ public interface TrainContext {
 	public void decreaseSpeedForTurn();
 	public double getHeading();
 	public void setHeading(double heading);
+	public String getCurrentLocationID();
+	public void setCurrentLocationID(String locationID);
 	
 }

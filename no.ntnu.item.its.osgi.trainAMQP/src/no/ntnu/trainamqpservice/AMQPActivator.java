@@ -32,7 +32,7 @@ public class AMQPActivator implements BundleActivator {
 		logServiceTracker = new ServiceTracker<>(AMQPActivator.getContext(), LogService.class, null);
 		logServiceTracker.open();
 		reg = (ServiceRegistration<TrainAMQPService>) context.registerService(TrainAMQPService.class.getName(), new AMQPService(), null);
-		
+		sendReg = (ServiceRegistration<TrainAMQPSendService>) context.registerService(TrainAMQPSendService.class.getName(), new AMQPSendService(), null);
 	}
 
 	/*
@@ -40,7 +40,7 @@ public class AMQPActivator implements BundleActivator {
 	 * @see org.osgi.framework.BundleActivator#stop(org.osgi.framework.BundleContext)
 	 */
 	public void stop(BundleContext bundleContext) throws Exception {
-		
+		sendReg.unregister();
 		reg.unregister();
 		logServiceTracker.close();
 		AMQPActivator.context = null;

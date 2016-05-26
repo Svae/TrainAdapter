@@ -10,6 +10,7 @@ public class TrainInfo {
 	private double heading = Double.MAX_VALUE;
 	private TrainStates state;
 	private SpeedRestrictionLevel speedRestrictionLevel;
+	private String currentLocationID = "99999989";
 	
 	public double getSpeed() {
 		return speed;
@@ -36,6 +37,18 @@ public class TrainInfo {
 	
 	public void setTrainState(TrainStates state){
 		this.state = state;
+	}
+	public SpeedRestrictionLevel getSpeedRestrictionLevel() {
+		return speedRestrictionLevel;
+	}
+	public void setSpeedRestrictionLevel(SpeedRestrictionLevel speedRestrictionLevel) {
+		this.speedRestrictionLevel = speedRestrictionLevel;
+	}
+	public String getCurrentLocationID() {
+		return currentLocationID;
+	}
+	public void setCurrentLocationID(String currentLocationID) {
+		this.currentLocationID = currentLocationID;
 	}
 	
 	

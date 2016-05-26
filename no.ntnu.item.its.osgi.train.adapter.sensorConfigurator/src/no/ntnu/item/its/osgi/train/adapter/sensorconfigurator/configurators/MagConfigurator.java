@@ -9,6 +9,7 @@ import org.osgi.framework.InvalidSyntaxException;
 import org.osgi.util.tracker.ServiceTracker;
 
 import no.ntnu.item.its.osgi.common.enums.PublisherType;
+import no.ntnu.item.its.osgi.common.enums.Status;
 import no.ntnu.item.its.osgi.common.interfaces.PublisherService;
 import no.ntnu.item.its.osgi.train.adapter.sensorconfigurator.common.SensorConfigurationOption;
 
@@ -67,7 +68,6 @@ public class MagConfigurator implements SensorConfigurator{
 	}
 
 	private void changePublishRate(long rate) {
-		System.out.println("Reconfiguring the publish rate of Mag sensor to "+ rate);
 		magTracker.getService().setPublishRate(rate);
 		
 	}
@@ -82,6 +82,10 @@ public class MagConfigurator implements SensorConfigurator{
 		return 0;
 	}
 	
+	@Override
+	public Status getPublisherStatus() {
+		return magTracker.getService().getStatus();
+	}
 	
 
 }
