@@ -8,9 +8,7 @@ import java.util.concurrent.TimeoutException;
 import org.osgi.service.log.LogService;
 
 import com.rabbitmq.client.Channel;
-import com.rabbitmq.client.Connection;
 import com.rabbitmq.client.ConnectionFactory;
-import com.rabbitmq.client.Consumer;
 
 import no.ntnu.trainamqpservice.common.AMQPProperties;
 import no.ntnu.trainamqpservice.impl.AMQPChannel;

@@ -5,7 +5,6 @@ import org.osgi.framework.ServiceEvent;
 import org.osgi.util.tracker.ServiceTracker;
 
 import no.ntnu.item.arctis.runtime.Block;
-import no.ntnu.item.its.osgi.common.enums.PublisherType;
 import no.ntnu.item.its.osgi.train.adapter.handlers.common.readings.AccelerometerReading;
 import no.ntnu.item.its.osgi.train.adapter.handlers.common.readings.ColorReading;
 import no.ntnu.item.its.osgi.train.adapter.handlers.common.readings.MagnetometerReading;
@@ -75,9 +74,9 @@ public class ContextChecker extends Block implements TrainContext {
 	@Override
 	public void sendSpeedRestriction(SpeedRestrictionLevel level) {
 		double speed = getTrainRestrictionChecker().getSpeedRestriction(level);
-		logger.info("" + System.currentTimeMillis());
 		trainInfo.setSpeed(speed);
 		trainInfo.setSpeedRestrictionLevel(level);
+		logger.debug("Speedchange: " + speed);
 		sendToBlock(speedRestriction, speed);
 	}
 

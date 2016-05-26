@@ -1,18 +1,14 @@
 package no.ntnu.item.its.osgi.train.adapter.trainstates.impl;
 
-import java.util.ArrayList;
-
 import org.osgi.framework.ServiceEvent;
 import org.osgi.service.log.LogService;
 
-import no.ntnu.item.its.osgi.common.enums.PublisherType;
 import no.ntnu.item.its.osgi.train.adapter.handlers.common.enums.SleeperColor;
 import no.ntnu.item.its.osgi.train.adapter.handlers.common.readings.AccelerometerReading;
 import no.ntnu.item.its.osgi.train.adapter.handlers.common.readings.ColorReading;
 import no.ntnu.item.its.osgi.train.adapter.handlers.common.readings.MagnetometerReading;
 import no.ntnu.item.its.osgi.train.adapter.handlers.common.readings.NFCReading;
 import no.ntnu.item.its.osgi.train.adapter.handlers.common.readings.TemperatureReading;
-import no.ntnu.item.its.osgi.train.adapter.sensorconfigurator.common.SensorConfigurationOption;
 import no.ntnu.item.its.osgi.train.adapter.trainrestrictions.common.SpeedRestrictionLevel;
 import no.ntnu.item.its.osgi.train.adapter.trainstates.StateActivator;
 import no.ntnu.item.its.osgi.train.adapter.trainstates.interfaces.TrainContext;

@@ -13,7 +13,7 @@ public class DefaultTemperatureEventHandler implements SensorHandler{
 	public DefaultTemperatureEventHandler(EventReceiver receiver) { this.receiver = receiver;}
 	
 	@Override
-	public void handleEvent(Event arg0) {		
+	public void handleEvent(Event arg0) {	
 	}
 
 }

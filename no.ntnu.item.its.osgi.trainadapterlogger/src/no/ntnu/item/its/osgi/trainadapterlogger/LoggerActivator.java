@@ -1,7 +1,6 @@
 package no.ntnu.item.its.osgi.trainadapterlogger;
 
 import java.io.PrintWriter;
-import java.util.Date;
 
 import org.osgi.framework.BundleActivator;
 import org.osgi.framework.BundleContext;
@@ -32,7 +31,7 @@ public class LoggerActivator implements BundleActivator, LogListener {
 			System.out.println("Logger service is not up");
 			return;
 		}
-		writer = new PrintWriter("NFCTimes-" +System.currentTimeMillis()+ ".log");
+		writer = new PrintWriter("Finaltest-" +System.currentTimeMillis()+ ".log");
 		tracker.getService().addLogListener(this);
 	}
 
@@ -49,7 +48,8 @@ public class LoggerActivator implements BundleActivator, LogListener {
 
 	@Override
 	public void logged(LogEntry entry) {
-		writer.println(String.format("%s", entry.getMessage()));
+		if(entry.getLevel() != 4) return;
+		writer.println(String.format("%d [%s] %s", entry.getTime(), entry.getBundle().getSymbolicName(), entry.getMessage()));
 	}
 
 }

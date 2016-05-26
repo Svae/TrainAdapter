@@ -11,7 +11,6 @@ import no.ntnu.item.its.osgi.train.adapter.trainstates.interfaces.TrainContext;
 
 public class Stopped extends LegoTrain{
 
-	private TrainContext train;
 	
 	public Stopped(TrainContext train) {
 		super(train);

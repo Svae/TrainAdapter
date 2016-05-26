@@ -3,7 +3,6 @@ package no.ntnu.trainamqpservice.common;
 import java.io.IOException;
 
 import com.rabbitmq.client.AMQP;
-import com.rabbitmq.client.Channel;
 import com.rabbitmq.client.DefaultConsumer;
 import com.rabbitmq.client.Envelope;
 

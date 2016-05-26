@@ -24,15 +24,24 @@ public class MotorController extends Block {
 			logger.warn("Can not find motor controller");
 			return;
 		}
-		getController().send(MotorCommand.FORWARD, speed);
+		Runnable r = new Runnable() {
+			
+			@Override
+			public void run() {
+				getController().send(MotorCommand.FORWARD, speed);
+			}
+		};
+		runAsync(r);
+		
 	}
 	
 	public void stopMotorBlock(){
+		logger.info("Stopping motor block");
 		controllerTracker.close();
 	}
 	
 	public void stopTrain(){
-		getController().send(MotorCommand.FORWARD, 0);
+		setSpeed(0);
 	}
 	
 	private ActuatorControllerService getController(){

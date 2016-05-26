@@ -6,7 +6,6 @@ import java.util.concurrent.TimeoutException;
 
 import com.google.gson.Gson;
 import com.rabbitmq.client.Channel;
-import com.rabbitmq.client.Consumer;
 import com.rabbitmq.client.MessageProperties;
 
 import no.ntnu.trainamqpservice.common.TrainDefaultConsumer;

@@ -3,8 +3,6 @@ package no.ntnu.item.its.osgi.train.adapter.trainstates;
 import org.osgi.service.log.LogService;
 
 import no.ntnu.item.its.osgi.train.adapter.trainstates.impl.City;
-import no.ntnu.item.its.osgi.train.adapter.trainstates.impl.ColorAndNFCTest;
-import no.ntnu.item.its.osgi.train.adapter.trainstates.impl.ColorTest;
 import no.ntnu.item.its.osgi.train.adapter.trainstates.impl.Innercity;
 import no.ntnu.item.its.osgi.train.adapter.trainstates.impl.NFCTest;
 import no.ntnu.item.its.osgi.train.adapter.trainstates.impl.Running;

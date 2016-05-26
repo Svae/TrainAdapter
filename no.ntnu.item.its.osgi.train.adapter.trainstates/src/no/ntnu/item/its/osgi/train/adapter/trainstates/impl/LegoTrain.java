@@ -35,7 +35,7 @@ public abstract class LegoTrain implements TrainState{
 	public void colorUpdate(ColorReading reading){
 		SleeperColor color = reading.getReading();
 		if(color == SleeperColor.UNKNOWN || color == SleeperColor.GRAY) return;
-		StateActivator.getLogger().log(LogService.LOG_DEBUG, String.format("[%s] %s", this.getClass().getSimpleName(), color));
+		StateActivator.getLogger().log(LogService.LOG_DEBUG, String.format("Color: %s", color));
 		switch (reading.getReading()) {
 			case GREEN:
 				break;
@@ -72,6 +72,7 @@ public abstract class LegoTrain implements TrainState{
 	@Override
 	public void nfcUpdate(NFCReading hex) {
 		MapZone zone;
+		StateActivator.getLogger().log(LogService.LOG_DEBUG, String.format("LocationID: %s", hex.getReading()));
 		if(hex.getReading().equals("00000000")){
 			if(train.getCurrentLocationID() == "00000000"){
 				train.stopTrain();
@@ -89,13 +90,12 @@ public abstract class LegoTrain implements TrainState{
 	@Override
 	public void magnetometerUpdate(MagnetometerReading reading) {
 		if(train.getSpeed() == 0) return;
-		StateActivator.getLogger().log(LogService.LOG_DEBUG, String.format("[%s] %s", this.getClass().getSimpleName(), reading.isTurning() ? "Turning" : "Not turning"));
+		StateActivator.getLogger().log(LogService.LOG_DEBUG, String.format("IsTurning: %s", reading.isTurning() ? "Turning" : "Not turning"));
 
 	}
 
 	@Override
 	public void temperaturUpdate(TemperatureReading temp) {
-		// TODO Auto-generated method stub
 		
 	}
 
