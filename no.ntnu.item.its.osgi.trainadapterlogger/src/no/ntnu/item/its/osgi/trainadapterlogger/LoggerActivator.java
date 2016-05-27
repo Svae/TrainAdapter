@@ -13,7 +13,7 @@ public class LoggerActivator implements BundleActivator, LogListener {
 
 	private static BundleContext context;
 	private ServiceTracker<LogReaderService, LogReaderService> tracker;
-	private PrintWriter writer;
+	private PrintWriter nfcwriter, turnwriter, configwriter, debugwriter;
 
 	static BundleContext getContext() {
 		return context;
@@ -31,7 +31,10 @@ public class LoggerActivator implements BundleActivator, LogListener {
 			System.out.println("Logger service is not up");
 			return;
 		}
-		writer = new PrintWriter("Finaltest-" +System.currentTimeMillis()+ ".log");
+		nfcwriter = new PrintWriter("TrainNFCEvents" +System.currentTimeMillis()+ ".log");
+		turnwriter = new PrintWriter("TrainTurnEvents" +System.currentTimeMillis()+ ".log");
+		configwriter = new PrintWriter("TrainConfigEvents" +System.currentTimeMillis()+ ".log");
+		debugwriter = new PrintWriter("TrainDebugEvents" +System.currentTimeMillis()+ ".log");
 		tracker.getService().addLogListener(this);
 	}
 
@@ -42,14 +45,27 @@ public class LoggerActivator implements BundleActivator, LogListener {
 	public void stop(BundleContext bundleContext) throws Exception {
 		tracker.getService().removeLogListener(this);
 		tracker.close();
-		writer.close();
+		nfcwriter.close();
+		turnwriter.close();
+		configwriter.close();
+		debugwriter.close();
 		LoggerActivator.context = null;
 	}
 
 	@Override
 	public void logged(LogEntry entry) {
 		if(entry.getLevel() != 4) return;
-		writer.println(String.format("%d [%s] %s", entry.getTime(), entry.getBundle().getSymbolicName(), entry.getMessage()));
+		debugwriter.println(String.format("%d [%s] %s", entry.getTime(), entry.getBundle().getSymbolicName(), entry.getMessage()));
+		if(entry.getMessage().contains("YELLOW") || entry.getMessage().contains("IsTurning:") || entry.getMessage().contains("Turn:")){
+			turnwriter.println(String.format("%d [%s] %s", entry.getTime(), entry.getBundle().getSymbolicName(), entry.getMessage()));
+			return;
+		}
+		if(entry.getMessage().contains("RED") || entry.getMessage().contains("Added:") || entry.getMessage().contains("Removed:")|| entry.getMessage().contains("[DefaultMifareEventHandler]")){
+			configwriter.println(String.format("%d [%s] %s", entry.getTime(), entry.getBundle().getSymbolicName(), entry.getMessage()));
+			return;
+		}
+		nfcwriter.println(String.format("%d [%s] %s", entry.getTime(), entry.getBundle().getSymbolicName(), entry.getMessage()));
+
 	}
 
 }

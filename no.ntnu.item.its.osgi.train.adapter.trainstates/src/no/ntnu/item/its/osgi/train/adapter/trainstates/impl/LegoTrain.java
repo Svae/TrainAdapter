@@ -21,7 +21,7 @@ import no.ntnu.item.its.osgi.train.adapter.trainstates.interfaces.TrainStateCont
 public abstract class LegoTrain implements TrainState{
 
 	protected final TrainContext train;
-
+	private boolean last = false;
 	
 	public LegoTrain(TrainContext train) {
 		this.train = train;
@@ -89,7 +89,7 @@ public abstract class LegoTrain implements TrainState{
 	
 	@Override
 	public void magnetometerUpdate(MagnetometerReading reading) {
-		if(train.getSpeed() == 0) return;
+		if(last == reading.isTurning()) return;
 		StateActivator.getLogger().log(LogService.LOG_DEBUG, String.format("IsTurning: %s", reading.isTurning() ? "Turning" : "Not turning"));
 
 	}

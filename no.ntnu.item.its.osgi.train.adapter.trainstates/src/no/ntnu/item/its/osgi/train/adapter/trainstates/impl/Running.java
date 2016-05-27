@@ -1,5 +1,6 @@
 package no.ntnu.item.its.osgi.train.adapter.trainstates.impl;
 
+import no.ntnu.item.its.osgi.train.adapter.trainrestrictions.common.SpeedRestrictionLevel;
 import no.ntnu.item.its.osgi.train.adapter.trainstates.interfaces.TrainContext;
 
 public class Running extends LegoTrain{
@@ -8,6 +9,7 @@ public class Running extends LegoTrain{
 	
 	public Running(TrainContext train) {
 		super(train);
+		train.sendSpeedRestriction(SpeedRestrictionLevel.NORMAL);
 	}
 	
 
