@@ -60,7 +60,7 @@ public class LoggerActivator implements BundleActivator, LogListener {
 			turnwriter.println(String.format("%d [%s] %s", entry.getTime(), entry.getBundle().getSymbolicName(), entry.getMessage()));
 			return;
 		}
-		if(entry.getMessage().contains("RED") || entry.getMessage().contains("Added:") || entry.getMessage().contains("Removed:")|| entry.getMessage().contains("[DefaultMifareEventHandler]")){
+		if(entry.getMessage().contains("RED") || entry.getMessage().contains("Added:") || entry.getMessage().contains("Removed:")	){
 			configwriter.println(String.format("%d [%s] %s", entry.getTime(), entry.getBundle().getSymbolicName(), entry.getMessage()));
 			return;
 		}

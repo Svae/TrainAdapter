@@ -32,7 +32,7 @@ public class Activator implements BundleActivator {
 	}
 
 	private Object getMessage() {
-		return new TrainCommand(TrainCommandType.STOP);
+		return new TrainCommand(TrainCommandType.START, SpeedRestrictionLevel.INNERCITY);
 	}
 
 	/*

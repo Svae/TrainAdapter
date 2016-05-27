@@ -110,7 +110,7 @@ public class SensorController extends Block implements EventReceiver {
 		if(reg == null) return;
 		reg.unregister();
 		registrations.remove(reg);
-		logger.debug("Unregistered handler for sensor of type: " + type);
+		logger.info("Unregistered handler for sensor of type: " + type);
 	}
 	
 	public void updateSensorHandlers(){

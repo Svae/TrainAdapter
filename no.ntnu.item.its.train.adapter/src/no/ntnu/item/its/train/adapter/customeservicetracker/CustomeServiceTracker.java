@@ -45,20 +45,20 @@ public class CustomeServiceTracker extends Block {
 	private class CustomeServiceTrackerCustomizer implements ServiceTrackerCustomizer<Object, Object> {
 		@Override
 		public Object addingService(ServiceReference<Object> ev) {
-			logger.debug("New service registered");
+			logger.info("New service registered");
 			sendToBlock(registrationEvent, ev);
 			return ev;
 		}
 
 		@Override
 		public void modifiedService(ServiceReference<Object> ev, Object arg1) {
-			logger.debug("Service unregistered");
+			logger.info("Service unregistered");
 			sendToBlock(modifiedEvent, ev);
 		}
 
 		@Override
 		public void removedService(ServiceReference<Object> ev, Object arg1) {
-			logger.debug("Service unregistered");
+			logger.info("Service unregistered");
 			sendToBlock(unregistrationEvent, ev);
 		}
 	}

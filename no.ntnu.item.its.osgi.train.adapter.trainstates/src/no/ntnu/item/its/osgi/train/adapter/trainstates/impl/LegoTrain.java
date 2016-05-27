@@ -38,6 +38,7 @@ public abstract class LegoTrain implements TrainState{
 		StateActivator.getLogger().log(LogService.LOG_DEBUG, String.format("Color: %s", color));
 		switch (reading.getReading()) {
 			case GREEN:
+				train.stopTrain();
 				break;
 			case BLUE:
 				train.getSensorConfigurator().configureSensor(SensorConfigurationOption.READ, 0, PublisherType.BEACON);
@@ -90,6 +91,7 @@ public abstract class LegoTrain implements TrainState{
 	@Override
 	public void magnetometerUpdate(MagnetometerReading reading) {
 		if(last == reading.isTurning()) return;
+		last = reading.isTurning();
 		StateActivator.getLogger().log(LogService.LOG_DEBUG, String.format("IsTurning: %s", reading.isTurning() ? "Turning" : "Not turning"));
 
 	}

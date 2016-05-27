@@ -50,9 +50,9 @@ public class ContextChecker extends Block implements TrainContext {
 		setUpTrackers();
 		//Test set up
 		trainInfo.setInTurn(false);
-		trainInfo.setSpeedRestrictionLevel(SpeedRestrictionLevel.NORMAL);
-		trainInfo.setSpeed(getTrainRestrictionChecker().getSpeedRestriction(SpeedRestrictionLevel.NORMAL));
-		setTrainState(TrainStates.RUNNING);
+		trainInfo.setSpeedRestrictionLevel(SpeedRestrictionLevel.INNERCITY);
+		trainInfo.setSpeed(getTrainRestrictionChecker().getSpeedRestriction(SpeedRestrictionLevel.INNERCITY));
+		setTrainState(TrainStates.RUNNINGINNERCITY);
 	}
 	
 	private void setUpTrackers(){
