@@ -8,10 +8,10 @@ public final class LegoTrainRestrictionProperties {
 	// Restrict instantiation
 	private LegoTrainRestrictionProperties(){}
 	
-	public static final double SPEEDNORMAL = 120;
-	public static final double SPEEDCITY = 110;
-	public static final double SPEEDINNERCITY = 100;
-	public static final double SPEEDLOW = 90;
+	public static final double SPEEDNORMAL = 100;
+	public static final double SPEEDCITY = 90;
+	public static final double SPEEDINNERCITY = 80;
+	public static final double SPEEDLOW = 70;
 	public static final double SPEEDINCREASETURN = 10;
 	
 	public static final int TEMPERATUREOKMIN = 5;

@@ -23,7 +23,7 @@ public class DefaultColorEventHandler implements SensorHandler{
 	public void handleEvent(Event e) {
 		if(e.getProperty(ColorControllerService.COLOR_KEY) == null || !(e.getProperty(ColorControllerService.COLOR_KEY) instanceof EColor)) return;
 		EColor ec = (EColor)e.getProperty(ColorControllerService.COLOR_KEY);
-		if(ec  != EColor.BLUE || ec != EColor.UNKNOWN) HandlersActivator.getLogger().log(LogService.LOG_DEBUG, String.format("[%s] %s", this.getClass().getSimpleName(), ec));
+		if(ec  != EColor.BLUE && ec != EColor.UNKNOWN) HandlersActivator.getLogger().log(LogService.LOG_DEBUG, String.format("[%s] %s", this.getClass().getSimpleName(), ec));
 		ColorReading cr = new ColorReading(convert(ec));
 		receiver.sendColorEvent(cr);
 	}

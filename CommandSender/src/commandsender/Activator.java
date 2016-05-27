@@ -28,12 +28,11 @@ public class Activator implements BundleActivator {
 		Activator.context = bundleContext;
 		amqpTracker = new ServiceTracker<>(bundleContext, TrainAMQPSendService.class, new LegoTrainAMQPSendServiceTrackerCustomizer(bundleContext));
 		amqpTracker.open();
-		amqpTracker.getService().send((Object)getMessage(), "traincommand/1");
+		amqpTracker.getService().send((Object)getMessage(), "traincommand");
 	}
 
 	private Object getMessage() {
 		return new TrainCommand(TrainCommandType.STOP);
-	//	return new TrainCommand(TrainCommandType.START, SpeedRestrictionLevel.CITY);
 	}
 
 	/*

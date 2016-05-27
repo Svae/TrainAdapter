@@ -102,11 +102,11 @@ public abstract class LegoTrain implements TrainState{
 
 	
 	protected long calculateColorPullRate(double speed){
-		return (long) (145 - speed);
+		return (long) (125 - speed);
 	}
 
 	protected long calculateMagPullRate(double speed){
-		return (long) (1000 - 5*speed);
+		return (long) (1000 - 4*speed);
 	}
 	
 }

@@ -19,7 +19,7 @@ public class MotorController extends Block {
 		controllerTracker.open();
 	}
 	
-	public void setSpeed(int speed){
+	public void setSpeed(final int speed){
 		if(getController() == null){
 			logger.warn("Can not find motor controller");
 			return;
