@@ -60,6 +60,7 @@ public class CustomeServiceTracker extends Block {
 		public void removedService(ServiceReference<Object> ev, Object arg1) {
 			logger.info("Service unregistered");
 			sendToBlock(unregistrationEvent, ev);
+			context.ungetService(ev);
 		}
 	}
 }

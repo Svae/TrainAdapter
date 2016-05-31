@@ -1,15 +1,11 @@
 package no.ntnu.item.its.train.adapter.sensorcontroller;
 
-import java.util.ArrayList;
 import java.util.Dictionary;
 import java.util.HashMap;
 import java.util.Hashtable;
 import java.util.Map.Entry;
 
 import org.osgi.framework.BundleContext;
-import org.osgi.framework.InvalidSyntaxException;
-import org.osgi.framework.ServiceEvent;
-import org.osgi.framework.ServiceListener;
 import org.osgi.framework.ServiceReference;
 import org.osgi.framework.ServiceRegistration;
 import org.osgi.service.event.EventConstants;
@@ -26,7 +22,6 @@ import no.ntnu.item.its.osgi.common.interfaces.AccelerationControllerService;
 import no.ntnu.item.its.osgi.common.interfaces.ColorControllerService;
 import no.ntnu.item.its.osgi.common.interfaces.MagControllerService;
 import no.ntnu.item.its.osgi.common.interfaces.MifareControllerService;
-import no.ntnu.item.its.osgi.common.interfaces.PublisherService;
 import no.ntnu.item.its.osgi.train.adapter.handlers.common.readings.AccelerometerReading;
 import no.ntnu.item.its.osgi.train.adapter.handlers.common.readings.ColorReading;
 import no.ntnu.item.its.osgi.train.adapter.handlers.common.readings.MagnetometerReading;
@@ -36,7 +31,7 @@ import no.ntnu.item.its.osgi.train.adapter.handlers.common.readings.TemperatureR
 public class SensorController extends Block implements EventReceiver {
 
 	private final String colorEvent = "COLOREVENT";
-	private final String sensorStatusEvent = "SENSORSTATUSEVENT";
+	private final String sensorStatusEvent = "SENSORSTATEEVENT";
 	private final String nfcEvent = "NFCEVENT";
 	private final String accEvent = "ACCELEROMETEREVENT";
 	private final String magEvent = "MAGNETOMETEREVENT";
@@ -62,13 +57,23 @@ public class SensorController extends Block implements EventReceiver {
 			logger.info("Sensor type property is not set");
 			return;
 		}
-		registerSensorHandler(type);
+		registerSensorHandler(type, null);
+		sendToBlock(sensorStatusEvent, ev);
 	}
 	
-	public void registerSensorHandler(PublisherType type){
+	public void registerSensorHandler(PublisherType type, SensorHandlerController controller){
+		SensorHandlerController ctr;
+		if(controller != null) ctr = controller;
+		else{
+			if(getHandlerController() == null){
+				registrations.put(type, null);
+				logger.warn("SensorHandler service could not be find");
+				return;
+			}
+			ctr = getHandlerController();
+		}
+		SensorHandler handler = ctr.getSensorHandler(type, this);
 		Dictionary<String, String> p = new Hashtable<>();
-		SensorHandler handler = getHandlerController().getSensorHandler(type, this);
-		if(handler == null) return;
 		switch (type) {
 			case SLEEPER:
 				p.put(EventConstants.EVENT_TOPIC, ColorControllerService.EVENT_TOPIC);
@@ -102,6 +107,7 @@ public class SensorController extends Block implements EventReceiver {
 	public void unregisterSensor(ServiceReference ev){
 		PublisherType type = (PublisherType) ev.getProperty(PublisherType.class.getSimpleName());
 		unregisterSensorHandler(type);
+		sendToBlock(sensorStatusEvent, ev);
 	}
 	
 	
@@ -113,14 +119,29 @@ public class SensorController extends Block implements EventReceiver {
 		logger.info("Unregistered handler for sensor of type: " + type);
 	}
 	
-	public void updateSensorHandlers(){
+	public void externalUpdates(){
 		if(registrations.isEmpty()) return;
 		for (Entry<PublisherType,ServiceRegistration> entry : registrations.entrySet()) {
-			entry.getValue().unregister();
-			registerSensorHandler(entry.getKey());
+			if(entry.getValue() != null) entry.getValue().unregister();
+			registerSensorHandler(entry.getKey(), null);
 			logger.info("Updated sensor handler for sensor of type:" + entry.getKey());
 		}
 		logger.info("Sensor handlers has been updated");
+	}
+	
+	public void updateSensorHandlers(SensorHandlerController controller){
+		if(registrations.isEmpty()) return;
+		for (PublisherType type: registrations.keySet()) {
+			updateSensorHandler(controller, type);
+		}
+		logger.info("Sensor handlers has been updated");
+	}
+	
+	public void updateSensorHandler(SensorHandlerController controller, PublisherType type){
+		ServiceRegistration reg = registrations.get(type);
+		if(reg != null) reg.unregister();
+		registerSensorHandler(type, controller);
+		logger.info("Updated sensor handler for sensor of type:" + type);
 	}
 	
 	public void modifiedSensor(ServiceReference ev) {
@@ -135,11 +156,6 @@ public class SensorController extends Block implements EventReceiver {
 		
 	}
 
-	@Override
-	public void sendSensorStatusEvent(PublisherType type) {
-		sendToBlock(sensorStatusEvent, type);
-	}
-	
 
 	@Override
 	public void sendNFCEvent(NFCReading hex) {
@@ -177,23 +193,29 @@ public class SensorController extends Block implements EventReceiver {
 		return eventHandlerCtrTracker.getService();
 	}
 
+	public void externalUpdate(PublisherType type) {
+		updateSensorHandler(null, type);
+	}
+	
 	private class EventHandlerTrackerCustomizer implements ServiceTrackerCustomizer<SensorHandlerController, SensorHandlerController>{
 
 		@Override
 		public SensorHandlerController addingService(ServiceReference<SensorHandlerController> ev) {
-			if(!registrations.isEmpty()) updateSensorHandlers();
+			if(!registrations.isEmpty()) updateSensorHandlers(context.getService(ev));
 			return (SensorHandlerController) context.getService(ev);
 		}
 
 		@Override
 		public void modifiedService(ServiceReference<SensorHandlerController> arg0, SensorHandlerController arg1) {
-			updateSensorHandlers();
 		}
 
 		@Override
-		public void removedService(ServiceReference<SensorHandlerController> arg0, SensorHandlerController arg1) {			
+		public void removedService(ServiceReference<SensorHandlerController> ref, SensorHandlerController arg1) {			
+		    context.ungetService(ref);
 		}
 		
 	}
+
+
 	
 }

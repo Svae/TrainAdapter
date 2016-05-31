@@ -1,6 +1,6 @@
 package no.ntnu.item.its.osgi.train.adapter.trainstates.impl;
 
-import org.osgi.framework.ServiceEvent;
+import org.osgi.framework.ServiceReference;
 import org.osgi.service.log.LogService;
 
 import no.ntnu.item.its.osgi.common.enums.PublisherType;
@@ -28,7 +28,7 @@ public abstract class LegoTrain implements TrainState{
 	}
 	
 	@Override
-	public void sensorUpdate(ServiceEvent event) {
+	public void sensorUpdate(ServiceReference event) {
 	}
 	
 	@Override
@@ -39,6 +39,7 @@ public abstract class LegoTrain implements TrainState{
 		switch (reading.getReading()) {
 			case GREEN:
 				train.stopTrain();
+				
 				break;
 			case BLUE:
 				train.getSensorConfigurator().configureSensor(SensorConfigurationOption.READ, 0, PublisherType.BEACON);

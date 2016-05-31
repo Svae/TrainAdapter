@@ -1,6 +1,7 @@
 package no.ntnu.item.its.osgi.train.adapter.trainstates.interfaces;
 
 import org.osgi.framework.ServiceEvent;
+import org.osgi.framework.ServiceReference;
 
 import no.ntnu.item.its.osgi.train.adapter.handlers.common.readings.AccelerometerReading;
 import no.ntnu.item.its.osgi.train.adapter.handlers.common.readings.ColorReading;
@@ -15,7 +16,7 @@ public interface TrainState {
 	public void magnetometerUpdate(MagnetometerReading reading);
 	public void temperaturUpdate(TemperatureReading temp);
 	public void nfcUpdate(NFCReading hex);
-	public void sensorUpdate(ServiceEvent event);
+	public void sensorUpdate(ServiceReference event);
 	public void dummyUpdate();
 
 }

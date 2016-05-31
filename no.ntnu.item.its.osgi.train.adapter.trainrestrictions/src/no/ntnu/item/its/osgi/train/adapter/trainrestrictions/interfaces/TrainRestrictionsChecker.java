@@ -15,6 +15,7 @@ public interface TrainRestrictionsChecker {
 	public SpeedRestrictionLevel getSpeedLevel(double speed);
 	public double getSpeedIncreaseInTurne();
 	public long getPublishRate(PublisherType type);
+	public boolean canRunWithoutRemoteController();
 	
 	
 }

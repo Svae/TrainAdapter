@@ -1,14 +1,16 @@
 package no.ntnu.item.its.osgi.train.adapter.trainstates.impl;
 
-import org.osgi.framework.ServiceEvent;
+import org.osgi.framework.ServiceReference;
 import org.osgi.service.log.LogService;
 
+import no.ntnu.item.its.osgi.common.enums.PublisherType;
 import no.ntnu.item.its.osgi.train.adapter.handlers.common.enums.SleeperColor;
 import no.ntnu.item.its.osgi.train.adapter.handlers.common.readings.AccelerometerReading;
 import no.ntnu.item.its.osgi.train.adapter.handlers.common.readings.ColorReading;
 import no.ntnu.item.its.osgi.train.adapter.handlers.common.readings.MagnetometerReading;
 import no.ntnu.item.its.osgi.train.adapter.handlers.common.readings.NFCReading;
 import no.ntnu.item.its.osgi.train.adapter.handlers.common.readings.TemperatureReading;
+import no.ntnu.item.its.osgi.train.adapter.sensorconfigurator.common.SensorConfigurationOption;
 import no.ntnu.item.its.osgi.train.adapter.trainrestrictions.common.SpeedRestrictionLevel;
 import no.ntnu.item.its.osgi.train.adapter.trainstates.StateActivator;
 import no.ntnu.item.its.osgi.train.adapter.trainstates.interfaces.TrainContext;
@@ -28,11 +30,8 @@ public class NFCTest implements TrainState{
 		if(color.getReading() == SleeperColor.UNKNOWN || color.getReading() == SleeperColor.GRAY) return;
 		
 		if(color.getReading() == SleeperColor.BLUE){
-			StateActivator.getLogger().log(LogService.LOG_INFO, String.format("[%s] %d %s", this.getClass().getSimpleName(), System.currentTimeMillis(), color.getReading()));
-			//train.getSensorConfigurator().configureSensor(SensorConfigurationOption.READ, 0, PublisherType.BEACON);
-		}
-		if(color.getReading() == SleeperColor.GREEN){
-			//train.stopTrain();
+			StateActivator.getLogger().log(LogService.LOG_INFO, String.format("Color: %s", color.getReading()));
+			train.getSensorConfigurator().configureSensor(SensorConfigurationOption.READ, 0, PublisherType.BEACON);
 		}
 		
 	}
@@ -58,11 +57,11 @@ public class NFCTest implements TrainState{
 
 	@Override
 	public void nfcUpdate(NFCReading locationID) {
-		StateActivator.getLogger().log(LogService.LOG_INFO, String.format("[%s] %d %s", this.getClass().getSimpleName(), System.currentTimeMillis(), locationID.getReading()));
+		StateActivator.getLogger().log(LogService.LOG_INFO, String.format("LocatioID: %s", locationID.getReading()));
 	}
 
 	@Override
-	public void sensorUpdate(ServiceEvent event) {
+	public void sensorUpdate(ServiceReference event) {
 		// TODO Auto-generated method stub
 		
 	}

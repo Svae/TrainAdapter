@@ -10,7 +10,6 @@ import no.ntnu.item.its.osgi.train.adapter.handlers.common.readings.TemperatureR
 public interface EventReceiver {
 
 	public void sendColorEvent(ColorReading color);
-	public void sendSensorStatusEvent(PublisherType type);
 	public void sendNFCEvent(NFCReading locationID);
 	public void sendAccelerationEvent(AccelerometerReading acc);
 	public void sendMagnetometerEvent(MagnetometerReading direction);

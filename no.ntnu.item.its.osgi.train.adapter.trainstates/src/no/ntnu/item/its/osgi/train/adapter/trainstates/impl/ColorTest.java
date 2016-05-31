@@ -1,6 +1,6 @@
 package no.ntnu.item.its.osgi.train.adapter.trainstates.impl;
 
-import org.osgi.framework.ServiceEvent;
+import org.osgi.framework.ServiceReference;
 import org.osgi.service.log.LogService;
 
 import no.ntnu.item.its.osgi.train.adapter.handlers.common.enums.SleeperColor;
@@ -57,7 +57,7 @@ public class ColorTest implements TrainState{
 	}
 
 	@Override
-	public void sensorUpdate(ServiceEvent event) {
+	public void sensorUpdate(ServiceReference event) {
 		// TODO Auto-generated method stub
 		
 	}

@@ -1,6 +1,6 @@
 package no.ntnu.item.its.osgi.train.adapter.trainstates.impl;
 
-import org.osgi.framework.ServiceEvent;
+import org.osgi.framework.ServiceReference;
 
 import no.ntnu.item.its.osgi.common.enums.PublisherType;
 import no.ntnu.item.its.osgi.train.adapter.handlers.common.readings.AccelerometerReading;
@@ -24,7 +24,7 @@ public class LocalTest implements TrainState {
 	}
 
 	@Override
-	public void sensorUpdate(ServiceEvent event) {
+	public void sensorUpdate(ServiceReference event) {
 	}
 
 	@Override

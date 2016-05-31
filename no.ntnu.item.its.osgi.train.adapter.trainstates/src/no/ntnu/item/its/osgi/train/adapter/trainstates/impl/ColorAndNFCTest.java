@@ -1,8 +1,6 @@
 package no.ntnu.item.its.osgi.train.adapter.trainstates.impl;
 
-import java.util.ArrayList;
-
-import org.osgi.framework.ServiceEvent;
+import org.osgi.framework.ServiceReference;
 import org.osgi.service.log.LogService;
 
 import no.ntnu.item.its.osgi.common.enums.PublisherType;
@@ -22,7 +20,6 @@ public class ColorAndNFCTest implements TrainState{
 
 	protected final TrainContext train;
 	private SpeedRestrictionLevel speed = SpeedRestrictionLevel.CITY;
-	private ArrayList<String> writevalues;
 	public ColorAndNFCTest(TrainContext train) {
 		this.train = train;
 		train.sendSpeedRestriction(speed);
@@ -38,18 +35,6 @@ public class ColorAndNFCTest implements TrainState{
 		if(color.getReading() == SleeperColor.BLUE){
 			train.getSensorConfigurator().configureSensor(SensorConfigurationOption.READ, 0, PublisherType.BEACON);
 		}
-		if(color.getReading() == SleeperColor.YELLOW){
-			speed = (speed== SpeedRestrictionLevel.NORMAL) ? SpeedRestrictionLevel.CITY : SpeedRestrictionLevel.NORMAL;
-			train.sendSpeedRestriction(speed);
-			reconfigureSensors(PublisherType.SLEEPER, speed);
-		}
-		if(color.getReading() == SleeperColor.RED){
-			train.getSensorConfigurator().configureSensor(SensorConfigurationOption.WRITE, writevalues.remove(0), PublisherType.BEACON);
-		}
-	}
-
-	protected void reconfigureSensors(PublisherType type, SpeedRestrictionLevel level){	
-		train.getSensorConfigurator().configureSensor(SensorConfigurationOption.PUBLISHRATE, calculateColorPullRate(level), type);
 	}
 	
 	@Override
@@ -60,7 +45,6 @@ public class ColorAndNFCTest implements TrainState{
 
 	@Override
 	public void magnetometerUpdate(MagnetometerReading reading) {
-		// TODO Auto-generated method stub
 		
 	}
 
@@ -72,11 +56,11 @@ public class ColorAndNFCTest implements TrainState{
 
 	@Override
 	public void nfcUpdate(NFCReading locationID) {
-		
+		StateActivator.getLogger().log(LogService.LOG_INFO, String.format("[%s] %d %s", this.getClass().getSimpleName(), System.currentTimeMillis(), locationID.getReading()));
 	}
 
 	@Override
-	public void sensorUpdate(ServiceEvent event) {
+	public void sensorUpdate(ServiceReference event) {
 		// TODO Auto-generated method stub
 		
 	}
@@ -87,10 +71,5 @@ public class ColorAndNFCTest implements TrainState{
 		
 	}
 	
-	protected long calculateColorPullRate(SpeedRestrictionLevel level){
-		if(level == SpeedRestrictionLevel.CITY) return 50;
-		if(level == SpeedRestrictionLevel.INNERCITY) return 100;
-		return train.getTrainRestrictionChecker().getPublishRate(PublisherType.SLEEPER);
-	}
 
 }

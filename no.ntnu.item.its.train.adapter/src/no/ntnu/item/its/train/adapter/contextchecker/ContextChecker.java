@@ -1,10 +1,11 @@
 package no.ntnu.item.its.train.adapter.contextchecker;
 
 import org.osgi.framework.BundleContext;
-import org.osgi.framework.ServiceEvent;
+import org.osgi.framework.ServiceReference;
 import org.osgi.util.tracker.ServiceTracker;
 
 import no.ntnu.item.arctis.runtime.Block;
+import no.ntnu.item.its.osgi.common.enums.PublisherType;
 import no.ntnu.item.its.osgi.train.adapter.handlers.common.readings.AccelerometerReading;
 import no.ntnu.item.its.osgi.train.adapter.handlers.common.readings.ColorReading;
 import no.ntnu.item.its.osgi.train.adapter.handlers.common.readings.MagnetometerReading;
@@ -34,25 +35,23 @@ public class ContextChecker extends Block implements TrainContext {
 	private final String addTopic = "ADDTOPIC";
 	private final String removeTopic = "REMOVETOPIC";
 	private final String light = "LIGHT";
+	private final String updateHandler = "UPDATEHANDLER";
 	
 	private TrainState trainState;
-	private TrainInfo trainInfo;
-	
 	private ServiceTracker<TrainRestrictionsChecker, TrainRestrictionsChecker> trainRestrictionTracker;
 	private ServiceTracker<MapRestrictionChecker, MapRestrictionChecker> mapRestrictionTracker;
 	private ServiceTracker<TrainStateController, TrainStateController> trainStateCtrTracker;
 	private ServiceTracker<TrainSensorConfiguratorController, TrainSensorConfiguratorController> configuratorTracker;
 	
-	public BundleContext context; 
+	public BundleContext context;
+	public java.lang.String remoteErrorMsg;
+	public no.ntnu.item.its.train.adapter.trainInfo.TrainInfo trainInfo; 
 	
 	public void init(){
-		trainInfo = new TrainInfo();
 		setUpTrackers();
 		//Test set up
 		trainInfo.setInTurn(false);
-		trainInfo.setSpeedRestrictionLevel(SpeedRestrictionLevel.INNERCITY);
-		trainInfo.setSpeed(getTrainRestrictionChecker().getSpeedRestriction(SpeedRestrictionLevel.INNERCITY));
-		setTrainState(TrainStates.RUNNINGINNERCITY);
+		setTrainState(TrainStates.TEST);
 	}
 	
 	private void setUpTrackers(){
@@ -94,7 +93,7 @@ public class ContextChecker extends Block implements TrainContext {
 		trainState.nfcUpdate(hex);
 	}
 
-	public void handleSensorStateEvent(ServiceEvent event) {
+	public void handleSensorStateEvent(ServiceReference event) {
 		trainState.sensorUpdate(event);
 	}
 
@@ -112,6 +111,13 @@ public class ContextChecker extends Block implements TrainContext {
 	
 	public void handleDummyEvent() {
 		trainState.dummyUpdate();
+	}
+	
+	public boolean runWithoutRemote(){
+		logger.warn("RemoteController failed");
+		if(getTrainRestrictionChecker() == null) return false;
+		return getTrainRestrictionChecker().canRunWithoutRemoteController();
+		
 	}
 
 	
@@ -208,6 +214,10 @@ public class ContextChecker extends Block implements TrainContext {
 	}
 
 	public void handleMessage(TrainCommand message) {
+		if(message.getCmd() == null){
+			logger.info("Empty TrainCommand");
+			return;
+		}
 		switch (message.getCmd()) {
 			case START:
 				sendSpeedRestriction(SpeedRestrictionLevel.valueOf((String)message.getValue()));
@@ -232,6 +242,10 @@ public class ContextChecker extends Block implements TrainContext {
 				break;
 			case TEMPERATUR:
 				handleTemperatureEvent(new TemperatureReading((double) message.getValue()));
+				break;
+			case STATE:
+				TrainStates state = (TrainStates.valueOf((String)message.getValue()));
+				if(state != null) setTrainState(state);
 				break;
 			default:
 				logger.info("Unknow train command");
@@ -262,6 +276,13 @@ public class ContextChecker extends Block implements TrainContext {
 	@Override
 	public void setCurrentLocationID(String locationID) {
 		trainInfo.setCurrentLocationID(locationID);
+	}
+
+	public void stop() {
+		mapRestrictionTracker.close();
+		trainRestrictionTracker.close();
+		trainStateCtrTracker.close();
+		configuratorTracker.close();
 	}
 	
 	

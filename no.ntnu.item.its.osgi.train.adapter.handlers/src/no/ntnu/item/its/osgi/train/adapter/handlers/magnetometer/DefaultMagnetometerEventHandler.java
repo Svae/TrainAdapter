@@ -24,9 +24,8 @@ public class DefaultMagnetometerEventHandler implements SensorHandler{
 		if (prevHeading == Double.MAX_VALUE) {
 			prevHeading = heading;
 		}
-		boolean turning = Math.abs(heading - prevHeading) > 2;
 		prevHeading = heading;
-		receiver.sendMagnetometerEvent(new MagnetometerReading(time,heading, turning));
+		receiver.sendMagnetometerEvent(new MagnetometerReading(time,heading, false));
 	}
 
 }

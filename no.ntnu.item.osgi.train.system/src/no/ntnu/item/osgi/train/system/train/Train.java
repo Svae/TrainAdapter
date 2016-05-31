@@ -16,7 +16,7 @@ public class Train extends Block {
 	}
 
 	public int convertSpeed(double speed) {
-		logger.info(""+System.currentTimeMillis());
+		logger.debug("Changing trainspeed to " + speed);
 		return (int) speed;
 	}
 

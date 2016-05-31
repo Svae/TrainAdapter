@@ -16,6 +16,7 @@ public class AMQPActivator implements BundleActivator {
 	private static BundleContext context;
 	private ServiceRegistration<TrainAMQPService> reg;
 	private ServiceRegistration<TrainAMQPSendService> sendReg;
+	private AMQPService service;
 	
 	static BundleContext getContext() {
 		return context;
@@ -29,7 +30,8 @@ public class AMQPActivator implements BundleActivator {
 		AMQPActivator.context = bundleContext;
 		logServiceTracker = new ServiceTracker<>(AMQPActivator.getContext(), LogService.class, null);
 		logServiceTracker.open();
-		reg = (ServiceRegistration<TrainAMQPService>) context.registerService(TrainAMQPService.class.getName(), new AMQPService(), null);
+		service = new AMQPService();
+		reg = (ServiceRegistration<TrainAMQPService>) context.registerService(TrainAMQPService.class.getName(), service, null);
 		sendReg = (ServiceRegistration<TrainAMQPSendService>) context.registerService(TrainAMQPSendService.class.getName(), new AMQPSendService(), null);
 	}
 
@@ -40,6 +42,7 @@ public class AMQPActivator implements BundleActivator {
 	public void stop(BundleContext bundleContext) throws Exception {
 		sendReg.unregister();
 		reg.unregister();
+		service.close();
 		logServiceTracker.close();
 		AMQPActivator.context = null;
 	}

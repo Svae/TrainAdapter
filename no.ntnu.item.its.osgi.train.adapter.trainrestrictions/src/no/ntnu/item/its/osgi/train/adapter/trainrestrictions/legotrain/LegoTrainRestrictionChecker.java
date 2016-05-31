@@ -15,6 +15,7 @@ import static no.ntnu.item.its.osgi.train.adapter.trainrestrictions.legotrain.Le
 import static no.ntnu.item.its.osgi.train.adapter.trainrestrictions.legotrain.LegoTrainRestrictionProperties.SPEEDINCREASETURN;
 import static no.ntnu.item.its.osgi.train.adapter.trainrestrictions.legotrain.LegoTrainRestrictionProperties.DEFAULTCOLORPUBLISHRATE;
 import static no.ntnu.item.its.osgi.train.adapter.trainrestrictions.legotrain.LegoTrainRestrictionProperties.DEFAULTMAGPUBLISHRATE;
+import static no.ntnu.item.its.osgi.train.adapter.trainrestrictions.legotrain.LegoTrainRestrictionProperties.CANRUNWITHOUTREMOTE;
 
 import no.ntnu.item.its.osgi.common.enums.PublisherType;
 import no.ntnu.item.its.osgi.train.adapter.trainrestrictions.common.SensorPriorityLevel;
@@ -122,5 +123,10 @@ public class LegoTrainRestrictionChecker implements TrainRestrictionsChecker {
 		if(type == PublisherType.SLEEPER) return DEFAULTCOLORPUBLISHRATE;
 		if(type == PublisherType.MAG) return DEFAULTMAGPUBLISHRATE;
 		return 0;
+	}
+
+	@Override
+	public boolean canRunWithoutRemoteController() {
+		return CANRUNWITHOUTREMOTE;
 	}
 }

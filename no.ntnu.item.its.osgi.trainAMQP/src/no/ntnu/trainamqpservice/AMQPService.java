@@ -26,7 +26,7 @@ public class AMQPService implements TrainAMQPService {
 	public TrainAMQPChannel openChannel(AMQPProperties properties) throws IOException, TimeoutException {
 
 		TrainAMQPConnection connection = openConnection(properties);
-		Channel channel = connection.getChannel();
+		Channel channel = connection.getChannel().getChannel();
 		channel.exchangeDeclare(properties.getExchangename(), "topic");
 		String queue = channel.queueDeclare().getQueue();
 		return new AMQPChannel(channel, properties.getExchangename(), queue);
@@ -35,7 +35,7 @@ public class AMQPService implements TrainAMQPService {
 
 	public TrainAMQPConnection openConnection(AMQPProperties properties) throws IOException, TimeoutException {
 		ConnectionFactory factory = getFactory(properties);
-		return new AMQPConnection(factory.newConnection());
+		return new AMQPConnection(factory.newConnection(), properties);
 	}
 
 	private ConnectionFactory getFactory(AMQPProperties properties) throws IOException, TimeoutException {

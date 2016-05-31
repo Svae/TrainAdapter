@@ -6,7 +6,7 @@ import com.rabbitmq.client.Channel;
 
 public interface TrainAMQPConnection {
 	
-	public Channel getChannel() throws IOException;
-	public void closeChannel() throws IOException;
+	public TrainAMQPChannel getChannel() throws IOException;
+	public void closeConnection() throws IOException;
 
 }

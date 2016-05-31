@@ -32,7 +32,5 @@ public class Send {
 	}
 
 	private static String getMessage() {
-		String s = gson.toJson(new TrainCommand());
-		return ;
 	}
 }

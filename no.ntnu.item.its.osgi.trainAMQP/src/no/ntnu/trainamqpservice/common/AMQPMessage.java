@@ -4,8 +4,7 @@ import com.rabbitmq.client.AMQP;
 import com.rabbitmq.client.Envelope;
 
 public class AMQPMessage {
-	
-	
+		
 	private String consumerTag;
 	private Envelope envelope;
 	private AMQP.BasicProperties properties;
@@ -15,11 +14,11 @@ public class AMQPMessage {
 	private Object body;
 
 	public AMQPMessage(String consumerTag, Envelope envelope,
-            AMQP.BasicProperties properties, byte[] body) {
+            AMQP.BasicProperties properties, byte[] rawBody) {
 		this.consumerTag = consumerTag;
 		this.envelope = envelope;
 		this.properties = properties;
-		this.rawBody = body;
+		this.rawBody = rawBody;
 	}
 
 	public AMQPMessage(String topic, Object body){

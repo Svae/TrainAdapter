@@ -23,8 +23,9 @@ public class RemoteControl extends Block {
 	private TrainAMQPChannel channel;
 	private TrainDefaultConsumer consumer;
 	private Function<AMQPMessage, Void> function;
-	private String topic;
 	private Gson gson;
+	
+	private String topic= "traincommand";
 	
 	private String error = "ERROR";
 	private String failed = "FAILED";
@@ -36,7 +37,6 @@ public class RemoteControl extends Block {
 		amqpTracker.open();
 		gson = new Gson();
 		//For testing
-		topic = "traincommand";
 		Runnable r = new Runnable() {
 			
 			@Override
@@ -48,7 +48,10 @@ public class RemoteControl extends Block {
 	}
 	
 	private void getChannel(){
-		if(amqpTracker.getService() == null) return;
+		if(amqpTracker.getService() == null){
+			sendToBlock(failed, "Could not find AMQPSerivce");
+			return;
+		}
 		TrainAMQPService service = (TrainAMQPService)amqpTracker.getService();
 		AMQPProperties properties = new AMQPProperties();
 		function = getCallbackFunction();
@@ -58,8 +61,10 @@ public class RemoteControl extends Block {
 			channel.setConsumer(consumer);
 			//For testing
 			channel.subscribe(topic);
+			logger.info(this.getClass().getSimpleName() + " is ready");
 			sendToBlock(ready);
 		} catch (Exception e) {
+			logger.error(this.getClass().getSimpleName() + " failed to start");
 			sendToBlock(failed, e.getMessage());
 		}
 	}

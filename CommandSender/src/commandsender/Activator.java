@@ -5,8 +5,8 @@ import org.osgi.framework.BundleContext;
 import org.osgi.util.tracker.ServiceTracker;
 
 import no.ntnu.item.its.osgi.train.adapter.trainrestrictions.common.SpeedRestrictionLevel;
+import no.ntnu.item.its.osgi.train.adapter.trainstates.interfaces.TrainStateController.TrainStates;
 import no.ntnu.item.its.train.adapter.common.TrainCommand;
-import no.ntnu.item.its.train.adapter.enums.SpeedLevel;
 import no.ntnu.item.its.train.adapter.enums.TrainCommandType;
 import no.ntnu.trainamqpservice.common.LegoTrainAMQPSendServiceTrackerCustomizer;
 import no.ntnu.trainamqpservice.interfaces.TrainAMQPSendService;
@@ -32,7 +32,7 @@ public class Activator implements BundleActivator {
 	}
 
 	private Object getMessage() {
-		return new TrainCommand(TrainCommandType.START, SpeedRestrictionLevel.INNERCITY);
+		return new TrainCommand(TrainCommandType.STATE, TrainStates.DUMMY);
 	}
 
 	/*
