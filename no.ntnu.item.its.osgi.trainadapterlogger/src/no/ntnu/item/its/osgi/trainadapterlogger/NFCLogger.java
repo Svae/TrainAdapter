@@ -8,28 +8,27 @@ import org.osgi.service.log.LogListener;
 import org.osgi.service.log.LogReaderService;
 import org.osgi.util.tracker.ServiceTracker;
 
-public class ColorTestLogger implements LogListener{
+public class NFCLogger implements LogListener {
 
 	private PrintWriter writer;
 	private ServiceTracker<LogReaderService, LogReaderService> tracker;
 
-	
-	public ColorTestLogger() throws IOException {
-		writer = new PrintWriter("ColorTest.log");
+	public NFCLogger() throws IOException {
+		writer = new PrintWriter("NFCTimesWithoutMagSensor.log");
 		tracker = new ServiceTracker<>(LoggerActivator.getContext(), LogReaderService.class, null);
 		tracker.open();
 	}
-	
-	public void close(){
+
+	public void close() {
 		tracker.close();
 		writer.close();
 	}
-	
+
 	@Override
 	public void logged(LogEntry entry) {
-		if(entry.getLevel() != 4) return;
-		if(entry.getMessage().contains("DefaultColorEventHandler") || entry.getMessage().contains("DefaultMifareEventHandler") || entry.getMessage().contains("999999") 
-				|| entry.getMessage().contains("LocationID") || entry.getMessage().contains("000000")){
+		if (entry.getMessage().contains("BLUE")
+				|| entry.getMessage().contains("[MifarePublisher]") || entry.getMessage().contains("999999")
+				|| entry.getMessage().contains("[ColorAndNFCTest]") || entry.getMessage().contains("000000")) {
 			writer.println(String.format("%d %s %s", entry.getTime(), entry.getBundle(), entry.getMessage()));
 		}
 	}

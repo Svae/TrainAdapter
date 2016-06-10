@@ -9,7 +9,6 @@
             <transition xmi:id="_oGYBcBE0EeaveqFmvwW5Ug" name=" / stopTrain" source="_oGU-IRE0EeaveqFmvwW5Ug" target="_oGU-IRE0EeaveqFmvwW5Ug"/>
             <transition xmi:id="_oGYBchE0EeaveqFmvwW5Ug" name=" / speedRestriction" source="_oGU-IRE0EeaveqFmvwW5Ug" target="_oGU-IRE0EeaveqFmvwW5Ug"/>
             <transition xmi:id="_oGZPkBE0EeaveqFmvwW5Ug" name=" / light" source="_oGU-IRE0EeaveqFmvwW5Ug" target="_oGU-IRE0EeaveqFmvwW5Ug"/>
-            <transition xmi:id="_fl0pECNxEeattcQhoN0TWw" name="stop / " source="_oGU-IRE0EeaveqFmvwW5Ug" target="_oGU-IRE0EeaveqFmvwW5Ug"/>
             <transition xmi:id="_pyj7NyUkEeaDUpkVinUitw" name="init / " source="_oGU-IBE0EeaveqFmvwW5Ug" target="_pyj7NiUkEeaDUpkVinUitw"/>
             <transition xmi:id="_pzkn0SUkEeaDUpkVinUitw" name=" / failed" source="_pyj7NiUkEeaDUpkVinUitw" target="_oGU-IhE0EeaveqFmvwW5Ug"/>
             <transition xmi:id="_pzlO4CUkEeaDUpkVinUitw" name=" / ready" source="_pyj7NiUkEeaDUpkVinUitw" target="_oGU-IRE0EeaveqFmvwW5Ug"/>
@@ -21,29 +20,28 @@
             <subvertex xmi:type="uml:State" xmi:id="_pyj7NiUkEeaDUpkVinUitw" name="initializing"/>
           </region>
         </ownedBehavior>
-        <ownedParameter xmi:id="_Pjs6QCUnEeabe647ITBoDQ" name="init"/>
-        <ownedParameter xmi:id="_Pjs6QSUnEeabe647ITBoDQ" name="failed" type="_oFIrURE0EeaveqFmvwW5Ug" direction="out" parameterSet="_oFJSYhE0EeaveqFmvwW5Ug"/>
-        <ownedParameter xmi:id="_Pjs6QiUnEeabe647ITBoDQ" name="stopped" direction="out" parameterSet="_oFJSZRE0EeaveqFmvwW5Ug"/>
-        <ownedParameter xmi:id="_PjthUCUnEeabe647ITBoDQ" name="stop" isStream="true"/>
-        <ownedParameter xmi:id="_PjthUSUnEeabe647ITBoDQ" name="bcFail" type="_oFIrURE0EeaveqFmvwW5Ug" direction="out" parameterSet="_oFJ5chE0EeaveqFmvwW5Ug"/>
-        <ownedParameter xmi:id="_PjthUiUnEeabe647ITBoDQ" name="speedRestriction" type="_oFJ5cxE0EeaveqFmvwW5Ug" direction="out" isStream="true"/>
-        <ownedParameter xmi:id="_PjthUyUnEeabe647ITBoDQ" name="stopTrain" direction="out" isStream="true"/>
-        <ownedParameter xmi:id="_PjthVCUnEeabe647ITBoDQ" name="light" type="_fl0CBCNxEeattcQhoN0TWw" direction="out" isStream="true"/>
-        <ownedParameter xmi:id="_PjthVSUnEeabe647ITBoDQ" name="ready" direction="out" isStream="true"/>
-        <ownedParameter xmi:id="_PjuvcSUnEeabe647ITBoDQ" name="failed" type="_oFIrURE0EeaveqFmvwW5Ug" direction="out" parameterSet="_oFJSYhE0EeaveqFmvwW5Ug"/>
-        <ownedParameterSet xmi:id="_oFJSYhE0EeaveqFmvwW5Ug" name="failed" parameter="_Pjs6QSUnEeabe647ITBoDQ _PjuvcSUnEeabe647ITBoDQ"/>
-        <ownedParameterSet xmi:id="_oFJSZRE0EeaveqFmvwW5Ug" name="stopped" parameter="_Pjs6QiUnEeabe647ITBoDQ"/>
-        <ownedParameterSet xmi:id="_oFJ5chE0EeaveqFmvwW5Ug" name="bcFail" parameter="_PjthUSUnEeabe647ITBoDQ"/>
+        <ownedParameter xmi:id="_Ndh5kCwaEeaUf4HzZuiq8Q" name="init"/>
+        <ownedParameter xmi:id="_NdigoCwaEeaUf4HzZuiq8Q" name="failed" type="_oFIrURE0EeaveqFmvwW5Ug" direction="out" parameterSet="_oFJSYhE0EeaveqFmvwW5Ug"/>
+        <ownedParameter xmi:id="_NdigoSwaEeaUf4HzZuiq8Q" name="stopped" direction="out" parameterSet="_oFJSZRE0EeaveqFmvwW5Ug"/>
+        <ownedParameter xmi:id="_NdigoiwaEeaUf4HzZuiq8Q" name="stop" isStream="true"/>
+        <ownedParameter xmi:id="_NdigoywaEeaUf4HzZuiq8Q" name="bcFail" type="_oFIrURE0EeaveqFmvwW5Ug" direction="out" parameterSet="_oFJ5chE0EeaveqFmvwW5Ug"/>
+        <ownedParameter xmi:id="_NdigpCwaEeaUf4HzZuiq8Q" name="speedRestriction" type="_oFJ5cxE0EeaveqFmvwW5Ug" direction="out" isStream="true"/>
+        <ownedParameter xmi:id="_NdigpSwaEeaUf4HzZuiq8Q" name="stopTrain" direction="out" isStream="true"/>
+        <ownedParameter xmi:id="_NdigpiwaEeaUf4HzZuiq8Q" name="light" type="_fl0CBCNxEeattcQhoN0TWw" direction="out" isStream="true"/>
+        <ownedParameter xmi:id="_NdigpywaEeaUf4HzZuiq8Q" name="ready" direction="out" isStream="true"/>
+        <ownedParameterSet xmi:id="_oFJSYhE0EeaveqFmvwW5Ug" name="failed" parameter="_NdigoCwaEeaUf4HzZuiq8Q"/>
+        <ownedParameterSet xmi:id="_oFJSZRE0EeaveqFmvwW5Ug" name="stopped" parameter="_NdigoSwaEeaUf4HzZuiq8Q"/>
+        <ownedParameterSet xmi:id="_oFJ5chE0EeaveqFmvwW5Ug" name="bcFail" parameter="_NdigoywaEeaUf4HzZuiq8Q"/>
         <group xmi:type="uml:ActivityPartition" xmi:id="_oFIrUBE0EeaveqFmvwW5Ug" name="main" node="_oFIrUhE0EeaveqFmvwW5Ug _oFJSYBE0EeaveqFmvwW5Ug _oFJSYxE0EeaveqFmvwW5Ug _oFJSZhE0EeaveqFmvwW5Ug _oFJ5cBE0EeaveqFmvwW5Ug _oFJ5dBE0EeaveqFmvwW5Ug _oFJ5dhE0EeaveqFmvwW5Ug _oFKggBE0EeaveqFmvwW5Ug _pyj7NCUkEeaDUpkVinUitw"/>
-        <node xmi:type="uml:ActivityParameterNode" xmi:id="_oFIrUhE0EeaveqFmvwW5Ug" name="init" inPartition="_oFIrUBE0EeaveqFmvwW5Ug" parameter="_Pjs6QCUnEeabe647ITBoDQ"/>
-        <node xmi:type="uml:ActivityParameterNode" xmi:id="_oFJSYBE0EeaveqFmvwW5Ug" name="failed" inPartition="_oFIrUBE0EeaveqFmvwW5Ug" type="_oFIrURE0EeaveqFmvwW5Ug" parameter="_PjuvcSUnEeabe647ITBoDQ"/>
-        <node xmi:type="uml:ActivityParameterNode" xmi:id="_oFJSYxE0EeaveqFmvwW5Ug" name="stopped" inPartition="_oFIrUBE0EeaveqFmvwW5Ug" parameter="_Pjs6QiUnEeabe647ITBoDQ"/>
-        <node xmi:type="uml:ActivityParameterNode" xmi:id="_oFJSZhE0EeaveqFmvwW5Ug" name="stop" inPartition="_oFIrUBE0EeaveqFmvwW5Ug" parameter="_PjthUCUnEeabe647ITBoDQ"/>
-        <node xmi:type="uml:ActivityParameterNode" xmi:id="_oFJ5cBE0EeaveqFmvwW5Ug" name="bcFail" inPartition="_oFIrUBE0EeaveqFmvwW5Ug" type="_oFIrURE0EeaveqFmvwW5Ug" parameter="_PjthUSUnEeabe647ITBoDQ"/>
-        <node xmi:type="uml:ActivityParameterNode" xmi:id="_oFJ5dBE0EeaveqFmvwW5Ug" name="speedRestriction" inPartition="_oFIrUBE0EeaveqFmvwW5Ug" type="_oFJ5cxE0EeaveqFmvwW5Ug" parameter="_PjthUiUnEeabe647ITBoDQ"/>
-        <node xmi:type="uml:ActivityParameterNode" xmi:id="_oFJ5dhE0EeaveqFmvwW5Ug" name="stopTrain" inPartition="_oFIrUBE0EeaveqFmvwW5Ug" parameter="_PjthUyUnEeabe647ITBoDQ"/>
-        <node xmi:type="uml:ActivityParameterNode" xmi:id="_oFKggBE0EeaveqFmvwW5Ug" name="light" inPartition="_oFIrUBE0EeaveqFmvwW5Ug" type="_fl0CBCNxEeattcQhoN0TWw" parameter="_PjthVCUnEeabe647ITBoDQ"/>
-        <node xmi:type="uml:ActivityParameterNode" xmi:id="_pyj7NCUkEeaDUpkVinUitw" name="ready" inPartition="_oFIrUBE0EeaveqFmvwW5Ug" parameter="_PjthVSUnEeabe647ITBoDQ"/>
+        <node xmi:type="uml:ActivityParameterNode" xmi:id="_oFIrUhE0EeaveqFmvwW5Ug" name="init" inPartition="_oFIrUBE0EeaveqFmvwW5Ug" parameter="_Ndh5kCwaEeaUf4HzZuiq8Q"/>
+        <node xmi:type="uml:ActivityParameterNode" xmi:id="_oFJSYBE0EeaveqFmvwW5Ug" name="failed" inPartition="_oFIrUBE0EeaveqFmvwW5Ug" type="_oFIrURE0EeaveqFmvwW5Ug" parameter="_NdigoCwaEeaUf4HzZuiq8Q"/>
+        <node xmi:type="uml:ActivityParameterNode" xmi:id="_oFJSYxE0EeaveqFmvwW5Ug" name="stopped" inPartition="_oFIrUBE0EeaveqFmvwW5Ug" parameter="_NdigoSwaEeaUf4HzZuiq8Q"/>
+        <node xmi:type="uml:ActivityParameterNode" xmi:id="_oFJSZhE0EeaveqFmvwW5Ug" name="stop" inPartition="_oFIrUBE0EeaveqFmvwW5Ug" parameter="_NdigoiwaEeaUf4HzZuiq8Q"/>
+        <node xmi:type="uml:ActivityParameterNode" xmi:id="_oFJ5cBE0EeaveqFmvwW5Ug" name="bcFail" inPartition="_oFIrUBE0EeaveqFmvwW5Ug" type="_oFIrURE0EeaveqFmvwW5Ug" parameter="_NdigoywaEeaUf4HzZuiq8Q"/>
+        <node xmi:type="uml:ActivityParameterNode" xmi:id="_oFJ5dBE0EeaveqFmvwW5Ug" name="speedRestriction" inPartition="_oFIrUBE0EeaveqFmvwW5Ug" type="_oFJ5cxE0EeaveqFmvwW5Ug" parameter="_NdigpCwaEeaUf4HzZuiq8Q"/>
+        <node xmi:type="uml:ActivityParameterNode" xmi:id="_oFJ5dhE0EeaveqFmvwW5Ug" name="stopTrain" inPartition="_oFIrUBE0EeaveqFmvwW5Ug" parameter="_NdigpSwaEeaUf4HzZuiq8Q"/>
+        <node xmi:type="uml:ActivityParameterNode" xmi:id="_oFKggBE0EeaveqFmvwW5Ug" name="light" inPartition="_oFIrUBE0EeaveqFmvwW5Ug" type="_fl0CBCNxEeattcQhoN0TWw" parameter="_NdigpiwaEeaUf4HzZuiq8Q"/>
+        <node xmi:type="uml:ActivityParameterNode" xmi:id="_pyj7NCUkEeaDUpkVinUitw" name="ready" inPartition="_oFIrUBE0EeaveqFmvwW5Ug" parameter="_NdigpywaEeaUf4HzZuiq8Q"/>
       </packagedElement>
       <profileApplication xmi:id="_oFKggxE0EeaveqFmvwW5Ug">
         <eAnnotations xmi:id="_oFKghBE0EeaveqFmvwW5Ug" source="http://www.eclipse.org/uml2/2.0.0/UML">
@@ -145,7 +143,6 @@
   <graphics:Shape xmi:id="_oHD98BE0EeaveqFmvwW5Ug" x="36" y="90" width="288" height="216" base_Element="_oFG2IBE0EeaveqFmvwW5Ug"/>
   <graphics:Shape xmi:id="_u4jf4BE0EeaveqFmvwW5Ug" x="414" y="126" width="199" height="55" base_Element="_u4Qk8BE0EeaveqFmvwW5Ug" orientation="east"/>
   <graphics:Shape xmi:id="_eUztICNxEeattcQhoN0TWw" x="414" y="180" width="199" height="55" base_Element="_eTSDICNxEeattcQhoN0TWw"/>
-  <arctis:event xmi:id="_fl1QICNxEeattcQhoN0TWw" base_Transition="_fl0pECNxEeattcQhoN0TWw" triggers="_oFJSZhE0EeaveqFmvwW5Ug"/>
   <graphics:Shape xmi:id="_hnHycCNxEeattcQhoN0TWw" x="414" y="216" width="199" height="55" base_Element="_hm4h4CNxEeattcQhoN0TWw" orientation="east"/>
   <graphics:Shape xmi:id="_w42QECNxEeattcQhoN0TWw" x="18" y="342" width="127" height="55" base_Element="_w4jVICNxEeattcQhoN0TWw"/>
   <graphics:Shape xmi:id="_ylxr8CNxEeattcQhoN0TWw" x="126" y="342" width="199" height="55" base_Element="_yleJ8CNxEeattcQhoN0TWw"/>

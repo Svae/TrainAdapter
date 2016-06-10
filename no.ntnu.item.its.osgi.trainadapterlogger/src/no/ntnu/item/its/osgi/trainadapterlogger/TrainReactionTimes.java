@@ -17,14 +17,14 @@ public class TrainReactionTimes  implements LogListener{
 	public TrainReactionTimes() throws FileNotFoundException {
 		tracker = new ServiceTracker<>(LoggerActivator.getContext(), LogReaderService.class, null);
 		tracker.open();
-		nfcwriter = new PrintWriter("TrainNFCEvents" +System.currentTimeMillis()+ ".log");
-		turnwriter = new PrintWriter("TrainTurnEvents" +System.currentTimeMillis()+ ".log");
-		configwriter = new PrintWriter("TrainConfigEvents" +System.currentTimeMillis()+ ".log");
-		debugwriter = new PrintWriter("TrainDebugEvents" +System.currentTimeMillis()+ ".log");
+		nfcwriter = new PrintWriter("FinalTestTrainNFCEvents" +System.currentTimeMillis()+ ".log");
+		turnwriter = new PrintWriter("FinalTestTrainTurnEvents" +System.currentTimeMillis()+ ".log");
+		configwriter = new PrintWriter("FinalTestTrainConfigEvents" +System.currentTimeMillis()+ ".log");
+		debugwriter = new PrintWriter("FinalTestTrainDebugEvents" +System.currentTimeMillis()+ ".log");
 	}
 	
 	
-	public void stop(){
+	public void close(){
 		tracker.close();
 		nfcwriter.close();
 		turnwriter.close();

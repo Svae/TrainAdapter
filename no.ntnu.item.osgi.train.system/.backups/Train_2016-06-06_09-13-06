@@ -7,11 +7,13 @@
           <transition xmi:id="_21vfQCwXEeaUf4HzZuiq8Q" name="init / " source="_gYK-8g1rEea364fhqzOEpg" target="_LVZaUCwYEeaUf4HzZuiq8Q"/>
           <transition xmi:id="_4cmIUCwXEeaUf4HzZuiq8Q" name="stop / stopped" source="_0_KCEA4QEeaVQbI-YC7ulg" target="_4cmIUiwXEeaUf4HzZuiq8Q"/>
           <transition xmi:id="_5hxnsCwXEeaUf4HzZuiq8Q" name="init / failed" source="_gYK-8g1rEea364fhqzOEpg" target="_5hyOwSwXEeaUf4HzZuiq8Q"/>
+          <transition xmi:id="_6n5iQCwXEeaUf4HzZuiq8Q" name=" / failed" source="_0_KCEA4QEeaVQbI-YC7ulg" target="_6n6wYCwXEeaUf4HzZuiq8Q"/>
           <transition xmi:id="_NIkoICwYEeaUf4HzZuiq8Q" name=" / ready" source="_LVZaUCwYEeaUf4HzZuiq8Q" target="_0_KCEA4QEeaVQbI-YC7ulg"/>
           <subvertex xmi:type="uml:Pseudostate" xmi:id="_gYK-8g1rEea364fhqzOEpg" name="&lt;initial>"/>
           <subvertex xmi:type="uml:State" xmi:id="_0_KCEA4QEeaVQbI-YC7ulg" name="active"/>
           <subvertex xmi:type="uml:FinalState" xmi:id="_4cmIUiwXEeaUf4HzZuiq8Q" name="&lt;final>"/>
           <subvertex xmi:type="uml:FinalState" xmi:id="_5hyOwSwXEeaUf4HzZuiq8Q" name="&lt;final>"/>
+          <subvertex xmi:type="uml:FinalState" xmi:id="_6n6wYCwXEeaUf4HzZuiq8Q" name="&lt;final>"/>
           <subvertex xmi:type="uml:State" xmi:id="_LVZaUCwYEeaUf4HzZuiq8Q" name="initializing"/>
         </region>
       </ownedBehavior>
@@ -265,6 +267,7 @@
   <arctis:event xmi:id="_21wGUCwXEeaUf4HzZuiq8Q" base_Transition="_21vfQCwXEeaUf4HzZuiq8Q" triggers="_muy34A1tEea364fhqzOEpg"/>
   <arctis:event xmi:id="_4cmIUSwXEeaUf4HzZuiq8Q" base_Transition="_4cmIUCwXEeaUf4HzZuiq8Q" triggers="_3Qsn0CwVEeaUf4HzZuiq8Q" effects="_t-T2cCwVEeaUf4HzZuiq8Q"/>
   <arctis:event xmi:id="_5hyOwCwXEeaUf4HzZuiq8Q" base_Transition="_5hxnsCwXEeaUf4HzZuiq8Q" triggers="_muy34A1tEea364fhqzOEpg" effects="_ujNBUCwXEeaUf4HzZuiq8Q"/>
+  <arctis:event xmi:id="_6n6JUCwXEeaUf4HzZuiq8Q" base_Transition="_6n5iQCwXEeaUf4HzZuiq8Q" effects="_ujNBUCwXEeaUf4HzZuiq8Q"/>
   <graphics:Shape xmi:id="_CESbUCwYEeaUf4HzZuiq8Q" x="1224" y="306" base_Element="_CDyFACwYEeaUf4HzZuiq8Q" orientation="east"/>
   <arctis:event xmi:id="_NIlPMCwYEeaUf4HzZuiq8Q" base_Transition="_NIkoICwYEeaUf4HzZuiq8Q" effects="_CDyFACwYEeaUf4HzZuiq8Q"/>
 </xmi:XMI>

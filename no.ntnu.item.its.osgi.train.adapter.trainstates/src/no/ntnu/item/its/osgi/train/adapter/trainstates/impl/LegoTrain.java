@@ -22,6 +22,7 @@ public abstract class LegoTrain implements TrainState{
 
 	protected final TrainContext train;
 	private boolean last = false;
+	private boolean nfcRead = true;
 	
 	public LegoTrain(TrainContext train) {
 		this.train = train;
@@ -35,17 +36,22 @@ public abstract class LegoTrain implements TrainState{
 	public void colorUpdate(ColorReading reading){
 		SleeperColor color = reading.getReading();
 		if(color == SleeperColor.UNKNOWN || color == SleeperColor.GRAY) return;
+		if(!nfcRead || color != SleeperColor.BLUE) {
+			setTrainMapZone(train.getMapRestrictions().getNextMapZone(train.getCurrentLocationID(), true));
+			nfcRead = true;
+		}
 		StateActivator.getLogger().log(LogService.LOG_DEBUG, String.format("Color: %s", color));
 		switch (reading.getReading()) {
 			case GREEN:
 				train.stopTrain();
-				
 				break;
 			case BLUE:
 				train.getSensorConfigurator().configureSensor(SensorConfigurationOption.READ, 0, PublisherType.BEACON);
+				nfcRead = false;
 				break;
 			case RED:
 				Status sensorstatus = train.getSensorConfigurator().getPublisherStatus(PublisherType.MAG);
+				if(sensorstatus == null) return;
 				if(sensorstatus == Status.STOPPED) reconfigurePublisherRate(PublisherType.MAG, train.getSpeed());
 				else stopPublisher(PublisherType.MAG);
 			case YELLOW:
@@ -74,16 +80,25 @@ public abstract class LegoTrain implements TrainState{
 	@Override
 	public void nfcUpdate(NFCReading hex) {
 		MapZone zone;
+		nfcRead = true;
 		StateActivator.getLogger().log(LogService.LOG_DEBUG, String.format("LocationID: %s", hex.getReading()));
 		if(hex.getReading().equals("00000000")){
 			if(train.getCurrentLocationID() == "00000000"){
 				train.stopTrain();
 				return;
 			}
-			zone = train.getMapRestrictions().getNextMapZone(train.getCurrentLocationID(), true);
+			zone = getNextMapZone();
 		}
 		else zone = train.getMapRestrictions().getMapZoneFromLocation(hex.getReading());
 		train.setCurrentLocationID(hex.getReading());
+		setTrainMapZone(zone);
+	}
+	
+	private MapZone getNextMapZone(){
+		return train.getMapRestrictions().getNextMapZone(train.getCurrentLocationID(), true);
+	}
+	
+	private void setTrainMapZone(MapZone zone){
 		if(zone == MapZone.CITY) train.setTrainState(TrainStates.RUNNINGCITY);
 		if(zone == MapZone.INNERCITY) train.setTrainState(TrainStates.RUNNINGINNERCITY);
 		if(zone == MapZone.NORMAL) train.setTrainState(TrainStates.RUNNING);

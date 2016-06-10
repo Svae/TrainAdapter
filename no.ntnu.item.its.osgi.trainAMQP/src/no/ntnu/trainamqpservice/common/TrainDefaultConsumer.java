@@ -23,7 +23,9 @@ public class TrainDefaultConsumer extends DefaultConsumer {
     public void handleDelivery(String consumerTag, Envelope envelope,
                                AMQP.BasicProperties properties, byte[] body) throws IOException {
 		AMQPMessage msg = new AMQPMessage(consumerTag, envelope, properties, body);
-		function.apply(msg);
+		synchronized (function) {
+			function.apply(msg);
+		}
     }
 	
 	public void setFunction(Function<AMQPMessage, Void> function){

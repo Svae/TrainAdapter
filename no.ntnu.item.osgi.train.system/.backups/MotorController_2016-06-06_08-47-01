@@ -39,7 +39,7 @@
     <packagedElement xmi:type="uml:Activity" xmi:id="_CEVmUw1mEea364fhqzOEpg" name="MotorController" classifierBehavior="_CJTl4A1mEea364fhqzOEpg" node="_QqO4sA1mEea364fhqzOEpg _R5s8gA1mEea364fhqzOEpg _VqZm8A1mEea364fhqzOEpg _XMymwA1mEea364fhqzOEpg _d35h8A1oEea364fhqzOEpg _g-iiwA1oEea364fhqzOEpg _4SrXoA1oEea364fhqzOEpg _CHFQ8A1pEea364fhqzOEpg _ErxJUA1rEea364fhqzOEpg _IAd0QA1rEea364fhqzOEpg _JPfzMA1rEea364fhqzOEpg _LnoIMA1rEea364fhqzOEpg _CA2iQCwXEeaUf4HzZuiq8Q" group="_CEjowA1mEea364fhqzOEpg" partition="_CEjowA1mEea364fhqzOEpg">
       <ownedBehavior xmi:type="uml:StateMachine" xmi:id="_CJTl4A1mEea364fhqzOEpg" name="MotorController">
         <region xmi:id="_CJUM8Q1mEea364fhqzOEpg" name="&lt;region>">
-          <transition xmi:id="_R9feEA1rEea364fhqzOEpg" name="init / ready" source="_CJUM8g1mEea364fhqzOEpg" target="_R9gsMA1rEea364fhqzOEpg"/>
+          <transition xmi:id="_R9feEA1rEea364fhqzOEpg" name="init / " source="_CJUM8g1mEea364fhqzOEpg" target="_R9gsMA1rEea364fhqzOEpg"/>
           <transition xmi:id="_TW6vIA1rEea364fhqzOEpg" name="init / failed" source="_CJUM8g1mEea364fhqzOEpg" target="_TW7WMQ1rEea364fhqzOEpg"/>
           <transition xmi:id="_VQBl0A1rEea364fhqzOEpg" name="setSpeed / " source="_R9gsMA1rEea364fhqzOEpg" target="_R9gsMA1rEea364fhqzOEpg"/>
           <transition xmi:id="_WJoHUA1rEea364fhqzOEpg" name="stopMotor / " source="_R9gsMA1rEea364fhqzOEpg" target="_R9gsMA1rEea364fhqzOEpg"/>
@@ -139,7 +139,7 @@
   <graphics:Shape xmi:id="_IAwvMA1rEea364fhqzOEpg" x="252" y="270" width="199" height="55" base_Element="_IAd0QA1rEea364fhqzOEpg"/>
   <graphics:Shape xmi:id="_JP6C4A1rEea364fhqzOEpg" x="252" y="216" width="199" height="55" base_Element="_JPfzMA1rEea364fhqzOEpg" orientation="east"/>
   <graphics:Shape xmi:id="_Ln3YwA1rEea364fhqzOEpg" x="252" y="324" width="199" height="55" base_Element="_LnoIMA1rEea364fhqzOEpg"/>
-  <arctis:event xmi:id="_R9gFIA1rEea364fhqzOEpg" base_Transition="_R9feEA1rEea364fhqzOEpg" triggers="_QqO4sA1mEea364fhqzOEpg" effects="_CA2iQCwXEeaUf4HzZuiq8Q"/>
+  <arctis:event xmi:id="_R9gFIA1rEea364fhqzOEpg" base_Transition="_R9feEA1rEea364fhqzOEpg" triggers="_QqO4sA1mEea364fhqzOEpg"/>
   <arctis:event xmi:id="_TW7WMA1rEea364fhqzOEpg" base_Transition="_TW6vIA1rEea364fhqzOEpg" triggers="_QqO4sA1mEea364fhqzOEpg" effects="_g-iiwA1oEea364fhqzOEpg"/>
   <arctis:event xmi:id="_VQBl0Q1rEea364fhqzOEpg" base_Transition="_VQBl0A1rEea364fhqzOEpg" triggers="_R5s8gA1mEea364fhqzOEpg"/>
   <arctis:event xmi:id="_WJoHUQ1rEea364fhqzOEpg" base_Transition="_WJoHUA1rEea364fhqzOEpg" triggers="_VqZm8A1mEea364fhqzOEpg"/>

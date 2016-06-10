@@ -8,6 +8,7 @@ import java.util.function.Function;
 import org.osgi.util.tracker.ServiceTracker;
 
 import com.google.gson.Gson;
+import com.google.gson.JsonSyntaxException;
 
 import no.ntnu.item.arctis.runtime.Block;
 import no.ntnu.item.its.train.adapter.common.TrainCommand;
@@ -54,9 +55,9 @@ public class RemoteControl extends Block {
 		}
 		TrainAMQPService service = (TrainAMQPService)amqpTracker.getService();
 		AMQPProperties properties = new AMQPProperties();
-		function = getCallbackFunction();
 		try {
 			channel = service.openChannel(properties);
+			function = getCallbackFunction();
 			consumer = new TrainDefaultConsumer(function, channel);
 			channel.setConsumer(consumer);
 			//For testing
@@ -74,22 +75,28 @@ public class RemoteControl extends Block {
 
 			@Override
 			public Void apply(AMQPMessage t) {
-				String msg = decodeBody(t.getRawBody());
+				TrainCommand cmd = deserilizeBody(t.getRawBody());
 				logger.debug("Received message");
-				if(msg == null) return null;
-				sendToBlock(received, (TrainCommand)gson.fromJson(msg, TrainCommand.class));
+				if(cmd == null) return null;
+				sendToBlock(received, cmd);
 				return null;
 			}
 			
 		};
 	}
 	
-	private String decodeBody(byte[] body){
-		try {
-			return new String(body, "UTF-8");
-		} catch (UnsupportedEncodingException e) {
-			sendToBlock(error, e.getMessage());
-		}
+	private TrainCommand deserilizeBody(byte[] body){
+		
+			String json;
+			try {
+				json = new String(body, "UTF-8");
+				TrainCommand cmd = gson.fromJson(json, TrainCommand.class);
+				return cmd;
+			} catch (UnsupportedEncodingException e1) {
+				sendToBlock(error, e1.getMessage());
+			} catch (JsonSyntaxException e2){
+				sendToBlock(error, e2.getMessage());
+			}
 		return null;
 	}
 

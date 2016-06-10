@@ -31,7 +31,7 @@ public class LoggerActivator implements BundleActivator {
 			System.out.println("Logger service is not up");
 			return;
 		}
-		listener = new ColorTestLogger();
+		listener = new TrainReactionTimes();
 		tracker.getService().addLogListener(listener);
 	}
 
@@ -40,7 +40,7 @@ public class LoggerActivator implements BundleActivator {
 	 * @see org.osgi.framework.BundleActivator#stop(org.osgi.framework.BundleContext)
 	 */
 	public void stop(BundleContext bundleContext) throws Exception {
-		((ColorTestLogger)listener).close();
+		((TrainReactionTimes)listener).close();
 		tracker.getService().removeLogListener(listener);
 		LoggerActivator.context = null;
 	}

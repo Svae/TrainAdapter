@@ -84,6 +84,7 @@ public class MagConfigurator implements SensorConfigurator{
 	
 	@Override
 	public Status getPublisherStatus() {
+		if(magTracker.getService() == null) return null;
 		return magTracker.getService().getStatus();
 	}
 	

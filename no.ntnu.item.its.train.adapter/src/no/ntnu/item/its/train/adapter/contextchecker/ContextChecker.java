@@ -51,7 +51,7 @@ public class ContextChecker extends Block implements TrainContext {
 		setUpTrackers();
 		//Test set up
 		trainInfo.setInTurn(false);
-		setTrainState(TrainStates.TEST);
+		setTrainState(TrainStates.RUNNING);
 	}
 	
 	private void setUpTrackers(){

@@ -55,6 +55,7 @@ public class AMQPService implements TrainAMQPService {
 		factory.setUsername(properties.getUsername());
 		factory.setPassword(properties.getPassword());getLogger().log(LogService.LOG_INFO,
 				String.format("Factory set up to connect to %s:%d", factory.getHost(), factory.getPort()));
+
 		return factory;
 	}
 
