@@ -4,7 +4,10 @@ import org.osgi.service.event.Event;
 
 import no.ntnu.item.ites.osgi.train.adapter.handlers.common.interfaces.EventReceiver;
 import no.ntnu.item.ites.osgi.train.adapter.handlers.common.interfaces.SensorHandler;
+import no.ntnu.item.its.osgi.common.enums.PublisherType;
+import no.ntnu.item.its.osgi.common.enums.Status;
 import no.ntnu.item.its.osgi.common.interfaces.AccelerationControllerService;
+import no.ntnu.item.its.osgi.common.interfaces.ColorControllerService;
 import no.ntnu.item.its.osgi.common.interfaces.MagControllerService;
 import no.ntnu.item.its.osgi.train.adapter.handlers.common.readings.MagnetometerReading;
 
@@ -19,6 +22,10 @@ public class DefaultMagnetometerEventHandler implements SensorHandler{
 
 	@Override
 	public void handleEvent(Event e) {
+		if(e.getProperty(ColorControllerService.STATE) != null){
+			receiver.sendSensorStateEvent((Status)e.getProperty(ColorControllerService.STATE), PublisherType.SLEEPER);
+			return;
+		}
 		long time = (long) e.getProperty(AccelerationControllerService.TIMESTAMP_KEY);
 		double heading = (double) e.getProperty(MagControllerService.HEADING_KEY);
 		if (prevHeading == Double.MAX_VALUE) {

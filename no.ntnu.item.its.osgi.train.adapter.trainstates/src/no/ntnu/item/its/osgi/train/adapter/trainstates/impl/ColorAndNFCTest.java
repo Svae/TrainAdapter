@@ -1,6 +1,5 @@
 package no.ntnu.item.its.osgi.train.adapter.trainstates.impl;
 
-import org.osgi.framework.ServiceReference;
 import org.osgi.service.log.LogService;
 
 import no.ntnu.item.its.osgi.common.enums.PublisherType;
@@ -9,8 +8,10 @@ import no.ntnu.item.its.osgi.train.adapter.handlers.common.readings.Acceleromete
 import no.ntnu.item.its.osgi.train.adapter.handlers.common.readings.ColorReading;
 import no.ntnu.item.its.osgi.train.adapter.handlers.common.readings.MagnetometerReading;
 import no.ntnu.item.its.osgi.train.adapter.handlers.common.readings.NFCReading;
+import no.ntnu.item.its.osgi.train.adapter.handlers.common.readings.SensorStateEvent;
 import no.ntnu.item.its.osgi.train.adapter.handlers.common.readings.TemperatureReading;
 import no.ntnu.item.its.osgi.train.adapter.sensorconfigurator.common.SensorConfigurationOption;
+import no.ntnu.item.its.osgi.train.adapter.sensorconfigurator.common.SensorReconfiguration;
 import no.ntnu.item.its.osgi.train.adapter.trainrestrictions.common.SpeedRestrictionLevel;
 import no.ntnu.item.its.osgi.train.adapter.trainstates.StateActivator;
 import no.ntnu.item.its.osgi.train.adapter.trainstates.interfaces.TrainContext;
@@ -32,8 +33,8 @@ public class ColorAndNFCTest implements TrainState{
 		if(color.getReading() == SleeperColor.UNKNOWN || color.getReading() == SleeperColor.GRAY) return;
 		
 		StateActivator.getLogger().log(LogService.LOG_INFO, String.format("[%s] %d %s", this.getClass().getSimpleName(), System.currentTimeMillis(), color.getReading()));
-		if(color.getReading() == SleeperColor.BLUE){
-			train.getSensorConfigurator().configureSensor(SensorConfigurationOption.READ, 0, PublisherType.BEACON);
+		if(color.getReading() == SleeperColor.BLUE){			
+			train.reconfigureSensor(new SensorReconfiguration(PublisherType.BEACON, SensorConfigurationOption.READ, 0));
 		}
 	}
 	
@@ -60,7 +61,7 @@ public class ColorAndNFCTest implements TrainState{
 	}
 
 	@Override
-	public void sensorUpdate(ServiceReference event) {
+	public void sensorUpdate(SensorStateEvent event) {
 		// TODO Auto-generated method stub
 		
 	}

@@ -1,7 +1,10 @@
 package no.ntnu.item.its.osgi.train.adapter.trainstates.interfaces;
 
+import no.ntnu.item.its.osgi.common.enums.PublisherType;
+import no.ntnu.item.its.osgi.common.enums.Status;
+import no.ntnu.item.its.osgi.train.adapter.handlers.common.enums.SleeperColor;
 import no.ntnu.item.its.osgi.train.adapter.maprestrictions.interfaces.MapRestrictionChecker;
-import no.ntnu.item.its.osgi.train.adapter.sensorconfigurator.interfaces.TrainSensorConfiguratorController;
+import no.ntnu.item.its.osgi.train.adapter.sensorconfigurator.common.SensorReconfiguration;
 import no.ntnu.item.its.osgi.train.adapter.trainrestrictions.common.SpeedRestrictionLevel;
 import no.ntnu.item.its.osgi.train.adapter.trainrestrictions.interfaces.TrainRestrictionsChecker;
 import no.ntnu.item.its.osgi.train.adapter.trainstates.interfaces.TrainStateController.TrainStates;
@@ -17,7 +20,6 @@ public interface TrainContext {
 	public TrainRestrictionsChecker getTrainRestrictionChecker();
 	public TrainStateController getTrainStateController();
 	public MapRestrictionChecker getMapRestrictions();
-	public TrainSensorConfiguratorController getSensorConfigurator();
 	public boolean isInTurn();
 	public void setInturn(boolean b);
 	public void increaseSpeedForTurn();
@@ -26,5 +28,10 @@ public interface TrainContext {
 	public void setHeading(double heading);
 	public String getCurrentLocationID();
 	public void setCurrentLocationID(String locationID);
+	public Status getSensorState(PublisherType type);
+	public void setSensorState(PublisherType type, Status status);
+	public void reconfigureSensor(SensorReconfiguration reconfiguration);
+	public void setLastSleeperColor(SleeperColor color);
+	public SleeperColor getLastSleeperColor();
 	
 }

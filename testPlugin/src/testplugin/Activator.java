@@ -8,6 +8,8 @@ import org.osgi.framework.BundleContext;
 import org.osgi.service.event.EventConstants;
 import org.osgi.service.event.EventHandler;
 
+import impl.TestService;
+
 public class Activator implements BundleActivator {
 
 	// AMQPServiceIF service;
@@ -22,8 +24,9 @@ public class Activator implements BundleActivator {
 		service.connectToBroker("192.168.0.196", "hello", 0, 0);
 		subscribe();*/
 		Dictionary dp = new Hashtable<>();
-		dp.put(EventConstants.EVENT_TOPIC ,"test/*");
-		context.registerService(EventHandler.class.getName(), new SensorEventHandler(), dp);
+		//dp.put(EventConstants.EVENT_TOPIC ,"test/*");
+		//context.registerService(EventHandler.class.getName(), new SensorEventHandler(), dp);
+		context.registerService(TestService.class, new TestService(), dp);
 	}
 	
 	/*

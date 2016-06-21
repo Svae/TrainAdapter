@@ -1,13 +1,12 @@
 package no.ntnu.item.its.osgi.train.adapter.sensorconfigurator;
 
-import java.util.HashMap;
+import java.util.List;
 
 import org.osgi.framework.BundleContext;
 
 import no.ntnu.item.its.osgi.common.enums.PublisherType;
 import no.ntnu.item.its.osgi.common.enums.Status;
-import no.ntnu.item.its.osgi.common.interfaces.PublisherService;
-import no.ntnu.item.its.osgi.train.adapter.sensorconfigurator.common.SensorConfigurationOption;
+import no.ntnu.item.its.osgi.train.adapter.sensorconfigurator.common.SensorReconfiguration;
 import no.ntnu.item.its.osgi.train.adapter.sensorconfigurator.configurators.ColorConfigurator;
 import no.ntnu.item.its.osgi.train.adapter.sensorconfigurator.configurators.MagConfigurator;
 import no.ntnu.item.its.osgi.train.adapter.sensorconfigurator.configurators.MifareConfigurator;
@@ -28,13 +27,17 @@ public class SensorConfiguratorController implements TrainSensorConfiguratorCont
 		mifare = new MifareConfigurator(context);
 	}
 	
-	public void configureSensor(HashMap<SensorConfigurationOption, Object> properties, PublisherType type){
-		getConfigurator(type).configure(properties);
+	@Override
+	public void configureSensor(List<SensorReconfiguration>reconfigurations){
+		for (SensorReconfiguration reconfiguration : reconfigurations) {
+			configureSensor(reconfiguration);
+		}
 	}
 
 	@Override
-	public void configureSensor(SensorConfigurationOption property, Object value, PublisherType type) {
-		getConfigurator(type).configure(property, value);
+	public void configureSensor(SensorReconfiguration reconfiguration) {
+		if(reconfiguration.getType() == null) return;
+		getConfigurator(reconfiguration.getType()).configure(reconfiguration);
 	}
 
 	private SensorConfigurator getConfigurator(PublisherType type){

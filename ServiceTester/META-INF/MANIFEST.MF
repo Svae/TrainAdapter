@@ -5,10 +5,7 @@ Bundle-SymbolicName: ServiceTester
 Bundle-Version: 1.0.0.qualifier
 Bundle-Activator: servicetester.Activator
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
-Import-Package: com.rabbitmq.client;version="3.6.0",
- no.ntnu.trainamqpservice.common,
- no.ntnu.trainamqpservice.interfaces,
- org.osgi.framework;version="1.3.0",
- org.osgi.util.tracker;version="1.5.1"
+Import-Package: impl,
+ org.osgi.framework;version="1.3.0"
 Bundle-ActivationPolicy: lazy
 Require-Bundle: com.rabbitmq.client;bundle-version="3.6.0"

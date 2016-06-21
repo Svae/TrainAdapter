@@ -13,6 +13,7 @@ import no.ntnu.item.its.osgi.common.enums.Status;
 import no.ntnu.item.its.osgi.common.interfaces.PublisherService;
 import no.ntnu.item.its.osgi.train.adapter.sensorconfigurator.ConfiguratorActivator;
 import no.ntnu.item.its.osgi.train.adapter.sensorconfigurator.common.SensorConfigurationOption;
+import no.ntnu.item.its.osgi.train.adapter.sensorconfigurator.common.SensorReconfiguration;
 
 public class ColorConfigurator implements SensorConfigurator {
 
@@ -34,10 +35,11 @@ public class ColorConfigurator implements SensorConfigurator {
 	}
 	
 	@Override
-	public void configure(SensorConfigurationOption property, Object value) {
+	public void configure(SensorReconfiguration reconfiguration) {
 		if(colorTracker.getService() == null) return;
 		ConfiguratorActivator.getLogger().log(LogService.LOG_DEBUG, "[" + this.getClass().getSimpleName() + "] " + System.currentTimeMillis());
-		switch (property) {
+		Object value = reconfiguration.getValue();
+		switch (reconfiguration.getOption()) {
 		case PUBLISHRATE:
 			if(!(value instanceof Long)) return;
 			changePublishRate((long) value);
@@ -65,12 +67,6 @@ public class ColorConfigurator implements SensorConfigurator {
 	private void doRead(){
 		colorTracker.getService().read();
 	}
-
-	@Override
-	public void configure(HashMap<SensorConfigurationOption, Object> properties) {
-		
-	}
-	
 
 	@Override
 	public long getPublishRate() {

@@ -12,6 +12,7 @@ import no.ntnu.item.its.osgi.common.enums.PublisherType;
 import no.ntnu.item.its.osgi.common.enums.Status;
 import no.ntnu.item.its.osgi.common.interfaces.PublisherService;
 import no.ntnu.item.its.osgi.train.adapter.sensorconfigurator.common.SensorConfigurationOption;
+import no.ntnu.item.its.osgi.train.adapter.sensorconfigurator.common.SensorReconfiguration;
 
 public class MagConfigurator implements SensorConfigurator{
 
@@ -32,17 +33,12 @@ public class MagConfigurator implements SensorConfigurator{
 		
 	}
 	
-	@Override
-	public void configure(HashMap<SensorConfigurationOption, Object> properties) {
-		for (Entry<SensorConfigurationOption, Object> entry : properties.entrySet()) {
-			configure(entry.getKey(), entry.getValue());
-		}
-	}
 
 	@Override
-	public void configure(SensorConfigurationOption property, Object value) {
+	public void configure(SensorReconfiguration reconfiguration) {
 		if(magTracker.getService() == null) return;
-		switch (property) {
+		Object value = reconfiguration.getValue();
+		switch (reconfiguration.getOption()) {
 		//TODO: ADD LOGGING
 			case PUBLISHRATE:
 				if(!(value instanceof Long)) return;

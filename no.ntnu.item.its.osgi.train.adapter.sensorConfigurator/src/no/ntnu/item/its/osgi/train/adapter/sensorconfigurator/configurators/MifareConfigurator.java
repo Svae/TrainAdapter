@@ -1,8 +1,5 @@
 package no.ntnu.item.its.osgi.train.adapter.sensorconfigurator.configurators;
 
-import java.util.HashMap;
-import java.util.Map.Entry;
-
 import org.osgi.framework.BundleContext;
 import org.osgi.framework.Filter;
 import org.osgi.framework.InvalidSyntaxException;
@@ -11,7 +8,7 @@ import org.osgi.util.tracker.ServiceTracker;
 import no.ntnu.item.its.osgi.common.enums.PublisherType;
 import no.ntnu.item.its.osgi.common.enums.Status;
 import no.ntnu.item.its.osgi.common.interfaces.PublisherService;
-import no.ntnu.item.its.osgi.train.adapter.sensorconfigurator.common.SensorConfigurationOption;
+import no.ntnu.item.its.osgi.train.adapter.sensorconfigurator.common.SensorReconfiguration;
 
 public class MifareConfigurator implements SensorConfigurator{
 
@@ -33,16 +30,9 @@ public class MifareConfigurator implements SensorConfigurator{
 	}
 	
 	@Override
-	public void configure(HashMap<SensorConfigurationOption, Object> properties) {
-		for (Entry<SensorConfigurationOption, Object> entry : properties.entrySet()) {
-			configure(entry.getKey(), entry.getValue());
-		}
-	}
-
-	@Override
-	public void configure(SensorConfigurationOption property, Object value) {
+	public void configure(SensorReconfiguration reconfiguration) {
 		if(beaconTracker.getService() == null) return;
-		switch (property) {
+		switch (reconfiguration.getOption()) {
 			case PUBLISHRATE:
 				break;
 			case READ:
@@ -52,7 +42,7 @@ public class MifareConfigurator implements SensorConfigurator{
 				stopPublisher();
 				break;
 			case WRITE:
-				doWrite((String) value);
+				doWrite((String) reconfiguration.getValue());
 				break;
 			default:
 				break;

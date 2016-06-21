@@ -1,14 +1,11 @@
 package no.ntnu.item.its.osgi.train.adapter.sensorconfigurator.configurators;
 
-import java.util.HashMap;
-
 import no.ntnu.item.its.osgi.common.enums.Status;
-import no.ntnu.item.its.osgi.train.adapter.sensorconfigurator.common.SensorConfigurationOption;
+import no.ntnu.item.its.osgi.train.adapter.sensorconfigurator.common.SensorReconfiguration;
 
 public interface SensorConfigurator {
 	
-	public void configure(HashMap<SensorConfigurationOption, Object> properties);
-	public void configure(SensorConfigurationOption property, Object value);
+	public void configure(SensorReconfiguration reconfiguration);
 	public long getPublishRate();
 	public long getDefaultPublishRate();
 	public Status getPublisherStatus();

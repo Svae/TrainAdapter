@@ -4,17 +4,13 @@ import org.osgi.framework.BundleActivator;
 import org.osgi.framework.BundleContext;
 import org.osgi.util.tracker.ServiceTracker;
 
-import no.ntnu.item.its.osgi.train.adapter.trainrestrictions.common.SpeedRestrictionLevel;
-import no.ntnu.item.its.osgi.train.adapter.trainstates.interfaces.TrainStateController.TrainStates;
-import no.ntnu.item.its.train.adapter.common.TrainCommand;
-import no.ntnu.item.its.train.adapter.enums.TrainCommandType;
 import no.ntnu.trainamqpservice.common.LegoTrainAMQPSendServiceTrackerCustomizer;
 import no.ntnu.trainamqpservice.interfaces.TrainAMQPSendService;
 
 public class Activator implements BundleActivator {
 
 	private static BundleContext context;
-	private ServiceTracker<TrainAMQPSendService, TrainAMQPSendService> amqpTracker;
+//	private ServiceTracker<TrainAMQPSendService, TrainAMQPSendService> amqpTracker;
 
 	static BundleContext getContext() {
 		return context;
@@ -26,13 +22,13 @@ public class Activator implements BundleActivator {
 	 */
 	public void start(BundleContext bundleContext) throws Exception {
 		Activator.context = bundleContext;
-		amqpTracker = new ServiceTracker<>(bundleContext, TrainAMQPSendService.class, new LegoTrainAMQPSendServiceTrackerCustomizer(bundleContext));
+	/*	amqpTracker = new ServiceTracker<>(bundleContext, TrainAMQPSendService.class, new LegoTrainAMQPSendServiceTrackerCustomizer(bundleContext));
 		amqpTracker.open();
-		amqpTracker.getService().send((Object)getMessage(), "traincommand");
+		amqpTracker.getService().send((Object)getMessage(), "traincommand");*/
 	}
 
 	private Object getMessage() {
-		return new TrainCommand(TrainCommandType.STOP, SpeedRestrictionLevel.NORMAL);
+		//return new TrainCommand(TrainCommandType.STOP, SpeedRestrictionLevel.NORMAL);
 	}
 
 	/*

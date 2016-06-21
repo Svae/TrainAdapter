@@ -1,14 +1,14 @@
 package no.ntnu.item.its.osgi.train.adapter.trainstates.impl;
 
-import org.osgi.framework.ServiceReference;
-
 import no.ntnu.item.its.osgi.common.enums.PublisherType;
 import no.ntnu.item.its.osgi.train.adapter.handlers.common.readings.AccelerometerReading;
 import no.ntnu.item.its.osgi.train.adapter.handlers.common.readings.ColorReading;
 import no.ntnu.item.its.osgi.train.adapter.handlers.common.readings.MagnetometerReading;
 import no.ntnu.item.its.osgi.train.adapter.handlers.common.readings.NFCReading;
+import no.ntnu.item.its.osgi.train.adapter.handlers.common.readings.SensorStateEvent;
 import no.ntnu.item.its.osgi.train.adapter.handlers.common.readings.TemperatureReading;
 import no.ntnu.item.its.osgi.train.adapter.sensorconfigurator.common.SensorConfigurationOption;
+import no.ntnu.item.its.osgi.train.adapter.sensorconfigurator.common.SensorReconfiguration;
 import no.ntnu.item.its.osgi.train.adapter.trainrestrictions.common.SpeedRestrictionLevel;
 import no.ntnu.item.its.osgi.train.adapter.trainstates.interfaces.TrainContext;
 import no.ntnu.item.its.osgi.train.adapter.trainstates.interfaces.TrainState;
@@ -24,7 +24,7 @@ public class LocalTest implements TrainState {
 	}
 
 	@Override
-	public void sensorUpdate(ServiceReference event) {
+	public void sensorUpdate(SensorStateEvent event) {
 	}
 
 	@Override
@@ -35,9 +35,7 @@ public class LocalTest implements TrainState {
 	}
 
 	protected void reconfigureSensors(PublisherType type, SpeedRestrictionLevel level) {
-
-		train.getSensorConfigurator().configureSensor(SensorConfigurationOption.PUBLISHRATE,
-				calculateMagPullRate(level), type);
+		train.reconfigureSensor(new SensorReconfiguration(type, SensorConfigurationOption.PUBLISHRATE, calculateMagPullRate(level)));
 	}
 
 	@Override

@@ -26,7 +26,7 @@ public class RemoteControl extends Block {
 	private Function<AMQPMessage, Void> function;
 	private Gson gson;
 	
-	private String topic= "traincommand";
+	private String topic= "trains.0.traincommand";
 	
 	private String error = "ERROR";
 	private String failed = "FAILED";

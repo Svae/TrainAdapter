@@ -1,13 +1,15 @@
 package no.ntnu.item.its.osgi.train.adapter.trainstates.impl;
 
-import org.osgi.framework.ServiceReference;
-
+import no.ntnu.item.its.osgi.common.enums.PublisherType;
+import no.ntnu.item.its.osgi.train.adapter.handlers.common.enums.SensorEventType;
 import no.ntnu.item.its.osgi.train.adapter.handlers.common.readings.AccelerometerReading;
 import no.ntnu.item.its.osgi.train.adapter.handlers.common.readings.ColorReading;
 import no.ntnu.item.its.osgi.train.adapter.handlers.common.readings.MagnetometerReading;
 import no.ntnu.item.its.osgi.train.adapter.handlers.common.readings.NFCReading;
+import no.ntnu.item.its.osgi.train.adapter.handlers.common.readings.SensorStateEvent;
 import no.ntnu.item.its.osgi.train.adapter.handlers.common.readings.TemperatureReading;
 import no.ntnu.item.its.osgi.train.adapter.trainstates.interfaces.TrainContext;
+import no.ntnu.item.its.osgi.train.adapter.trainstates.interfaces.TrainStateController.TrainStates;
 
 public class Stopped extends LegoTrain{
 
@@ -40,7 +42,10 @@ public class Stopped extends LegoTrain{
 	}
 
 	@Override
-	public void sensorUpdate(ServiceReference event) {
+	public void sensorUpdate(SensorStateEvent event) {
+		if(event.getEvent() ==SensorEventType.REGISTERED && event.getType() == PublisherType.SLEEPER){
+			train.setTrainState(TrainStates.RUNNING);
+		}
 		
 	}
 

@@ -1,26 +1,14 @@
 package servicetester;
 
-import java.io.IOException;
-
 import org.osgi.framework.BundleActivator;
 import org.osgi.framework.BundleContext;
-import org.osgi.util.tracker.ServiceTracker;
+import org.osgi.framework.ServiceReference;
 
-import com.rabbitmq.client.AMQP;
-import com.rabbitmq.client.Channel;
-import com.rabbitmq.client.Consumer;
-import com.rabbitmq.client.DefaultConsumer;
-import com.rabbitmq.client.Envelope;
-
-import no.ntnu.trainamqpservice.common.AMQPProperties;
-import no.ntnu.trainamqpservice.interfaces.TrainAMQPChannel;
-import no.ntnu.trainamqpservice.interfaces.TrainAMQPService;
+import impl.TestService;
 
 public class Activator implements BundleActivator {
 
 	private static BundleContext context;
-	private ServiceTracker amqptracker;
-	private TrainAMQPService service;
 	
 	static BundleContext getContext() {
 		return context;
@@ -30,7 +18,7 @@ public class Activator implements BundleActivator {
 	 * (non-Javadoc)
 	 * @see org.osgi.framework.BundleActivator#start(org.osgi.framework.BundleContext)
 	 */
-	public void start(BundleContext bundleContext) throws Exception {
+	/*public void start(BundleContext bundleContext) throws Exception {
 		Activator.context = bundleContext;
 		ServiceTracker amqptracker = new ServiceTracker<>(context, TrainAMQPService.class.getName(), null);
 		amqptracker.open();
@@ -49,7 +37,9 @@ public class Activator implements BundleActivator {
 		    };
 		channel.subscribe("testi");
 		
-	}
+	}*/
+	
+	
 
 	/*
 	 * (non-Javadoc)
@@ -57,6 +47,13 @@ public class Activator implements BundleActivator {
 	 */
 	public void stop(BundleContext bundleContext) throws Exception {
 		Activator.context = null;
+	}
+
+	@Override
+	public void start(BundleContext bundleContext) throws Exception {
+		ServiceReference s = bundleContext.getServiceReference(TestService.class);
+		TestService t = (TestService) bundleContext.getService(s);
+		t.inc();
 	}
 
 }

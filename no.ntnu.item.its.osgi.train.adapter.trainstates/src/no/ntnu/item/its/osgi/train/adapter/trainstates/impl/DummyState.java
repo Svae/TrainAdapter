@@ -1,11 +1,10 @@
 package no.ntnu.item.its.osgi.train.adapter.trainstates.impl;
 
-import org.osgi.framework.ServiceReference;
-
 import no.ntnu.item.its.osgi.train.adapter.handlers.common.readings.AccelerometerReading;
 import no.ntnu.item.its.osgi.train.adapter.handlers.common.readings.ColorReading;
 import no.ntnu.item.its.osgi.train.adapter.handlers.common.readings.MagnetometerReading;
 import no.ntnu.item.its.osgi.train.adapter.handlers.common.readings.NFCReading;
+import no.ntnu.item.its.osgi.train.adapter.handlers.common.readings.SensorStateEvent;
 import no.ntnu.item.its.osgi.train.adapter.handlers.common.readings.TemperatureReading;
 import no.ntnu.item.its.osgi.train.adapter.trainstates.interfaces.TrainContext;
 import no.ntnu.item.its.osgi.train.adapter.trainstates.interfaces.TrainState;
@@ -49,7 +48,7 @@ public class DummyState implements TrainState{
 	}
 
 	@Override
-	public void sensorUpdate(ServiceReference event) {
+	public void sensorUpdate(SensorStateEvent event) {
 		// TODO Auto-generated method stub
 		
 	}

@@ -23,9 +23,9 @@ public final class LegoTrainRestrictionProperties {
 	
 	public static final SensorPriorityLevel SENSORLIGHT = SensorPriorityLevel.PERIPHERAL;
 	public static final SensorPriorityLevel SENSORCOLOR = SensorPriorityLevel.VITAL;
-	public static final SensorPriorityLevel SENSORBEACON = SensorPriorityLevel.VITAL;
+	public static final SensorPriorityLevel SENSORBEACON = SensorPriorityLevel.IMPORTANT;
 	public static final SensorPriorityLevel SENSORMAGNETOMETER = SensorPriorityLevel.PERIPHERAL;
-	public static final SensorPriorityLevel SENSORTEMPERATURE = SensorPriorityLevel.IMPORTENT;
+	public static final SensorPriorityLevel SENSORTEMPERATURE = SensorPriorityLevel.PERIPHERAL;
 	public static final SensorPriorityLevel SENSORACCELEROMETER = SensorPriorityLevel.PERIPHERAL;
 		
 	

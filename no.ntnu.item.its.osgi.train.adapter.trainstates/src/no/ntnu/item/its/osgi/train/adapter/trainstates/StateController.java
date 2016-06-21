@@ -3,13 +3,16 @@ package no.ntnu.item.its.osgi.train.adapter.trainstates;
 import org.osgi.service.log.LogService;
 
 import no.ntnu.item.its.osgi.train.adapter.trainstates.impl.City;
+import no.ntnu.item.its.osgi.train.adapter.trainstates.impl.CityWithoutNFC;
 import no.ntnu.item.its.osgi.train.adapter.trainstates.impl.ColorAndNFCTest;
 import no.ntnu.item.its.osgi.train.adapter.trainstates.impl.ColorTest;
 import no.ntnu.item.its.osgi.train.adapter.trainstates.impl.DummyState;
 import no.ntnu.item.its.osgi.train.adapter.trainstates.impl.Innercity;
+import no.ntnu.item.its.osgi.train.adapter.trainstates.impl.InnercityWithoutNFC;
 import no.ntnu.item.its.osgi.train.adapter.trainstates.impl.MagTest;
 import no.ntnu.item.its.osgi.train.adapter.trainstates.impl.NFCTest;
 import no.ntnu.item.its.osgi.train.adapter.trainstates.impl.Running;
+import no.ntnu.item.its.osgi.train.adapter.trainstates.impl.RunningWithoutNFC;
 import no.ntnu.item.its.osgi.train.adapter.trainstates.impl.Stopped;
 import no.ntnu.item.its.osgi.train.adapter.trainstates.interfaces.TrainContext;
 import no.ntnu.item.its.osgi.train.adapter.trainstates.interfaces.TrainState;
@@ -24,10 +27,16 @@ public class StateController implements TrainStateController{
 			return new Running(train);
 		case STOPPED:
 			return new Stopped(train);
-		case RUNNINGCITY:
+		case CITY:
 			return new City(train);
-		case RUNNINGINNERCITY:
+		case INNERCITY:
 			return new Innercity(train);
+		case RUNNINGNFC:
+			return new RunningWithoutNFC(train);
+		case INNERCITYNFC:
+			return new InnercityWithoutNFC(train);
+		case CITYNFC:
+			return new CityWithoutNFC(train);
 		case TEST:
 			return new ColorAndNFCTest(train);
 		case MTEST:
