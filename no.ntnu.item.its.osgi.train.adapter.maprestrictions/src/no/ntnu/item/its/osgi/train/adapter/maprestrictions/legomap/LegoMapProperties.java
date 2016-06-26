@@ -1,8 +1,8 @@
 package no.ntnu.item.its.osgi.train.adapter.maprestrictions.legomap;
 
-public final class LegoMapRestrictionProperties {
+public final class LegoMapProperties {
 
-	private LegoMapRestrictionProperties(){};
+	private LegoMapProperties(){};
 	
 	public static final String[] NORMAL = {"99999991", "99999990"};
 	public static final String[] CITY = {"99999992", "99999993", "99999989"};

@@ -4,13 +4,13 @@ import org.osgi.framework.BundleActivator;
 import org.osgi.framework.BundleContext;
 import org.osgi.framework.ServiceRegistration;
 
-import no.ntnu.item.its.osgi.train.adapter.maprestrictions.interfaces.MapRestrictionChecker;
-import no.ntnu.item.its.osgi.train.adapter.maprestrictions.legomap.LegoMapRestrictionChecker;
+import no.ntnu.item.its.osgi.train.adapter.maprestrictions.interfaces.MapChecker;
+import no.ntnu.item.its.osgi.train.adapter.maprestrictions.legomap.LegoMapChecker;
 
 public class RestrictionActivator implements BundleActivator {
 
 	private static BundleContext context;
-	private ServiceRegistration<MapRestrictionChecker> reg;
+	private ServiceRegistration<MapChecker> reg;
 
 	static BundleContext getContext() {
 		return context;
@@ -22,7 +22,7 @@ public class RestrictionActivator implements BundleActivator {
 	 */
 	public void start(BundleContext bundleContext) throws Exception {
 		RestrictionActivator.context = bundleContext;
-		reg = context.registerService(MapRestrictionChecker.class, new LegoMapRestrictionChecker(), null);
+		reg = context.registerService(MapChecker.class, new LegoMapChecker(), null);
 	}
 
 	/*

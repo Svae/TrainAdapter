@@ -65,8 +65,9 @@ public class SensorController extends Block implements EventReceiver {
 			logger.info("Sensor type property is not set");
 			return;
 		}
-		registerSensorHandler(type, null);
 		sendToBlock(sensorStateEvent, new SensorStateEvent(type, SensorEventType.REGISTERED));
+		registerSensorHandler(type, null);
+
 	}
 
 	public void registerSensorHandler(PublisherType type, SensorHandlerController controller) {
@@ -220,7 +221,6 @@ public class SensorController extends Block implements EventReceiver {
 		TrainSensorConfiguratorController ctr = getSensorConfigurator();
 		if (ctr == null)
 			return;
-		Status prevStatus = getSensorConfigurator().getPublisherStatus(reconfiguration.getType());
 		ctr.configureSensor(reconfiguration);
 		
 	}

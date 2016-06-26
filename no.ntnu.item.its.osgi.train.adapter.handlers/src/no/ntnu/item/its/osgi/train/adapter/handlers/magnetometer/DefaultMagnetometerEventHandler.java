@@ -22,11 +22,11 @@ public class DefaultMagnetometerEventHandler implements SensorHandler{
 
 	@Override
 	public void handleEvent(Event e) {
-		if(e.getProperty(ColorControllerService.STATE) != null){
-			receiver.sendSensorStateEvent((Status)e.getProperty(ColorControllerService.STATE), PublisherType.SLEEPER);
+		if(e.getProperty(MagControllerService.STATE) != null){
+			receiver.sendSensorStateEvent((Status)e.getProperty(MagControllerService.STATE), PublisherType.MAG);
 			return;
 		}
-		long time = (long) e.getProperty(AccelerationControllerService.TIMESTAMP_KEY);
+		long time = (long) e.getProperty(MagControllerService.TIMESTAMP_KEY);
 		double heading = (double) e.getProperty(MagControllerService.HEADING_KEY);
 		if (prevHeading == Double.MAX_VALUE) {
 			prevHeading = heading;

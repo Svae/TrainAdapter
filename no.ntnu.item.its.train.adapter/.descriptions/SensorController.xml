@@ -6,6 +6,22 @@
     type="block" 
     >
     <required>
+        <package name="bluebrick4j.api"/>
+        <package name="bluebrick4j.conversion"/>
+        <package name="bluebrick4j.model"/>
+        <package name="no.ntnu.item.ites.osgi.train.adapter.handlers.common.interfaces"/>
+        <package name="no.ntnu.item.its.osgi.common"/>
+        <package name="no.ntnu.item.its.osgi.common.enums"/>
+        <package name="no.ntnu.item.its.osgi.common.exceptions"/>
+        <package name="no.ntnu.item.its.osgi.common.interfaces"/>
+        <package name="no.ntnu.item.its.osgi.map.enums"/>
+        <package name="no.ntnu.item.its.osgi.map.model"/>
+        <package name="no.ntnu.item.its.osgi.train.adapter.handlers.common.enums"/>
+        <package name="no.ntnu.item.its.osgi.train.adapter.handlers.common.readings"/>
+        <package name="no.ntnu.item.its.osgi.train.adapter.sensorconfigurator.common"/>
+        <package name="no.ntnu.item.its.osgi.train.adapter.sensorconfigurator.interfaces"/>
+        <package name="no.ntnu.item.its.train.adapter.sensorcontroller"/>
+        <package name="org.osgi.framework"/>
         <block name="b0" uuid="_-1Bj4S-gEeSi4PD7l7flYw"/>
     </required>
 </block>

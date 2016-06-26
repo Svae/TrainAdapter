@@ -26,8 +26,6 @@ public class RemoteControl extends Block {
 	private Function<AMQPMessage, Void> function;
 	private Gson gson;
 	
-	private String topic= "trains.0.traincommand";
-	
 	private String error = "ERROR";
 	private String failed = "FAILED";
 	private String received = "RECEIVED";
@@ -37,7 +35,6 @@ public class RemoteControl extends Block {
 		amqpTracker = new ServiceTracker<>(context, TrainAMQPService.class.getName(), null);
 		amqpTracker.open();
 		gson = new Gson();
-		//For testing
 		Runnable r = new Runnable() {
 			
 			@Override
@@ -60,8 +57,6 @@ public class RemoteControl extends Block {
 			function = getCallbackFunction();
 			consumer = new TrainDefaultConsumer(function, channel);
 			channel.setConsumer(consumer);
-			//For testing
-			channel.subscribe(topic);
 			logger.info(this.getClass().getSimpleName() + " is ready");
 			sendToBlock(ready);
 		} catch (Exception e) {

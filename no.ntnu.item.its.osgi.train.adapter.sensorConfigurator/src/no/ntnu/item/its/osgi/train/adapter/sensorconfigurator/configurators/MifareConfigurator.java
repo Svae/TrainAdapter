@@ -74,6 +74,7 @@ public class MifareConfigurator implements SensorConfigurator{
 
 	@Override
 	public Status getPublisherStatus() {
+		if(beaconTracker.getServices() == null) return null;
 		return beaconTracker.getService().getStatus();
 	}
 	

@@ -25,6 +25,7 @@ public abstract class LegoTrain implements TrainState {
 	protected final TrainContext train;
 	private boolean last = false;
 	private boolean nfcRead = true;
+	private long nfcperiode = 500;
 
 	public LegoTrain(TrainContext train) {
 		this.train = train;
@@ -35,7 +36,7 @@ public abstract class LegoTrain implements TrainState {
 			train.setSensorState(event.getType(), Status.OK);
 		if (event.getEvent() == SensorEventType.STOPPED)
 			train.setSensorState(event.getType(), Status.STOPPED);
-		if (event.getEvent() == SensorEventType.STOPPED)
+		if (event.getEvent() == SensorEventType.UNREGISTERED)
 			train.setSensorState(event.getType(), Status.FAULTED);
 	};
 
@@ -44,10 +45,6 @@ public abstract class LegoTrain implements TrainState {
 		SleeperColor color = reading.getReading();
 		if (color == SleeperColor.UNKNOWN || color == SleeperColor.GRAY)
 			return;
-		if (!nfcRead || color != SleeperColor.BLUE) {
-			setTrainMapZone(train.getMapRestrictions().getNextMapZone(train.getCurrentLocationID(), true));
-			nfcRead = true;
-		}
 		StateActivator.getLogger().log(LogService.LOG_DEBUG, String.format("Color: %s", color));
 		switch (reading.getReading()) {
 		case GREEN:
@@ -56,15 +53,22 @@ public abstract class LegoTrain implements TrainState {
 		case BLUE:
 			train.reconfigureSensor(new SensorReconfiguration(PublisherType.BEACON, SensorConfigurationOption.READ, 0));
 			nfcRead = false;
+			startNFCTimer();
 			break;
 		case RED:
 			Status sensorstatus = train.getSensorState(PublisherType.MAG);
-			if (sensorstatus == null)
+			if (sensorstatus == null){
+				StateActivator.getLogger().log(LogService.LOG_DEBUG, String.format("Could not find sensor status"));
 				return;
-			if (sensorstatus == Status.STOPPED)
+			}
+			if (sensorstatus == Status.STOPPED){
 				reconfigurePublisherRate(PublisherType.MAG, train.getSpeed());
+			}
 			else
+			{
 				stopPublisher(PublisherType.MAG);
+			}
+			break;
 		case YELLOW:
 			if (train.isInTurn()) {
 				train.decreaseSpeedForTurn();
@@ -77,6 +81,25 @@ public abstract class LegoTrain implements TrainState {
 
 	}
 
+	protected void startNFCTimer(){
+		Runnable r = new Runnable() {
+			
+			@Override
+			public void run() {
+				try {
+					Thread.sleep(nfcperiode);
+				} catch (InterruptedException e) {
+					e.printStackTrace();
+				}
+				if(!nfcRead){
+					nfcRead = true;
+					setTrainMapZone(train.getMapRestrictions().getNextMapZone(train.getCurrentLocationID(), true));
+				}				
+			}
+		};
+		new Thread(r).start();
+	}
+	
 	protected void reconfigurePublisherRate(PublisherType type, double speed) {
 		if (type == PublisherType.MAG)
 			train.reconfigureSensor(new SensorReconfiguration(type, SensorConfigurationOption.PUBLISHRATE,
@@ -99,7 +122,20 @@ public abstract class LegoTrain implements TrainState {
 		StateActivator.getLogger().log(LogService.LOG_DEBUG, String.format("LocationID: %s", hex.getReading()));
 		if (hex.getReading().equals("00000000")) {
 			if (train.getCurrentLocationID() == "00000000") {
-				train.stopTrain();
+				TrainStates currentState = train.getCurrentTrainState();
+				switch (currentState) {
+				case CITY:
+					currentState = TrainStates.CITYNFC;
+					break;
+				case INNERCITY:
+					currentState = TrainStates.INNERCITYNFC;
+					break;
+				case RUNNING:
+					currentState = TrainStates.RUNNINGNFC;
+				default:
+					break;
+				}
+				train.setTrainState(currentState);
 				return;
 			}
 			zone = getNextMapZone();

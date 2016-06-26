@@ -17,6 +17,7 @@ public class TrainAdapter extends Block {
 
 
 	public TrainInfo getTrainInfo() {
+		//Test set-up
 		TrainInfo info = new TrainInfo();
 		info.setCurrentLocationID("99999989");
 		info.setHeading(180);

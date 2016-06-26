@@ -41,7 +41,9 @@ public class MagConfigurator implements SensorConfigurator{
 		switch (reconfiguration.getOption()) {
 		//TODO: ADD LOGGING
 			case PUBLISHRATE:
-				if(!(value instanceof Long)) return;
+				if(!(value instanceof Long)){
+					return;
+				}
 				changePublishRate((long) value);
 				break;
 			case STOP:
@@ -70,12 +72,12 @@ public class MagConfigurator implements SensorConfigurator{
 
 	@Override
 	public long getPublishRate() {
-		return 0;
+		return magTracker.getService().getPublishRate();
 	}
 
 	@Override
 	public long getDefaultPublishRate() {
-		return 0;
+		return magTracker.getService().getDefaultPublishRate();
 	}
 	
 	@Override

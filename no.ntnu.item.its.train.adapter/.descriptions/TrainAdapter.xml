@@ -6,6 +6,28 @@
     type="block" 
     >
     <required>
+        <package name="bluebrick4j.api"/>
+        <package name="bluebrick4j.conversion"/>
+        <package name="bluebrick4j.model"/>
+        <package name="no.ntnu.item.its.osgi.common"/>
+        <package name="no.ntnu.item.its.osgi.common.enums"/>
+        <package name="no.ntnu.item.its.osgi.common.exceptions"/>
+        <package name="no.ntnu.item.its.osgi.common.interfaces"/>
+        <package name="no.ntnu.item.its.osgi.map.enums"/>
+        <package name="no.ntnu.item.its.osgi.map.model"/>
+        <package name="no.ntnu.item.its.osgi.train.adapter.handlers.common.enums"/>
+        <package name="no.ntnu.item.its.osgi.train.adapter.handlers.common.readings"/>
+        <package name="no.ntnu.item.its.osgi.train.adapter.maprestrictions.common"/>
+        <package name="no.ntnu.item.its.osgi.train.adapter.maprestrictions.interfaces"/>
+        <package name="no.ntnu.item.its.osgi.train.adapter.sensorconfigurator.common"/>
+        <package name="no.ntnu.item.its.osgi.train.adapter.trainrestrictions.common"/>
+        <package name="no.ntnu.item.its.osgi.train.adapter.trainrestrictions.interfaces"/>
+        <package name="no.ntnu.item.its.osgi.train.adapter.trainstates.interfaces"/>
+        <package name="no.ntnu.item.its.train.adapter.common"/>
+        <package name="no.ntnu.item.its.train.adapter.trainInfo"/>
+        <package name="no.ntnu.item.its.train.adapter.trainadapter"/>
+        <package name="no.ntnu.trainamqpservice.common"/>
+        <package name="org.osgi.framework"/>
         <block name="b0" uuid="_kA--djMrEea2tpRNlQMsnQ"/>
         <block name="b1" uuid="_y9CAoOuSEeWrQIhWnzYPtA"/>
         <block name="b2" uuid="_mXF_UOxMEeWRPsrxj_5csA"/>

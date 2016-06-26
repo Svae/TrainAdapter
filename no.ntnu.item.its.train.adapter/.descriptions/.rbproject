@@ -3,6 +3,7 @@
     title="no.ntnu.item.its.train.adapter"
     uuid="_187yMOuQEeWrQIhWnzYPtA"
     version="1.0.0"
+    purpose="An example implementation of a context reasoning module used in a Lego-Mindstrom railroad model"
     >
     <dependencies>
         <dependency name="com.bitreactive.library.osgi" uuid="_mIv8UBIvEeKMseuZHQ_fDA" version="1.7.0"/>

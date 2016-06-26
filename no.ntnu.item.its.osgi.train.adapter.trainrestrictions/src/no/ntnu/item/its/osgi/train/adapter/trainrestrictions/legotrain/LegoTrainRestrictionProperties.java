@@ -29,7 +29,7 @@ public final class LegoTrainRestrictionProperties {
 	public static final SensorPriorityLevel SENSORACCELEROMETER = SensorPriorityLevel.PERIPHERAL;
 		
 	
-	public static final long DEFAULTCOLORPUBLISHRATE = 20;
+	public static final long DEFAULTCOLORPUBLISHRATE = 25;
 	public static final long DEFAULTMAGPUBLISHRATE = 300;
 	
 	public static final boolean CANRUNWITHOUTREMOTE = true;

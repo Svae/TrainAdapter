@@ -6,6 +6,8 @@
     type="block" 
     >
     <required>
+        <package name="no.ntnu.item.its.train.adapter.customservicetracker"/>
+        <package name="org.osgi.framework"/>
         <block name="b0" uuid="_-1Bj4S-gEeSi4PD7l7flYw"/>
     </required>
 </block>

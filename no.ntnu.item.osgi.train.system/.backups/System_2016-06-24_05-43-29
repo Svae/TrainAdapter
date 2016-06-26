@@ -9,26 +9,25 @@
             <transition xmi:id="_XK13MDoiEeaa3aERonkPLw" name="stop / stopped" source="_R9mbcA4eEeaVQbI-YC7ulg" target="_R9mbcQ4eEeaVQbI-YC7ulg"/>
             <transition xmi:id="_XK2eQDoiEeaa3aERonkPLw" name="init / failed" source="_R9l0YQ4eEeaVQbI-YC7ulg" target="_R9mbcQ4eEeaVQbI-YC7ulg"/>
             <transition xmi:id="_XK3FUDoiEeaa3aERonkPLw" name=" / ready" source="_XJWCYjoiEeaa3aERonkPLw" target="_R9mbcA4eEeaVQbI-YC7ulg"/>
-            <transition xmi:id="_sDvYsDoiEeaa3aERonkPLw" name="stop / " source="_R9mbcA4eEeaVQbI-YC7ulg" target="_R9mbcQ4eEeaVQbI-YC7ulg"/>
             <subvertex xmi:type="uml:Pseudostate" xmi:id="_R9l0YQ4eEeaVQbI-YC7ulg" name="&lt;initial>"/>
             <subvertex xmi:type="uml:State" xmi:id="_R9mbcA4eEeaVQbI-YC7ulg" name="active"/>
             <subvertex xmi:type="uml:FinalState" xmi:id="_R9mbcQ4eEeaVQbI-YC7ulg" name="&lt;final>"/>
             <subvertex xmi:type="uml:State" xmi:id="_XJWCYjoiEeaa3aERonkPLw" name="initializing"/>
           </region>
         </ownedBehavior>
-        <ownedParameter xmi:id="_sDuKkDoiEeaa3aERonkPLw" name="init"/>
-        <ownedParameter xmi:id="_sDuKkToiEeaa3aERonkPLw" name="stopped" direction="out" parameterSet="_XJU0QToiEeaa3aERonkPLw"/>
-        <ownedParameter xmi:id="_sDuKkjoiEeaa3aERonkPLw" name="stop" isStream="true"/>
-        <ownedParameter xmi:id="_sDuKkzoiEeaa3aERonkPLw" name="failed" direction="out" parameterSet="_XJVbUzoiEeaa3aERonkPLw"/>
-        <ownedParameter xmi:id="_sDuKlDoiEeaa3aERonkPLw" name="ready" direction="out" isStream="true"/>
-        <ownedParameterSet xmi:id="_XJU0QToiEeaa3aERonkPLw" name="stopped" parameter="_sDuKkToiEeaa3aERonkPLw"/>
-        <ownedParameterSet xmi:id="_XJVbUzoiEeaa3aERonkPLw" name="failed" parameter="_sDuKkzoiEeaa3aERonkPLw"/>
+        <ownedParameter xmi:id="_XJUNMDoiEeaa3aERonkPLw" name="init"/>
+        <ownedParameter xmi:id="_XJU0QDoiEeaa3aERonkPLw" name="stopped" direction="out" parameterSet="_XJU0QToiEeaa3aERonkPLw"/>
+        <ownedParameter xmi:id="_XJVbUDoiEeaa3aERonkPLw" name="stop" isStream="true"/>
+        <ownedParameter xmi:id="_XJVbUjoiEeaa3aERonkPLw" name="failed" direction="out" parameterSet="_XJVbUzoiEeaa3aERonkPLw"/>
+        <ownedParameter xmi:id="_XJWCYToiEeaa3aERonkPLw" name="ready" direction="out" isStream="true"/>
+        <ownedParameterSet xmi:id="_XJU0QToiEeaa3aERonkPLw" name="stopped" parameter="_XJU0QDoiEeaa3aERonkPLw"/>
+        <ownedParameterSet xmi:id="_XJVbUzoiEeaa3aERonkPLw" name="failed" parameter="_XJVbUjoiEeaa3aERonkPLw"/>
         <group xmi:type="uml:ActivityPartition" xmi:id="_R7ydkA4eEeaVQbI-YC7ulg" name="main" node="_R7zEoA4eEeaVQbI-YC7ulg _XJUNMToiEeaa3aERonkPLw _XJU0QjoiEeaa3aERonkPLw _XJVbUToiEeaa3aERonkPLw _XJWCYDoiEeaa3aERonkPLw"/>
-        <node xmi:type="uml:ActivityParameterNode" xmi:id="_R7zEoA4eEeaVQbI-YC7ulg" name="init" inPartition="_R7ydkA4eEeaVQbI-YC7ulg" parameter="_sDuKkDoiEeaa3aERonkPLw"/>
-        <node xmi:type="uml:ActivityParameterNode" xmi:id="_XJUNMToiEeaa3aERonkPLw" name="stopped" inPartition="_R7ydkA4eEeaVQbI-YC7ulg" parameter="_sDuKkToiEeaa3aERonkPLw"/>
-        <node xmi:type="uml:ActivityParameterNode" xmi:id="_XJU0QjoiEeaa3aERonkPLw" name="stop" inPartition="_R7ydkA4eEeaVQbI-YC7ulg" parameter="_sDuKkjoiEeaa3aERonkPLw"/>
-        <node xmi:type="uml:ActivityParameterNode" xmi:id="_XJVbUToiEeaa3aERonkPLw" name="failed" inPartition="_R7ydkA4eEeaVQbI-YC7ulg" parameter="_sDuKkzoiEeaa3aERonkPLw"/>
-        <node xmi:type="uml:ActivityParameterNode" xmi:id="_XJWCYDoiEeaa3aERonkPLw" name="ready" inPartition="_R7ydkA4eEeaVQbI-YC7ulg" parameter="_sDuKlDoiEeaa3aERonkPLw"/>
+        <node xmi:type="uml:ActivityParameterNode" xmi:id="_R7zEoA4eEeaVQbI-YC7ulg" name="init" inPartition="_R7ydkA4eEeaVQbI-YC7ulg" parameter="_XJUNMDoiEeaa3aERonkPLw"/>
+        <node xmi:type="uml:ActivityParameterNode" xmi:id="_XJUNMToiEeaa3aERonkPLw" name="stopped" inPartition="_R7ydkA4eEeaVQbI-YC7ulg" parameter="_XJU0QDoiEeaa3aERonkPLw"/>
+        <node xmi:type="uml:ActivityParameterNode" xmi:id="_XJU0QjoiEeaa3aERonkPLw" name="stop" inPartition="_R7ydkA4eEeaVQbI-YC7ulg" parameter="_XJVbUDoiEeaa3aERonkPLw"/>
+        <node xmi:type="uml:ActivityParameterNode" xmi:id="_XJVbUToiEeaa3aERonkPLw" name="failed" inPartition="_R7ydkA4eEeaVQbI-YC7ulg" parameter="_XJVbUjoiEeaa3aERonkPLw"/>
+        <node xmi:type="uml:ActivityParameterNode" xmi:id="_XJWCYDoiEeaa3aERonkPLw" name="ready" inPartition="_R7ydkA4eEeaVQbI-YC7ulg" parameter="_XJWCYToiEeaa3aERonkPLw"/>
       </packagedElement>
       <profileApplication xmi:id="_R7zrsQ4eEeaVQbI-YC7ulg">
         <eAnnotations xmi:id="_R7zrsg4eEeaVQbI-YC7ulg" source="http://www.eclipse.org/uml2/2.0.0/UML">
@@ -89,5 +88,4 @@
   <graphics:Shape xmi:id="_XLFu0DoiEeaa3aERonkPLw" x="10" y="19" base_Element="_XK8k4DoiEeaa3aERonkPLw" orientation="west"/>
   <graphics:Shape xmi:id="_XLQt8DoiEeaa3aERonkPLw" x="1" y="18" base_Element="_XLORsDoiEeaa3aERonkPLw" orientation="east"/>
   <graphics:Shape xmi:id="_YD8pcDoiEeaa3aERonkPLw" x="109" y="90" base_Element="_XLIyIDoiEeaa3aERonkPLw"/>
-  <arctis:event xmi:id="_sDvYsToiEeaa3aERonkPLw" base_Transition="_sDvYsDoiEeaa3aERonkPLw" triggers="_XJU0QjoiEeaa3aERonkPLw"/>
 </xmi:XMI>

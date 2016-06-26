@@ -13,7 +13,7 @@ import no.ntnu.item.its.osgi.train.adapter.handlers.common.readings.Magnetometer
 import no.ntnu.item.its.osgi.train.adapter.handlers.common.readings.NFCReading;
 import no.ntnu.item.its.osgi.train.adapter.handlers.common.readings.SensorStateEvent;
 import no.ntnu.item.its.osgi.train.adapter.handlers.common.readings.TemperatureReading;
-import no.ntnu.item.its.osgi.train.adapter.maprestrictions.interfaces.MapRestrictionChecker;
+import no.ntnu.item.its.osgi.train.adapter.maprestrictions.interfaces.MapChecker;
 import no.ntnu.item.its.osgi.train.adapter.sensorconfigurator.common.SensorReconfiguration;
 import no.ntnu.item.its.osgi.train.adapter.trainrestrictions.common.SpeedRestrictionLevel;
 import no.ntnu.item.its.osgi.train.adapter.trainrestrictions.interfaces.TrainRestrictionsChecker;
@@ -39,9 +39,8 @@ public class ContextChecker extends Block implements TrainContext {
 
 	private TrainState trainState;
 	private ServiceTracker<TrainRestrictionsChecker, TrainRestrictionsChecker> trainRestrictionTracker;
-	private ServiceTracker<MapRestrictionChecker, MapRestrictionChecker> mapRestrictionTracker;
+	private ServiceTracker<MapChecker, MapChecker> mapRestrictionTracker;
 	private ServiceTracker<TrainStateController, TrainStateController> trainStateCtrTracker;
-	//private ServiceTracker<TrainSensorConfiguratorController, TrainSensorConfiguratorController> configuratorTracker;
 
 	
 	public BundleContext context;
@@ -50,20 +49,15 @@ public class ContextChecker extends Block implements TrainContext {
 
 	public void init() {
 		setUpTrackers();
-		// Test set up
-		trainInfo.setInTurn(false);
-		setTrainState(TrainStates.RUNNING);
 	}
 
 	private void setUpTrackers() {
-		mapRestrictionTracker = new ServiceTracker<>(context, MapRestrictionChecker.class, null);
+		mapRestrictionTracker = new ServiceTracker<>(context, MapChecker.class, null);
 		mapRestrictionTracker.open();
 		trainRestrictionTracker = new ServiceTracker<>(context, TrainRestrictionsChecker.class, null);
 		trainRestrictionTracker.open();
 		trainStateCtrTracker = new ServiceTracker<>(context, TrainStateController.class, null);
 		trainStateCtrTracker.open();
-		//configuratorTracker = new ServiceTracker<>(context, TrainSensorConfiguratorController.class, null);
-		//configuratorTracker.open();
 	}
 
 	@Override
@@ -150,22 +144,14 @@ public class ContextChecker extends Block implements TrainContext {
 	}
 
 	@Override
-	public MapRestrictionChecker getMapRestrictions() {
-		MapRestrictionChecker res = (MapRestrictionChecker) mapRestrictionTracker.getService();
+	public MapChecker getMapRestrictions() {
+		MapChecker res = (MapChecker) mapRestrictionTracker.getService();
 		if (res == null) {
 			logger.debug("Could not find map restrictions checker");
 		}
 		return res;
 	}
 
-	/*@Override
-	public TrainSensorConfiguratorController getSensorConfigurator() {
-		TrainSensorConfiguratorController res = (TrainSensorConfiguratorController) configuratorTracker.getService();
-		if (res == null) {
-			logger.debug("Could not find sensor configurator");
-		}
-		return res;
-	}*/
 
 	@Override
 	public boolean isInTurn() {
@@ -287,7 +273,6 @@ public class ContextChecker extends Block implements TrainContext {
 		mapRestrictionTracker.close();
 		trainRestrictionTracker.close();
 		trainStateCtrTracker.close();
-		//configuratorTracker.close();
 	}
 
 	private TrainState getTrainState(TrainStates state) {

@@ -6,6 +6,22 @@
     type="block" 
     >
     <required>
+        <package name="no.ntnu.item.its.osgi.common.enums"/>
+        <package name="no.ntnu.item.its.osgi.train.adapter.handlers.common.enums"/>
+        <package name="no.ntnu.item.its.osgi.train.adapter.handlers.common.readings"/>
+        <package name="no.ntnu.item.its.osgi.train.adapter.maprestrictions.common"/>
+        <package name="no.ntnu.item.its.osgi.train.adapter.maprestrictions.interfaces"/>
+        <package name="no.ntnu.item.its.osgi.train.adapter.sensorconfigurator.common"/>
+        <package name="no.ntnu.item.its.osgi.train.adapter.trainrestrictions.common"/>
+        <package name="no.ntnu.item.its.osgi.train.adapter.trainrestrictions.interfaces"/>
+        <package name="no.ntnu.item.its.osgi.train.adapter.trainstates.interfaces"/>
+        <package name="no.ntnu.item.its.train.adapter.common"/>
+        <package name="no.ntnu.item.its.train.adapter.contextchecker"/>
+        <package name="no.ntnu.item.its.train.adapter.enums"/>
+        <package name="no.ntnu.item.its.train.adapter.trainInfo"/>
+        <package name="no.ntnu.trainamqpservice.common"/>
+        <package name="no.ntnu.trainamqpservice.interfaces"/>
+        <package name="org.osgi.framework"/>
         <block name="b0" uuid="_-1Bj4S-gEeSi4PD7l7flYw"/>
     </required>
 </block>

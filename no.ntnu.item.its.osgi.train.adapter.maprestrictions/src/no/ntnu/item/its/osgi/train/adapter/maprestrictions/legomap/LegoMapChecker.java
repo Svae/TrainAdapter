@@ -3,15 +3,15 @@ package no.ntnu.item.its.osgi.train.adapter.maprestrictions.legomap;
 import java.util.Arrays;
 
 import no.ntnu.item.its.osgi.train.adapter.maprestrictions.common.MapZone;
-import no.ntnu.item.its.osgi.train.adapter.maprestrictions.interfaces.MapRestrictionChecker;
+import no.ntnu.item.its.osgi.train.adapter.maprestrictions.interfaces.MapChecker;
 
-public class LegoMapRestrictionChecker implements MapRestrictionChecker{
+public class LegoMapChecker implements MapChecker{
 
 
 	@Override
 	public MapZone getMapZoneFromLocation(String locationID) {
-		if(Arrays.asList(LegoMapRestrictionProperties.CITY).contains(locationID)) return MapZone.CITY;
-		if(Arrays.asList(LegoMapRestrictionProperties.INNERCITY).contains(locationID)) return MapZone.INNERCITY;
+		if(Arrays.asList(LegoMapProperties.CITY).contains(locationID)) return MapZone.CITY;
+		if(Arrays.asList(LegoMapProperties.INNERCITY).contains(locationID)) return MapZone.INNERCITY;
 		return MapZone.NORMAL;
 	}
 

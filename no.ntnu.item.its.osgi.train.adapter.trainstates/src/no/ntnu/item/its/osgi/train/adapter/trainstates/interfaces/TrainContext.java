@@ -3,7 +3,7 @@ package no.ntnu.item.its.osgi.train.adapter.trainstates.interfaces;
 import no.ntnu.item.its.osgi.common.enums.PublisherType;
 import no.ntnu.item.its.osgi.common.enums.Status;
 import no.ntnu.item.its.osgi.train.adapter.handlers.common.enums.SleeperColor;
-import no.ntnu.item.its.osgi.train.adapter.maprestrictions.interfaces.MapRestrictionChecker;
+import no.ntnu.item.its.osgi.train.adapter.maprestrictions.interfaces.MapChecker;
 import no.ntnu.item.its.osgi.train.adapter.sensorconfigurator.common.SensorReconfiguration;
 import no.ntnu.item.its.osgi.train.adapter.trainrestrictions.common.SpeedRestrictionLevel;
 import no.ntnu.item.its.osgi.train.adapter.trainrestrictions.interfaces.TrainRestrictionsChecker;
@@ -19,7 +19,7 @@ public interface TrainContext {
 	public double getSpeed();
 	public TrainRestrictionsChecker getTrainRestrictionChecker();
 	public TrainStateController getTrainStateController();
-	public MapRestrictionChecker getMapRestrictions();
+	public MapChecker getMapRestrictions();
 	public boolean isInTurn();
 	public void setInturn(boolean b);
 	public void increaseSpeedForTurn();
